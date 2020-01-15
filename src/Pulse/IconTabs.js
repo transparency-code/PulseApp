@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function IconTabs({companyUser=true}) {
+export default function IconTabs({companyUser}) {
 
     // console.log(companyUser)
   const classes = useStyles();

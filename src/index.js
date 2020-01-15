@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import IconTabs from "Pulse/IconTabs";
+import Request from "Pulse/Request/Request";
 import App from "./App";
 import theme from './theme'
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -11,7 +11,7 @@ ReactDOM.render(
   <React.Fragment>
     <CssBaseline />
     <ThemeProvider theme={theme}>
-    <IconTabs />
+    <Request />
     </ThemeProvider>
   </React.Fragment>,
   document.getElementById("root")
