@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 export default function Request() {
   const classes = useStyles();
 
-  const [selection, setSelection] = React.useState(requestOptions[0].value);
+  const [selection, setSelection] = React.useState(requestOptions[1].value);
 
 
   return (
