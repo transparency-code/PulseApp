@@ -1,20 +1,19 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
+import SelectionFields from 'Pulse/util/SelectTextField'
 
 
 
-export default function RequestTypeTextField({ selectTypes, selection, onSelectChange}) {
+export default function RequestTypeSelection({ selectTypes, selection, onSelectChange}) {
 
   
   
 
-  const handleChange = event => {
+  const onequestTypeChange = event => {
     onSelectChange(event.target.value);
   };
 
-  //needs access at state, so inline function
-  const RequestTypeTextField = ({selectTypes}) => {
+ //handleChange
+  const selectionFields = () => {
     // console.log(selectTypes)
     return (
       <TextField
@@ -34,5 +33,5 @@ export default function RequestTypeTextField({ selectTypes, selection, onSelectC
   };
 
 
-  return <RequestTypeTextField selectTypes={selectTypes}/>
+  return selectionFields()
 }

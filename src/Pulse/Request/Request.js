@@ -1,63 +1,39 @@
-//https://material-ui.com/components/text-fields/
+//https://material-ui.com/components/selects/
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import RequestTypeTextField from './RequestTypeTextField'
-import {getRequestComponent} from './util'
+import FormControl from "@material-ui/core/FormControl";
+import NativeSelect from "Pulse/util/NativeSelect";
+import GetSelectedRequest from './GetSelectedRequest'
+import {requestFieldProps, requestOptions} from './constants.js'
 
 
 
-const reqTypes = [
-    {
-      value: 'Standard PS1',
-      label: 'Standard PS1',
-    },
-    {
-      value: 'Custom',
-      label: 'Custom',
-    }
- 
-  ];  
+const useStyles = makeStyles(theme => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2)
+  }
+}));
 
-  const useStyles = makeStyles(theme => ({
-    root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: 200,
-      },
-    },
-  }));
-
-
-
-  
-
-  //reqTypes is in scope
 export default function Request() {
+  const classes = useStyles();
 
-    const classes = useStyles();
-
-      // console.log(selectTypes)
-  const defaultSelection = reqTypes[0].value;
-  const [selection, setSelection] = React.useState(defaultSelection);
+  const [selection, setSelection] = React.useState(requestOptions[0].value);
 
   const handleChange = event => {
     setSelection(event.target.value);
   };
 
- 
-
- console.log(selection)
   return (
- 
-        <form className={classes.root}>
-        <RequestTypeTextField selectTypes={reqTypes} selection={selection} onSelectChange={setSelection} />
-        {getRequestComponent()}
-        </form>
-        
-        
- 
-    
+    <div>
+      <FormControl className={classes.formControl}>
+        {/* {selectId, selectLabel, selectOptions, currentSelection, onSelectionChange} */}
+        <NativeSelect {...requestFieldProps} selectOptions={requestOptions} currentSelection={selection} onSelectionChange={setSelection}/>
+        <GetSelectedRequest selection={selection} />
+      </FormControl>
+    </div>
   );
 }
