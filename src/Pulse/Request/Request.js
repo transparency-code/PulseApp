@@ -23,9 +23,6 @@ export default function Request() {
 
   const [selection, setSelection] = React.useState(requestOptions[0].value);
 
-  const handleChange = event => {
-    setSelection(event.target.value);
-  };
 
   return (
     <div>

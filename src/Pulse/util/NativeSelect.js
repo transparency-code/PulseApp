@@ -9,7 +9,7 @@ export default function Request({selectId, selectLabel, selectOptions, currentSe
     // console.log(selectLabel)
     // console.log(selectOptions)
 
-  const [selection, setSelection] = React.useState(selectOptions[0].value);
+
 
   const handleChange = event => {
     onSelectionChange(event.target.value);
