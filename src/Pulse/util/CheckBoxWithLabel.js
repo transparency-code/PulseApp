@@ -4,25 +4,31 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
-export default function CheckBoxWithLabel({label,value,checked,onCheckedChange}) {
+export default function CheckBoxWithLabel({label,checkedProp,onCheckedChange}) {
 
   // console.log(label)
-  // console.log(value)
+  //  console.log(checkedProp)
 
-    // const [state, setState] = React.useState(true)
+    const [checked, setChecked] = React.useState(checkedProp)
 
       const handleChange = event => {
-        onCheckedChange(event.target.checked);
+        const changedState = event.target.checked
+        setChecked(changedState)
+        onCheckedChange(changedState);
       };
 
-      // console.log(state)
-
+//  console.log(checked)
       return (
         <FormControlLabel
         control={
-          <Checkbox checked={value} onChange={handleChange}  color="primary"/>
+          <Checkbox value={label} checked={checked}  onChange={handleChange}  color="primary"/>
         }
         label={label}
       />
       )
 }
+
+//value	any		The value of the component. The DOM API casts this to a string. 
+//Label is used as value
+//https://material-ui.com/api/checkbox/
+//checked	bool		If true, the component is checked.

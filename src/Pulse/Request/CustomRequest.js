@@ -1,31 +1,35 @@
-import React from 'react'
-import CheckBoxWithLabel from 'Pulse/util/CheckBoxWithLabel'
+import React from "react";
+import CheckBoxWithLabel from "Pulse/util/CheckBoxWithLabel";
 
-const customRequestOptions = {
-    lined : {
-        label : "Lined",
-        value : true
-    }
-}
+const customRequest = {
+  lined: {
+    label: "Lined",
+    value: true
+  }
+};
 
-
+const defaultRequestState = {
+  lined: true
+};
 
 export default function CustomRequest() {
+  const { lined } = customRequest;
 
-    const {lined} = customRequestOptions
+  const [requestState, setState] = React.useState(defaultRequestState);
 
-    const [customRequestState, setCustomRequestState] = React.useState(lined.value);
+  const handleChange = name => newValue => {
+    setState({ ...requestState, [name]: newValue });
+  };
 
-    // const setCustomRequestState = value => {
-    //         setState(event.target.checked);
-    //       };
+//  console.log(requestState);
 
-    console.log(customRequestState)
-
-    // console.log(lined)
-    return (
-        <div>
-            <CheckBoxWithLabel {...lined} value={customRequestState} onCheckedChange={setCustomRequestState}/>
-        </div>
-    )
+  return (
+    <div>
+      <CheckBoxWithLabel
+        {...lined}
+        checkedProp={requestState.lined}
+        onCheckedChange={handleChange("lined")}
+      />
+    </div>
+  );
 }
