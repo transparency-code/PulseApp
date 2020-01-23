@@ -32,3 +32,6 @@ export default function CheckBoxWithLabel({label,checkedProp,onCheckedChange}) {
 //Label is used as value
 //https://material-ui.com/api/checkbox/
 //checked	bool		If true, the component is checked.
+
+//https://material-ui.com/api/form-control-label/
+//Drop in replacement Checkbox component. Use this component if you want to display an extra label.

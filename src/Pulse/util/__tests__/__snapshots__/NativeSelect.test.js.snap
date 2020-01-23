@@ -20,6 +20,7 @@ exports[`snapshot testing 1`] = `
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
+      value="value1"
     >
       <option
         value="value1"

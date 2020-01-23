@@ -3,7 +3,7 @@ import React from "react";
 import InputLabel from '@material-ui/core/InputLabel';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
-export default function Request({selectId, selectLabel, selectOptions, currentSelection, onSelectionChange}) {
+export default function Select({selectId, selectLabel, selectOptions, currentSelection, onSelectionChange}) {
 
     // console.log(selectId)
     // console.log(selectLabel)
@@ -16,6 +16,7 @@ export default function Request({selectId, selectLabel, selectOptions, currentSe
   };
 
 //   console.log(selection)
+
 
   return (
     <div>
