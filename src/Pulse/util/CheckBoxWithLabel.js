@@ -3,17 +3,13 @@ import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-
 export default function CheckBoxWithLabel({label,checkedProp,onCheckedChange}) {
 
   // console.log(label)
   //  console.log(checkedProp)
 
-    const [checked, setChecked] = React.useState(checkedProp)
-
       const handleChange = event => {
         const changedState = event.target.checked
-        setChecked(changedState)
         onCheckedChange(changedState);
       };
 
@@ -21,7 +17,7 @@ export default function CheckBoxWithLabel({label,checkedProp,onCheckedChange}) {
       return (
         <FormControlLabel
         control={
-          <Checkbox value={label} checked={checked}  onChange={handleChange}  color="primary"/>
+          <Checkbox value={label} checked={checkedProp}  onChange={handleChange}  color="primary"/>
         }
         label={label}
       />
