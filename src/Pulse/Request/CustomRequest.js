@@ -3,6 +3,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import CheckBoxWithLabel from "Pulse/util/CheckBoxWithLabel";
 import BasicTextField from "Pulse/util/BasicTextField";
 import FormControl from '@material-ui/core/FormControl';
+import {CustomRequestUIData, initalCustomRequestState } from './CustomRequest.data'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -12,37 +13,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const customRequest = {
-  lined: {
-    label: "Lined"
-  },
-
-  calcRequired: {
-    label: "Calculation Required"
-  },
-
-  buildingEnvelope: {
-    label: "Building Envelope",
-  },
-
-  length: {
-    label: "Length(mm)",
-    type : "number"
-  }
-};
-
-const defaultRequestState = {
-  lined: false,
-  calcRequired: false,
-  buildingEnvelope: "",
-  length: ""
-};
-
 
 export default function CustomRequest() {
-  const { lined, calcRequired, buildingEnvelope, length } = customRequest;
+  const { lined, calcRequired, buildingEnvelope, length } = CustomRequestUIData;
 
-  const [requestState, setState] = React.useState(defaultRequestState);
+  const [requestState, setState] = React.useState(initalCustomRequestState);
 
   const handleChange = name => newValue => {
     // console.log(newValue);
