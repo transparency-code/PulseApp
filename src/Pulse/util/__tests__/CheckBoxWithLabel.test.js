@@ -39,7 +39,7 @@ it("fire a change", () => {
        fireEvent.click(selectNode)
 
       expect(mockCallback.mock.calls).toHaveLength(1);
-  
+      expect(mockCallback).toHaveBeenCalledWith(false)
       
   });
   

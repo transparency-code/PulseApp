@@ -63,4 +63,5 @@ it('snapshot testing', () => {
 
      //not working
     expect(mockCallback.mock.calls).toHaveLength(1);
+    expect(mockCallback).toHaveBeenCalledWith("value2")
   });
