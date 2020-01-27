@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 //MuiFormControl-root
 export default function CustomRequest() {
-  const { lined, calcRequired, buildingEnvelope, length, width, height, roofPitch } = CustomRequestUIData;
+  const { lined, calcRequired, buildingEnvelope, length, width, height, roofPitch, bayNumber, baySize } = CustomRequestUIData;
 
   const [requestState, setState] = React.useState(initalCustomRequestState);
 
@@ -85,6 +85,18 @@ export default function CustomRequest() {
           {...roofPitch}
           valueProp={requestState.roofPitch}
           handleChangeProp={handleChange("roofPitch")}
+        />
+
+<BasicTextField
+          {...bayNumber}
+          valueProp={requestState.bayNumber}
+          handleChangeProp={handleChange("bayNumber")}
+        />
+
+<BasicTextField
+          {...baySize}
+          valueProp={requestState.baySize}
+          handleChangeProp={handleChange("baySize")}
         />
 
       </FormGroup>

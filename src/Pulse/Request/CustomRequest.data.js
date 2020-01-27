@@ -30,6 +30,16 @@ export const CustomRequestUIData = {
   roofPitch : {
     label : "Roof Pitch (deg)",
     type: "number"
+  },
+
+  bayNumber : {
+    label : "Bay Number",
+    type: "number"
+  },
+
+  baySize : {
+    label : "Bay Size",
+    type: "number"
   }
 }
 
@@ -41,5 +51,7 @@ export const initalCustomRequestState = {
   length: "",
   width : "",
   height : "",
-  roofPitch : 15
+  roofPitch : 15,
+  bayNumber: "",
+  baySize : ""
 };
