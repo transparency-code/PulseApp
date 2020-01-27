@@ -6,16 +6,27 @@ import FormControl from '@material-ui/core/FormControl';
 import {CustomRequestUIData, initalCustomRequestState } from './CustomRequest.data'
 import { makeStyles } from '@material-ui/core/styles';
 
+
+//https://material-ui.com/styles/basics/
+//https://material-ui.com/styles/basics/#nesting-selectors
+//'&' for
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(3),
   },
+  //only for top and bottom for each text field child
+  formGroup : {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1,0),
+
+    },
+  },
 }));
 
 
-
+//MuiFormControl-root
 export default function CustomRequest() {
-  const { lined, calcRequired, buildingEnvelope, length } = CustomRequestUIData;
+  const { lined, calcRequired, buildingEnvelope, length, width, height, roofPitch } = CustomRequestUIData;
 
   const [requestState, setState] = React.useState(initalCustomRequestState);
 
@@ -26,6 +37,7 @@ export default function CustomRequest() {
 
   const classes = useStyles();
 
+  console.log(roofPitch)
   console.log(requestState);
 
   return (
@@ -44,17 +56,37 @@ export default function CustomRequest() {
           onCheckedChange={handleChange("calcRequired")}
         />
       </FormGroup>
-      <FormGroup>
+      <FormGroup className={classes.formGroup}>
         <BasicTextField
           {...buildingEnvelope}
           valueProp={requestState.buildingEnvelope}
-          handleChangeProp={handleChange("buildingEnvelope")}
+          handleChangeProp={handleChange("buildingEnvelope")
+ }
         />
          <BasicTextField
           {...length}
           valueProp={requestState.length}
           handleChangeProp={handleChange("length")}
         />
+
+<BasicTextField
+          {...width}
+          valueProp={requestState.width}
+          handleChangeProp={handleChange("width")}
+        />
+
+       <BasicTextField
+          {...height}
+          valueProp={requestState.height}
+          handleChangeProp={handleChange("height")}
+        />
+
+<BasicTextField
+          {...roofPitch}
+          valueProp={requestState.roofPitch}
+          handleChangeProp={handleChange("roofPitch")}
+        />
+
       </FormGroup>
       </FormControl>
   );

@@ -1,5 +1,6 @@
 //https://material-ui.com/components/checkboxes/
-import React from 'react';
+//https://material-ui.com/components/text-fields/
+import React from 'react'
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
@@ -15,12 +16,14 @@ export default function CheckBoxWithLabel({label,checkedProp,onCheckedChange}) {
 
 //  console.log(checked)
       return (
+
         <FormControlLabel
         control={
           <Checkbox value={label} checked={checkedProp}  onChange={handleChange}  color="primary"/>
         }
         label={label}
       />
+  
       )
 }
 
@@ -31,3 +34,4 @@ export default function CheckBoxWithLabel({label,checkedProp,onCheckedChange}) {
 
 //https://material-ui.com/api/form-control-label/
 //Drop in replacement Checkbox component. Use this component if you want to display an extra label.
+

@@ -14,13 +14,32 @@ export const CustomRequestUIData = {
 
   length: {
     label: "Length(mm)",
-    type : "number"
+    type: "number"
+  },
+
+  width: {
+    label: "Width(mm)",
+    type: "number"
+  },
+
+  height : {
+    label : "Height(mm)",
+    type: "number"
+  },
+
+  roofPitch : {
+    label : "Roof Pitch (deg)",
+    type: "number"
   }
-};
+}
+
 
 export const initalCustomRequestState = {
   lined: false,
   calcRequired: false,
   buildingEnvelope: "",
-  length: ""
+  length: "",
+  width : "",
+  height : "",
+  roofPitch : 15
 };
