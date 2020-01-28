@@ -3,7 +3,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import CheckBoxWithLabel from "Pulse/util/CheckBoxWithLabel";
 import BasicTextField from "Pulse/util/BasicTextField";
 import FormControl from "@material-ui/core/FormControl";
-import NativeSelect from "Pulse/util/NativeSelect";
+import FileUploadField from "Pulse/util/FileUploadField";
 import {
   CustomRequestUIData,
   initalCustomRequestState
@@ -44,7 +44,8 @@ export default function CustomRequest() {
     baySize,
     mezzanineFloor,
     foundation,
-    latlong
+    latlong,
+    fileUploads
   } = CustomRequestUIData;
 
   const [requestState, setState] = React.useState(initalCustomRequestState);
@@ -160,6 +161,13 @@ export default function CustomRequest() {
           {...latlong}
           valueProp={requestState.latlong}
           handleChangeProp={handleChange("latlong")}
+        />
+
+        
+<FileUploadField
+          {...fileUploads}
+          valueProp={requestState.fileUploads}
+          handleChangeProp={handleChange("fileUpoads")}
         />
       </FormGroup>
     </FormControl>

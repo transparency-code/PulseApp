@@ -60,17 +60,19 @@ export const CustomRequestUIData = {
 
   mezzanineFloor : {
     label : "Mezzanine Floor",
-    type : "text"
   },
 
   foundation : {
     label : "Foundation",
-    type : "text"
   },
 
   latlong : {
     label : "Latitude Longitude",
-    type : "text"
+  },
+
+  fileUploads : {
+    label : "File Uploads",
+    type : "file"
   }
 }
 
@@ -91,5 +93,6 @@ export const initalCustomRequestState = {
   baySize : "",
   mezzanineFloor : "",
   foundation : "",
-  latlong : ""
+  latlong : "",
+  fileUploads : ""
 };
