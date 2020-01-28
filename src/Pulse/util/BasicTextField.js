@@ -10,7 +10,8 @@ export default function BasicTextField({label,type="text",valueProp,handleChange
 //  console.log(fullWidth)
 
   const handleChange = event => {
-    const changedValue = event.target.value
+    let changedValue = event.target.value
+    changedValue = type === "number" ? Number(changedValue) : changedValue
     handleChangeProp(changedValue)
   };
 

@@ -4,8 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "Pulse/util/NativeSelect";
 import GetSelectedRequest from './GetSelectedRequest'
-import {requestFieldProps, requestOptions} from './constants.js'
-
+import {requestFieldProps, requestTypeList} from './constants.js'
 
 
 const useStyles = makeStyles(theme => ({
@@ -21,14 +20,14 @@ const useStyles = makeStyles(theme => ({
 export default function Request() {
   const classes = useStyles();
 
-  const [selection, setSelection] = React.useState(requestOptions[1].value);
+  const [selection, setSelection] = React.useState(requestTypeList[1].value);
 
 
   return (
     <div>
       <FormControl className={classes.formControl}>
         {/* {selectId, selectLabel, selectOptions, currentSelection, onSelectionChange} */}
-        <NativeSelect {...requestFieldProps} selectOptions={requestOptions} currentSelection={selection} onSelectionChange={setSelection}/>
+        <NativeSelect {...requestFieldProps} selectList={requestTypeList} currentSelectionProp={selection} onSelectionChange={setSelection}/>
         <GetSelectedRequest selection={selection} />
       </FormControl>
     </div>

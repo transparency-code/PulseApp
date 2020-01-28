@@ -8,6 +8,22 @@ export const CustomRequestUIData = {
     label: "Calculation Required"
   },
 
+  openAwning : {
+    label: "Open Awning"
+  },
+
+  enclosedAwning : {
+    label: "Enclosed Awning"
+  },
+
+  garaport : {
+    label : "Garaport"
+  },
+
+  lintelDesign : {
+     label : "Lintel Design Required"
+  },
+
   buildingEnvelope: {
     label: "Building Envelope",
   },
@@ -40,6 +56,21 @@ export const CustomRequestUIData = {
   baySize : {
     label : "Bay Size",
     type: "number"
+  },
+
+  mezzanineFloor : {
+    label : "Mezzanine Floor",
+    type : "text"
+  },
+
+  foundation : {
+    label : "Foundation",
+    type : "text"
+  },
+
+  latlong : {
+    label : "Latitude Longitude",
+    type : "text"
   }
 }
 
@@ -47,11 +78,18 @@ export const CustomRequestUIData = {
 export const initalCustomRequestState = {
   lined: false,
   calcRequired: false,
+  openAwning: false,
+  enclosedAwning: false,
+  garaport : false,
+  lintelDesign : false,
   buildingEnvelope: "",
   length: "",
   width : "",
   height : "",
-  roofPitch : 15,
+  roofPitch : "",
   bayNumber: "",
-  baySize : ""
+  baySize : "",
+  mezzanineFloor : "",
+  foundation : "",
+  latlong : ""
 };

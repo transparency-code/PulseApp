@@ -7,7 +7,7 @@ export const requestFieldProps = {
     selectLabel: "Request Type"
   };
   
-export const requestOptions = [
+export const requestTypeList = [
     {
       value: STANDARD_REQUEST,
       label: STANDARD_REQUEST
