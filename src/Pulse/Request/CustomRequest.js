@@ -1,9 +1,9 @@
 import React from "react";
 import FormGroup from "@material-ui/core/FormGroup";
-import CheckBoxWithLabel from "Pulse/util/CheckBoxWithLabel";
-import BasicTextField from "Pulse/util/BasicTextField";
+import CheckBoxWithLabel from "Pulse/components/CheckBoxWithLabel";
+import BasicTextField from "Pulse/components/BasicTextField";
 import FormControl from "@material-ui/core/FormControl";
-import FileUploadField from "Pulse/util/FileUploadField";
+import {DropzoneArea} from 'material-ui-dropzone'
 import {
   CustomRequestUIData,
   initalCustomRequestState
@@ -22,9 +22,15 @@ const useStyles = makeStyles(theme => ({
     "& .MuiTextField-root": {
       margin: theme.spacing(1, 0),
       width: 200
-    }
+    },
+  },
+
+  dropZone: {
+    margin: theme.spacing(1, 0),
+    
   }
 }));
+
 
 //MuiFormControl-root
 export default function CustomRequest() {
@@ -51,14 +57,18 @@ export default function CustomRequest() {
   const [requestState, setState] = React.useState(initalCustomRequestState);
 
   const handleChange = name => newValue => {
-    // console.log(newValue);
+    console.log(newValue);
     setState({ ...requestState, [name]: newValue });
   };
 
   const classes = useStyles();
 
-  console.log(roofPitch);
+  
+//console.log(classes.dropZone)
+
+  // console.log(roofPitch);
   console.log(requestState);
+  // console.log(classes)
 
   return (
     <FormControl className={classes.formControl}>
@@ -151,24 +161,27 @@ export default function CustomRequest() {
           handleChangeProp={handleChange("mezzanineFloor")}
         />
 
-<BasicTextField
+        <BasicTextField
           {...foundation}
           valueProp={requestState.foundation}
           handleChangeProp={handleChange("foundation")}
         />
 
-<BasicTextField
+        <BasicTextField
           {...latlong}
           valueProp={requestState.latlong}
           handleChangeProp={handleChange("latlong")}
         />
 
-        
-<FileUploadField
-          {...fileUploads}
-          valueProp={requestState.fileUploads}
-          handleChangeProp={handleChange("fileUpoads")}
-        />
+
+          <DropzoneArea dropzoneText={"Upload Files. Max File size of 10 MB. Max Number of Files of 6."} filesLimit={6} useChipsForPreview={true} showAlerts={false} onChange={handleChange('fileUploads') }  maxFileSize={10485760}
+          dropzoneClass={classes.dropZone}
+            // {...fileUploads}
+            // uploadedFilesProp={requestState.fileUploads}
+            // handleChangeProp={handleChange("fileUploads")}
+          />
+
+
       </FormGroup>
     </FormControl>
   );

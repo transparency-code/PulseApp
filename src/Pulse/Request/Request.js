@@ -2,7 +2,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
-import NativeSelect from "Pulse/util/NativeSelect";
+import NativeSelect from "Pulse/components/NativeSelect";
 import GetSelectedRequest from './GetSelectedRequest'
 import {requestFieldProps, requestTypeList} from './constants.js'
 

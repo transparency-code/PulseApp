@@ -94,5 +94,5 @@ export const initalCustomRequestState = {
   mezzanineFloor : "",
   foundation : "",
   latlong : "",
-  fileUploads : ""
+  fileUploads : []
 };

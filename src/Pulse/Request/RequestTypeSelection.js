@@ -1,5 +1,5 @@
 import React from "react";
-import SelectionFields from 'Pulse/util/SelectTextField'
+import SelectionFields from 'Pulse/components/SelectTextField'
 
 
 
