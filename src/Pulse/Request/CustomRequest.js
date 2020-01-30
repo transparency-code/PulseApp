@@ -3,12 +3,14 @@ import FormGroup from "@material-ui/core/FormGroup";
 import CheckBoxWithLabel from "Pulse/components/CheckBoxWithLabel";
 import BasicTextField from "Pulse/components/BasicTextField";
 import FormControl from "@material-ui/core/FormControl";
+import Button from '@material-ui/core/Button';
 import {DropzoneArea} from 'material-ui-dropzone'
 import {
   CustomRequestUIData,
   initalCustomRequestState
 } from "./CustomRequest.data";
 import { makeStyles } from "@material-ui/core/styles";
+import submitRequest from "Pulse/functions/submitRequest"
 
 //https://material-ui.com/styles/basics/
 //https://material-ui.com/styles/basics/#nesting-selectors
@@ -26,9 +28,13 @@ const useStyles = makeStyles(theme => ({
   },
 
   dropZone: {
-    margin: theme.spacing(1, 0),
-    
-  }
+    margin: theme.spacing(1, 0),  
+  },
+
+  button: {
+    margin: theme.spacing(1),
+    width: 200
+  },
 }));
 
 
@@ -51,7 +57,7 @@ export default function CustomRequest() {
     mezzanineFloor,
     foundation,
     latlong,
-    fileUploads
+    //no need to decontruct fileuploads as change s handled by npm component
   } = CustomRequestUIData;
 
   const [requestState, setState] = React.useState(initalCustomRequestState);
@@ -67,7 +73,7 @@ export default function CustomRequest() {
 //console.log(classes.dropZone)
 
   // console.log(roofPitch);
-  console.log(requestState);
+  //console.log(requestState);
   // console.log(classes)
 
   return (
@@ -183,6 +189,10 @@ export default function CustomRequest() {
 
 
       </FormGroup>
+
+      <Button variant="contained" className={classes.button} onClick={submitRequest({requestState})}>
+        Submit Request
+      </Button>
     </FormControl>
   );
 }
