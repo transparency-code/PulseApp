@@ -63,7 +63,7 @@ export default function CustomRequest() {
   const [requestState, setState] = React.useState(initalCustomRequestState);
 
   const handleChange = name => newValue => {
-    console.log(newValue);
+    //console.log(newValue);
     setState({ ...requestState, [name]: newValue });
   };
 
@@ -190,7 +190,7 @@ export default function CustomRequest() {
 
       </FormGroup>
 
-      <Button variant="contained" className={classes.button} onClick={submitRequest({requestState})}>
+      <Button variant="contained" className={classes.button} onClick={() => submitRequest({requestState},"sht@der.com")}>
         Submit Request
       </Button>
     </FormControl>
