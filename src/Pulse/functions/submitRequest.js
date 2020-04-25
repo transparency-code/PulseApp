@@ -4,8 +4,8 @@ import dynamoAddProject from 'AWS/dynamoAddProject'
 export default function submitRequest(requestState,email) {
 
 
-    const uuid = createProjectId()
+    const id = createProjectId()
 
 
-    dynamoAddProject(uuid,email,requestState)
+    dynamoAddProject(id,email,requestState)
 }
