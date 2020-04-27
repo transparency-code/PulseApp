@@ -20,9 +20,12 @@ export default function createProjectId() {
 
   const date = ("0" + date_ob.getDate()).slice(-2);
 
-  const random =  Math.floor(Math.random() * 1000);
+  const seconds = ("0" + date_ob.getSeconds()).slice(-2);
+
+
+  const random =  Math.floor(Math.random() * 100);
   
-  const id = year2digit + month + date + hours + minutes + random
+  const id = year2digit + month + date + hours + minutes + seconds + random
   
   // console.log(id)
 

@@ -13,7 +13,7 @@ async function  ddbdoc_put(tableName, hashId, sortID , info) {
     TableName: tableName,
     Item : { ProjectId : hashId,
       Email : sortID,
-      ...info.requestState
+      ...info
      },
 
   };
