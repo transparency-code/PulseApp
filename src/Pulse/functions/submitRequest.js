@@ -4,8 +4,11 @@ import {removeKeysWithNull} from './misc'
 
 export default function submitRequest(requestState,email) {
 
+    const tableInDynamo = process.env.REACT_APP_DYNAMO_TESTTABLE 
 
     const id = createProjectId()
+
+    
 
     //requestState.requestState/ state is inside a key
     // console.log(requestState)
@@ -14,5 +17,5 @@ export default function submitRequest(requestState,email) {
 
     //console.log(requestWithoutNulls)
 
-    dynamoAddProject(id,email,requestWithoutNulls)
+    dynamoAddProject(tableInDynamo,id , email,requestWithoutNulls)
 }

@@ -4,7 +4,7 @@ export function removeKeysWithNull(obj) {
     const keys = Object.keys(obj)
 
     for (const key of keys) {
-        if ( obj[key] === "") {
+        if ( obj[key] === "" || obj[key] === false) {
             //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete
             delete obj[key]
         }

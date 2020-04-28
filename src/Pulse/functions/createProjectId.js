@@ -22,8 +22,8 @@ export default function createProjectId() {
 
   const seconds = ("0" + date_ob.getSeconds()).slice(-2);
 
-
-  const random =  Math.floor(Math.random() * 100);
+  //https://stackoverflow.com/questions/15735159/javascript-generate-a-two-digits-positive-random-number
+  const random =  Math.floor(Math.random() * 90 + 10);
   
   const id = year2digit + month + date + hours + minutes + seconds + random
   

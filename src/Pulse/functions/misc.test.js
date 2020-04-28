@@ -4,7 +4,8 @@ test('remove a key with null from object', () => {
     const testObj = {
         a : "a",
         b : "",
-        c : "c"
+        c : "c",
+        d : false
     }
 
     const resultObj = {

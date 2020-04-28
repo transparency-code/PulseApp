@@ -18,18 +18,20 @@ async function  ddbdoc_put(tableName, hashId, sortID , info) {
 
   };
 
-  console.log(params)
+  // console.log(params)
+
+  console.log("Adding to DataBase...")
 
   //https://github.com/aws/aws-sdk-js/issues/833
   //convertEmptyValues does NOT solve the problem of dynamodb's inability to store empty string
   const result = await docClient.put(params).promise()
 
   //returns 200 for success
-  console.log(result.$response.httpResponse.statusCode)
+  console.log("Status Code:" + result.$response.httpResponse.statusCode)
 }
 
 //impure Function
-export default async function dynamoAddProject(projectId,email,data) {
+export default async function dynamoAddProject(tableName, projectId,email,data) {
 
   // Create DynamoDB document client
   //https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html
@@ -37,8 +39,8 @@ export default async function dynamoAddProject(projectId,email,data) {
  
 
    // console.log(tableID)
-    console.log(email)
-    console.log(data)
+    // console.log(email)
+    // console.log(data)
 
 
 
@@ -48,7 +50,9 @@ export default async function dynamoAddProject(projectId,email,data) {
     // Credentials will be available when this function is called.
     //const credentials = AWS.config.credentials
     //tableid is hashID, email is sort id
-    ddbdoc_put("Pulse-test2",projectId, email,data)
+
+    
+    ddbdoc_put(tableName,projectId, email,data)
     //ddbdoc_get('newTable',aKey,"shorn",info)
 });
 
