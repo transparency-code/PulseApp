@@ -1,4 +1,4 @@
-import {removeKeysWithNull} from './misc'
+import removeKeysWithNull from './removeKeysWithNull'
 
 test('remove a key with null from object', () => {
     const testObj = {

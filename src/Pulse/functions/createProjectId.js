@@ -1,6 +1,6 @@
 
 
-//impure function
+//impure function. do not test
 export default function createProjectId() {
 
   //https://usefulangle.com/post/187/nodejs-get-date-time

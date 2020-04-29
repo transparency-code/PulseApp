@@ -1,4 +1,5 @@
-export function removeKeysWithNull(obj) {
+//Pure function
+export default function removeKeysWithNull(obj) {
 
     //https://zellwk.com/blog/looping-through-js-objects/
     const keys = Object.keys(obj)
