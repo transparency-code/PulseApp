@@ -1,8 +1,10 @@
 import React from 'react'
 
-import  StandardPS1Request from 'Pulse/Request/StandardPS1Request'
-import  CustomRequest from 'Pulse/Request/CustomRequest'
+import  StandardPS1Request from 'Pulse/RequestForm/StandardPS1Request'
+import  CustomRequest from 'Pulse/RequestForm/CustomRequest'
 import {STANDARD_REQUEST, CUSTOM_REQUEST} from './constants.js'
+import submitRequest from 'Pulse/functions/submitRequest'
+  
 
 export default function GetSelectedRequest({selection}) {
 
@@ -15,7 +17,7 @@ export default function GetSelectedRequest({selection}) {
       Component = () => <StandardPS1Request />;
       break;
     case CUSTOM_REQUEST:
-      Component = () => <CustomRequest />;
+      Component = () => CustomRequest(submitRequest)
       break;
     default:
       Component = () => <div>Type of Request not Found</div>

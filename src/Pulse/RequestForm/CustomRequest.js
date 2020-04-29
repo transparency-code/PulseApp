@@ -10,7 +10,7 @@ import {
   initalCustomRequestState
 } from "./CustomRequest.data";
 import { makeStyles } from "@material-ui/core/styles";
-import submitRequest from "Pulse/functions/submitRequest"
+
 
 //https://material-ui.com/styles/basics/
 //https://material-ui.com/styles/basics/#nesting-selectors
@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
 
 
 //MuiFormControl-root
-export default function CustomRequest() {
+export default function CustomRequest(submitFunc) {
   const {
     lined,
     calcRequired,
@@ -190,7 +190,7 @@ export default function CustomRequest() {
 
       </FormGroup>
 
-      <Button variant="contained" className={classes.button} onClick={() => submitRequest({requestState},"sht@der.com")}>
+      <Button variant="contained" className={classes.button} onClick={() => submitFunc({requestState},"sht@der.com")}>
         Submit Request
       </Button>
     </FormControl>
