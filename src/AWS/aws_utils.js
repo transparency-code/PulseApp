@@ -1,23 +1,47 @@
+import AWS from "./aws_config";
+
 //https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/dynamodb-example-table-read-write.html
 //https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#putItem-property
 
-export function CreateParams(tableName, hashId, sortID , info) {
+export function CreateParams(tableName, hashId, sortID, info) {
+  const params = {
+    TableName: tableName,
+    Item: { ProjectId: hashId, Email: sortID, ...info },
+  };
 
-    const params = {
-        TableName: tableName,
-        Item : { ProjectId : hashId,
-          Email : sortID,
-          ...info
-         },
-    
-      };
-
-      return params
-
+  return params;
 }
 
+export async function putToDynamo(params) {
+  var docClient = new AWS.DynamoDB.DocumentClient({
+    apiVersion: "2012-08-10",
+    convertEmptyValues: true,
+  });
+  const result = await docClient.put(params).promise();
+  return result.$response.httpResponse.statusCode;
+}
 
-export async function putToDynamo(docClient, params) {
-    const result = await docClient.put(params).promise()
-    return result
+export async function uploadUserFilesToS3(projectId, fileArray) {
+
+    console.log(projectId)
+    console.log(fileArray)
+    
+  for (const file of fileArray) {
+    const fileKey = projectId + "/" + file.name;
+    var uploadResult = await getManagedUploadFileObject(file,fileKey).promise();
+    console.log(uploadResult);
+  }
+}
+
+//https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/s3-example-photo-album-full.html
+function getManagedUploadFileObject(file,fileKey) {
+  var uploadObject = new AWS.S3.ManagedUpload({
+    params: {
+      Bucket: process.env.REACT_APP_BUCKETNAME,
+      Key: fileKey,
+      Body: file,
+    },
+  });
+
+  return uploadObject;
 }
