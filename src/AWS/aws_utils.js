@@ -27,7 +27,9 @@ export async function uploadUserFilesToS3(projectId, fileArray) {
     console.log(fileArray)
     
   for (const file of fileArray) {
-    const fileKey = projectId + "/" + file.name;
+    const fileKey = projectId + "/useruploads/" + file.name;
+
+    
     var uploadResult = await getManagedUploadFileObject(file,fileKey).promise();
     console.log(uploadResult);
   }

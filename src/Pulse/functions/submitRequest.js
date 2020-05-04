@@ -17,7 +17,6 @@ export default function submitRequest({ requestState }, email) {
   const data = removeKeysWithNull(requestState);
   //console.log(data)
 
-  const folderKey = encodeURIComponent(projectId) + "/useruploads";
 
   AWS.config.credentials.get(async function () {
     // Credentials will be available when this function is called.

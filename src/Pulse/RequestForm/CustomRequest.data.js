@@ -77,7 +77,7 @@ export const CustomRequestUIData = {
 }
 
 
-export const initalCustomRequestState = {
+export const initialCustomRequestState = {
   lined: false,
   calcRequired: false,
   openAwning: false,

@@ -3,40 +3,39 @@ import FormGroup from "@material-ui/core/FormGroup";
 import CheckBoxWithLabel from "Pulse/components/CheckBoxWithLabel";
 import BasicTextField from "Pulse/components/BasicTextField";
 import FormControl from "@material-ui/core/FormControl";
-import Button from '@material-ui/core/Button';
-import {DropzoneArea} from 'material-ui-dropzone'
+import Button from "@material-ui/core/Button";
+//import DropZoneWithButton from "Pulse/components/DropZoneWithButtonf"
+import  DropzoneDialogWithText  from "Pulse/components/DropzoneDialogWithText"
 import {
   CustomRequestUIData,
-  initalCustomRequestState
+  initialCustomRequestState,
 } from "./CustomRequest.data";
 import { makeStyles } from "@material-ui/core/styles";
-
 
 //https://material-ui.com/styles/basics/
 //https://material-ui.com/styles/basics/#nesting-selectors
 //'&' for
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(3)
+    margin: theme.spacing(3),
   },
   //only for top and bottom for each text field child
   formGroup: {
     "& .MuiTextField-root": {
       margin: theme.spacing(1, 0),
-      width: 200
+      width: 200,
     },
   },
 
   dropZone: {
-    margin: theme.spacing(1, 0),  
+    margin: theme.spacing(1, 0),
   },
 
   button: {
     margin: theme.spacing(1),
-    width: 200
+    width: 200,
   },
 }));
-
 
 //MuiFormControl-root
 export default function CustomRequest(submitFunc) {
@@ -57,20 +56,19 @@ export default function CustomRequest(submitFunc) {
     mezzanineFloor,
     foundation,
     latlong,
-    //no need to decontruct fileuploads as change s handled by npm component
+  
+    //no need to decontruct fileuploads  as change s handled by npm component
   } = CustomRequestUIData;
 
-  const [requestState, setState] = React.useState(initalCustomRequestState);
+  const [requestState, setState] = React.useState(initialCustomRequestState);
 
-  const handleChange = name => newValue => {
+  const handleChange = (name) => (newValue) => {
     //console.log(newValue);
     setState({ ...requestState, [name]: newValue });
   };
 
-  const classes = useStyles();
 
-  
-//console.log(classes.dropZone)
+  const classes = useStyles();
 
   // console.log(roofPitch);
   //console.log(requestState);
@@ -179,18 +177,24 @@ export default function CustomRequest(submitFunc) {
           handleChangeProp={handleChange("latlong")}
         />
 
+     
 
-          <DropzoneArea dropzoneText={"Upload Files. Max File size of 10 MB. Max Number of Files of 6."} filesLimit={6} useChipsForPreview={true} showAlerts={false} onChange={handleChange('fileUploads') }  maxFileSize={10485760}
-          dropzoneClass={classes.dropZone}
-            // {...fileUploads}
-            // uploadedFilesProp={requestState.fileUploads}
-            // handleChangeProp={handleChange("fileUploads")}
-          />
-
+           <DropzoneDialogWithText 
+           buttonText="Add Files"
+           buttonClass={classes.button}
+           buttonVariant={"contained"}
+           handleFilesChange={handleChange("fileUploads")}
+            
+            />
+           
 
       </FormGroup>
 
-      <Button variant="contained" className={classes.button} onClick={() => submitFunc({requestState},"sht@der.com")}>
+      <Button
+        variant="contained"
+        className={classes.button}
+        onClick={() => submitFunc({ requestState }, "sht@der.com")}
+      >
         Submit Request
       </Button>
     </FormControl>
