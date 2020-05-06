@@ -3,11 +3,13 @@ import React from 'react'
 import {DropzoneDialog} from 'material-ui-dropzone'
 import Button from '@material-ui/core/Button';
  
-export default function DropzoneDialogWithText ({buttonText,buttonClass,buttonVariant,handleFilesChange}) {
+export default function DropzoneDialogWithText ({buttonText,buttonClass,buttonVariant,handleFilesChange,files,setFiles}) {
+
+    //files, setfiles . state and statemutater from HOC
 
     const [state, setState] = React.useState({
         open: false,
-        files: []
+        files
     })
     // constructor(props) {
     //     super(props);
@@ -27,8 +29,11 @@ export default function DropzoneDialogWithText ({buttonText,buttonClass,buttonVa
 
         //console.log(files)
 
+        //change files in HOC using state mutater
         handleFilesChange(files)
         //Saving files to state for further use and closing Modal.
+
+        //set open state of Dialog to False
         setState({
             files: files,
             open: false
@@ -61,6 +66,7 @@ export default function DropzoneDialogWithText ({buttonText,buttonClass,buttonVa
                     maxFileSize={10485760}
                     onClose={handleClose}
                     dropzoneText={"Drag and drop pdf files here or click"}
+                    clearOnUnmount={false}
                 />
             </div>
         );

@@ -2,6 +2,7 @@ import React from "react";
 import FormGroup from "@material-ui/core/FormGroup";
 import CheckBoxWithLabel from "Pulse/components/CheckBoxWithLabel";
 import BasicTextField from "Pulse/components/BasicTextField";
+import DisplayFiles from "Pulse/components/DisplayFiles";
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 //import DropZoneWithButton from "Pulse/components/DropZoneWithButtonf"
@@ -56,18 +57,20 @@ export default function CustomRequest(submitFunc) {
     mezzanineFloor,
     foundation,
     latlong,
-  
+    fileUploads
     //no need to decontruct fileuploads  as change s handled by npm component
   } = CustomRequestUIData;
 
   const [requestState, setState] = React.useState(initialCustomRequestState);
+  
+  //console.log(requestState)
 
   const handleChange = (name) => (newValue) => {
     //console.log(newValue);
     setState({ ...requestState, [name]: newValue });
   };
 
-
+ 
   const classes = useStyles();
 
   // console.log(roofPitch);
@@ -189,6 +192,8 @@ export default function CustomRequest(submitFunc) {
            
 
       </FormGroup>
+
+      {DisplayFiles(fileUploads)}
 
       <Button
         variant="contained"
