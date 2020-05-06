@@ -26,10 +26,21 @@ export default function submitRequest({ requestState }, email) {
     const resultCode = await putToDynamo(params);
     console.log("Status Code:" + resultCode);
 
+     //https://medium.com/@fknussel/arrays-objects-and-mutations-6b23348b54aa
+    //Ad array non mutating
+    //Array.prototype.concat does indeed return a new array, 
+    //let uploadedFileKeys
 
     if (fileUploads.length > 0) {
-      console.log("Uploading Files To S3...");
-      uploadUserFilesToS3(projectId,fileUploads);
+      console.log("Uploading " + fileUploads.length + " files to S3...")
+      const uploadedFileKeys = await uploadUserFilesToS3(projectId,fileUploads);
+
+     // console.log(uploadedFileKeys)
+      for (let key of uploadedFileKeys) {
+        console.log(key)
+      }
     }
+
+
   });
 }
