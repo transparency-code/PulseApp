@@ -2,11 +2,10 @@ import React from "react";
 import FormGroup from "@material-ui/core/FormGroup";
 import CheckBoxWithLabel from "Pulse/components/CheckBoxWithLabel";
 import BasicTextField from "Pulse/components/BasicTextField";
-import DisplayFiles from "Pulse/components/DisplayFiles";
+import DisplayFilesWithDeleteOption from "Pulse/components/DisplayFilesWithDeleteOption";
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
-//import DropZoneWithButton from "Pulse/components/DropZoneWithButtonf"
-import  DropzoneDialogWithText  from "Pulse/components/DropzoneDialogWithText"
+import ReactDropZone from 'Pulse/components/ReactDropZone'
 import {
   CustomRequestUIData,
   initialCustomRequestState,
@@ -57,19 +56,42 @@ export default function CustomRequest(submitFunc) {
     mezzanineFloor,
     foundation,
     latlong,
-    fileUploads
-    //no need to decontruct fileuploads  as change s handled by npm component
+    //no need to decontruct fileuploads  as change s handled by npm component. his is UI data
   } = CustomRequestUIData;
 
   const [requestState, setState] = React.useState(initialCustomRequestState);
   
-  //console.log(requestState)
+  //console.log(requestState.fileUploads)
 
   const handleChange = (name) => (newValue) => {
     //console.log(newValue);
     setState({ ...requestState, [name]: newValue });
   };
 
+  //file change should add to the array. deletion is done in sm pther place
+  function handleFilesChange(fileArray) {
+
+    const current = requestState.fileUploads
+
+    //https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/
+    const newFileArray = current.concat(fileArray)
+     // eslint-disable-next-line
+    setState({ ...requestState, ['fileUploads']: newFileArray });
+  }
+
+  //fileDelete shuld delete the file at index , non mutating
+  function handleFileDelete(index) {
+
+    console.log(index)
+    const toSplice = requestState.fileUploads
+
+   // https://jaketrent.com/post/remove-array-element-without-mutating/
+    toSplice.splice(index,1)
+
+    console.log(toSplice)
+    // eslint-disable-next-line
+    setState({ ...requestState, ['fileUploads']: toSplice });
+  }
  
   const classes = useStyles();
 
@@ -181,19 +203,19 @@ export default function CustomRequest(submitFunc) {
         />
 
      
-
-           <DropzoneDialogWithText 
-           buttonText="Add Files"
-           buttonClass={classes.button}
-           buttonVariant={"contained"}
-           handleFilesChange={handleChange("fileUploads")}
             
-            />
+          
+      
            
 
       </FormGroup>
 
-      {DisplayFiles(fileUploads)}
+      <ReactDropZone
+            dropZoneText={"Click to select files..."}
+            handleFilesChange={handleFilesChange}       
+            />
+
+      {DisplayFilesWithDeleteOption(requestState.fileUploads, handleFileDelete)}
 
       <Button
         variant="contained"

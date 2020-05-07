@@ -1,9 +1,9 @@
 import React from 'react'
 
-import  StandardPS1Request from 'Pulse/RequestForm/StandardPS1Request'
-import  CustomRequest from 'Pulse/RequestForm/CustomRequest'
+import  StandardPS1Request from 'Pulse/CustomRequest/StandardPS1Request'
+import  CustomRequest from 'Pulse/CustomRequest/CustomRequest'
 import {STANDARD_REQUEST, CUSTOM_REQUEST} from './constants.js'
-import submitRequest from 'Pulse/functions/submitRequest'
+import submitRequest from 'Pulse/utilfunctions/submitRequest'
   
 
 export default function GetSelectedRequest({selection}) {
