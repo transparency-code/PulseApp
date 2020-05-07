@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Request from "Pulse/CustomRequest"
+import Request from "Pulse/RequestSelection"
 // import Request from './FileList'
 import theme from './theme'
 import { ThemeProvider } from '@material-ui/core/styles';

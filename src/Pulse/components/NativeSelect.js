@@ -4,7 +4,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
 //this requires a CurrentSlection and handleChangeProp
-export default function Select({selectId, selectLabel, selectList, currentSelectionProp, handleChangeProp}) {
+export default function Select({selectId, selectLabel, selectList, currentSelection, onSelectionChange}) {
 
     // console.log(selectId)
     // console.log(selectLabel)
@@ -13,7 +13,7 @@ export default function Select({selectId, selectLabel, selectList, currentSelect
 
 
   const handleChange = event => {
-    handleChangeProp(event.target.value);
+    onSelectionChange(event.target.value);
   };
 
 //   console.log(selection)
@@ -23,7 +23,7 @@ export default function Select({selectId, selectLabel, selectList, currentSelect
     <div>
       <InputLabel htmlFor={selectId}>{selectLabel}</InputLabel>
       <NativeSelect
-        value={currentSelectionProp}
+        value={currentSelection}
         onChange={handleChange}
           //https://material-ui.com/api/native-select/
           //object Attributes applied to the select element.

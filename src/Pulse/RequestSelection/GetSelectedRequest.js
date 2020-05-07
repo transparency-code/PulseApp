@@ -1,7 +1,7 @@
 import React from 'react'
 
-import  StandardPS1Request from 'Pulse/CustomRequest/StandardPS1Request'
-import  CustomRequest from 'Pulse/CustomRequest/CustomRequest'
+import  StandardPS1Request from 'Pulse/StandardRequest/StandardPS1Request'
+import  CustomRequest from 'Pulse/CustomRequest'
 import {STANDARD_REQUEST, CUSTOM_REQUEST} from './constants.js'
 import submitRequest from 'Pulse/utilfunctions/submitRequest'
   
