@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Request from "Pulse/RequestSelection"
+//import Request from "Pulse/RequestSelection"
+import DisplayRequests from "Pulse/DisplayRequests"
 // import Request from './FileList'
 import theme from './theme'
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -11,7 +12,8 @@ ReactDOM.render(
   <React.Fragment>
     <CssBaseline />
     <ThemeProvider theme={theme}>
-    <Request />
+    {/* <Request /> */}
+    <DisplayRequests/>
     </ThemeProvider>
   </React.Fragment>,
   document.getElementById("root")

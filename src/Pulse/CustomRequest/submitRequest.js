@@ -1,12 +1,11 @@
-import createProjectId from "./createProjectId";
-import removeKeysWithNull from "./removeKeysWithNull";
-import { CreateParams, putToDynamo, uploadUserFilesToS3 } from "AWS/aws_utils";
+import createProjectId from "Pulse/utilfunctions/createProjectId";
+import removeKeysWithNull from "Pulse/utilfunctions/removeKeysWithNull";
+import { CreateParamsForInitialRequest, putToDynamo, uploadUserFilesToS3 } from "AWS/aws_utils";
+import {requestStates} from "AWS/constants"
 import AWS from "AWS/aws_config";
 
 export default function submitRequest({ requestState }, email) {
   //console.log(requestState)
-
-  const tableInDynamo = process.env.REACT_APP_DYNAMO_TESTTABLE;
 
   const projectId = createProjectId();
 
@@ -15,12 +14,16 @@ export default function submitRequest({ requestState }, email) {
   delete requestState.fileUploads
 
   const data = removeKeysWithNull(requestState);
+
+  //add projectId kwy to data object, non mutative
+  const dataWithID = { ...data, projectId}
   //console.log(data)
 
-
+// Credentials will be available when this function is called.
   AWS.config.credentials.get(async function () {
-    // Credentials will be available when this function is called.
-    const params = CreateParams(tableInDynamo, projectId, email, data);
+    
+    //tableName, hashId, sortID, info
+    const params = CreateParamsForInitialRequest(process.env.REACT_APP_DYNAMO_TESTTABLE, requestStates.initialRequest, email, dataWithID);
 
     console.log("Adding to DataBase...");
     const resultCode = await putToDynamo(params);
