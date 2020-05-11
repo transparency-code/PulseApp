@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react';
+////https://material-ui.com/components/expansion-panels/
+import { useState, useEffect } from 'react';
 import getInitialRequests from './getRequests'
+import SimpleExpansionPanel from 'Pulse/components/SimpleExpansionPanel'
 
-export default function Example() {
+
+export default function DisplayRequests() {
+
+
   // Declare a new state variable, which we'll call "count"
-  const [requests, setRequests] = useState([]);
+  const [requestArray, setRequests] = useState([]);
 
   //https://reactjs.org/docs/hooks-effect.html
    //Effect callbacks are synchronous to prevent race conditions. Put the async function inside:
@@ -24,10 +29,8 @@ export default function Example() {
    
   },[]);  // Or [] if effect doesn't need props or state
 
-  console.log(requests)
-  return (
-    <div>
-     der
-    </div>
-  );
+  //console.log(requestArray)
+
+
+  return SimpleExpansionPanel(requestArray)
 }
