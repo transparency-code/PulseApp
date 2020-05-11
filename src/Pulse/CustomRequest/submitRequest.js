@@ -4,6 +4,7 @@ import { CreateParamsForInitialRequest, putToDynamo, uploadUserFilesToS3 } from 
 import {requestStates} from "AWS/constants"
 import AWS from "AWS/aws_config";
 
+//doesnt receive a function to set state. Information is logged into console within itself
 export default function submitRequest({ requestState }, email) {
   //console.log(requestState)
 

@@ -13,16 +13,24 @@ import {requestStates} from "AWS/constants"
 
 import {CreateParamsForRequestQuery, QueryFromDynamo} from "AWS/aws_utils"
 
-export default function getInitialRequests(limit) {
+//receives a function that set states
+export default async function getInitialRequests(aStateMutater) {
+ //   console.log(typeof(aStateMutater))
     AWS.config.credentials.get(async function () {
 
 
-        const params = CreateParamsForRequestQuery(process.env.REACT_APP_DYNAMO_TESTTABLE, requestStates.initialRequest,limit);
+        const params = CreateParamsForRequestQuery(process.env.REACT_APP_DYNAMO_TESTTABLE, requestStates.initialRequest);
 
         //console.log(params)
         console.log("Retriving from DataBase...");
-        const resultCode = await QueryFromDynamo(params);
-        console.log("Retrieved " + resultCode.count + " items");
-        console.log("Status Code:" + resultCode.statusCode);       
+        const result = await QueryFromDynamo(params);
+        console.log("Retrieved " + result.count + " items");
+        console.log("Status Code:" + result.statusCode);
+  //      console.log(result.items) 
+   //     console.log(typeof(aStateMutater))
+        aStateMutater(result.items)
+        //aStateMutater (result.items)
+        //console.log(setStateFunction)
+        //setStateFunction(result.items)   
     })
 }
