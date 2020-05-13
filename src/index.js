@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
-//import Request from "Pulse/RequestSelection"
+import Request from "Pulse/RequestSelection"
 import DisplayRequests from "Pulse/DisplayRequests"
-// import Request from './FileList'
+import { Router, Link } from "@reach/router"
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import theme from './theme'
 import { ThemeProvider } from '@material-ui/core/styles';
 import * as serviceWorker from "./serviceWorker";
@@ -13,7 +15,22 @@ ReactDOM.render(
     <CssBaseline />
     <ThemeProvider theme={theme}>
     {/* <Request /> */}
-    <DisplayRequests/>
+    <AppBar position="static">
+  <Toolbar>
+
+    {/* https://stackoverflow.com/questions/47686456/whats-the-right-way-to-float-right-or-left-using-the-material-ui-appbar-with-ma */}
+    {/* "Flex: 1" means "flex-grow: 1" which means that  element should receive all the used space, That pushes the next item to left */}
+    <div style={{ flex: 1 }}></div>
+    <nav>
+      <Link to="/createRequest">Create Request</Link> |{" "}
+      <Link to="/displayrequests">Display Request</Link>
+    </nav>
+  </Toolbar>
+</AppBar>
+<Router>
+    <Request path="/createRequest" />
+    <DisplayRequests path="/displayrequests" />
+  </Router>
     </ThemeProvider>
   </React.Fragment>,
   document.getElementById("root")
