@@ -232,6 +232,7 @@ export default function CustomRequest(submitFunc) {
         variant="contained"
         className={classes.button}
         onClick={() => submitFunc({ requestState }, "sht@der.com")}
+        color="secondary"
       >
         Submit Request
       </Button>

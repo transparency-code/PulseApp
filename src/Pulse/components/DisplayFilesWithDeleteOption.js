@@ -7,6 +7,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from '@material-ui/icons/Delete';
 
+
 export default function DisplayFilesWithDeleteOption(files, handleFileDelete) {
   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
   //https://reactjs.org/docs/lists-and-keys.html
@@ -14,6 +15,12 @@ export default function DisplayFilesWithDeleteOption(files, handleFileDelete) {
   if (!Array.isArray(files) || files.length === 0) {
     return null;
   }
+
+  //theme can have only primary and secondary.
+  //to give red, we use inline styles
+  const style = {
+    color: 'red',
+  };
 
   //console.log(files);
   const fileItems = files.map((file, index) => (
@@ -25,7 +32,7 @@ export default function DisplayFilesWithDeleteOption(files, handleFileDelete) {
 
       <Button
         variant="contained"
-        color="secondary"
+        style={style}
         startIcon={<DeleteIcon/>}
         onClick= { ()=> handleFileDelete(index)}>
         Delete

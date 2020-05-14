@@ -5,6 +5,7 @@ import grey from '@material-ui/core/colors/grey';
 import blue from '@material-ui/core/colors/blue';
 
 
+
 //https://material-ui.com/customization/default-theme/
 const theme = createMuiTheme({
   palette: {
@@ -13,8 +14,9 @@ const theme = createMuiTheme({
     },
     secondary : {
       main : blue[300],
-    }
+    },
   },
+
 });
 
 export default theme
