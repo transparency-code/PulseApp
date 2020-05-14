@@ -16,15 +16,15 @@ export default function submitRequest({ requestState }, email) {
 
   const data = removeKeysWithNull(requestState);
 
-  //add projectId kwy to data object, non mutative
-  const dataWithID = { ...data, projectId}
-  //console.log(data)
+
 
 // Credentials will be available when this function is called.
   AWS.config.credentials.get(async function () {
     
-    //tableName, hashId, sortID, info
-    const params = CreateParamsForInitialRequest(process.env.REACT_APP_DYNAMO_TESTTABLE, requestStates.initialRequest, email, dataWithID);
+    //tableName, hashId, sortID, index, info
+    const params = CreateParamsForInitialRequest(process.env.REACT_APP_DYNAMO_TESTTABLE, email,projectId, requestStates.initialRequest, data);
+
+    console.log(params)
 
     console.log("Adding to DataBase...");
     const resultCode = await putToDynamo(params);

@@ -18,8 +18,8 @@ export default async function getInitialRequests(aStateMutater) {
  //   console.log(typeof(aStateMutater))
     AWS.config.credentials.get(async function () {
 
-
-        const params = CreateParamsForRequestQuery(process.env.REACT_APP_DYNAMO_TESTTABLE, requestStates.initialRequest);
+        //tableName,requestStatus,limit
+        const params = CreateParamsForRequestQuery(process.env.REACT_APP_DYNAMO_TESTTABLE, requestStates.initialRequest, 5);
 
         //console.log(params)
         console.log("Retriving from DataBase...");

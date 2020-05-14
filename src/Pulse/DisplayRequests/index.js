@@ -1,7 +1,7 @@
 ////https://material-ui.com/components/expansion-panels/
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import getInitialRequests from './getRequests'
-import SimpleExpansionPanel from 'Pulse/components/SimpleExpansionPanel'
+import SimpleTable from 'Pulse/components/SimpleTable'
 
 
 export default function DisplayRequests() {
@@ -29,8 +29,8 @@ export default function DisplayRequests() {
    
   },[]);  // Or [] if effect doesn't need props or state
 
-  //console.log(requestArray)
+  console.log(requestArray)
 
 
-  return SimpleExpansionPanel(requestArray)
+  return <SimpleTable rows={requestArray}/>
 }

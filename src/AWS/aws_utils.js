@@ -1,30 +1,41 @@
 import AWS from "./aws_config";
 
 //https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/dynamodb-example-table-read-write.html
-//https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#putItem-property
+//https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#put-property
 
-export function CreateParamsForInitialRequest(tableName, hashId, sortID, info) {
+export function CreateParamsForInitialRequest(tableName, hashId, sortId, requeststatus, data) {
+
+  // console.log(tableName)
+  // console.log(hashId)
+  // console.log(sortID)
+  // console.log(info)
+  //console.log(index)
+
+
   const params = {
     TableName: tableName,
-    Item: { requeststate: hashId, client : sortID, ...info },
+    Item: { hashId, sortId, requeststatus  ,  data },
   };
 
-  //console.log(params);
+  console.log(params);
   return params;
 }
 
 //https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#query-property
 //https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Query.html
-export function CreateParamsForRequestQuery(tableName, hashId, limit) {
+//https://stackoverflow.com/questions/33847477/querying-a-global-secondary-index-in-dynamodb-local
+
+export function CreateParamsForRequestQuery(tableName,requestStatus,limit) {
   const params = {
     TableName: tableName,
-    KeyConditionExpression: "requeststate = :hkey",
+    IndexName : 'requeststatus-index',
+    KeyConditionExpression: "requeststatus = :hkey",
     ExpressionAttributeValues: {
-      ":hkey": hashId,
+      ":hkey": requestStatus,
     },
     Limit : limit
   };
- // console.log(params);
+ console.log(params);
   return params;
 }
 
@@ -33,6 +44,8 @@ export async function putToDynamo(params) {
     apiVersion: "2012-08-10",
     convertEmptyValues: true,
   });
+
+ 
   const result = await docClient.put(params).promise();
   return result.$response.httpResponse.statusCode;
 }
