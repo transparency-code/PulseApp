@@ -25,7 +25,7 @@ export default function MyDropzone({dropZoneText,handleFilesChange}) {
     <div {...getRootProps()}>
       <input {...getInputProps()} />
       {    
-      <Box p={1}  border={1} boxShadow={10}  width={1/2}>
+      <Box p={1}  border={1} boxShadow={10}  width={1}>
       <p>{dropZoneText}</p>  
       </Box>
        }

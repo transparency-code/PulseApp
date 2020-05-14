@@ -5,6 +5,7 @@ import BasicTextField from "Pulse/components/BasicTextField";
 import DisplayFilesWithDeleteOption from "Pulse/components/DisplayFilesWithDeleteOption";
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
+import Box from '@material-ui/core/Box';
 import ReactDropZone from 'Pulse/components/ReactDropZone'
 import {
   CustomRequestUIData,
@@ -16,14 +17,22 @@ import { makeStyles } from "@material-ui/core/styles";
 //https://material-ui.com/styles/basics/#nesting-selectors
 //'&' for
 const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(3),
-  },
+  // formControl: {
+  //   margin: theme.spacing(3),
+  // },
   //only for top and bottom for each text field child
-  formGroup: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1, 0),
-      width: 200,
+  // formGroup: {
+  //   "& .MuiTextField-root": {
+  //     margin: theme.spacing(1, 0),
+  //     width: 200,
+  //   },
+  // },
+
+  root: {
+    '& > *': {
+     // margin: theme.spacing(1),
+      width: 240,
+
     },
   },
 
@@ -32,8 +41,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   button: {
-    margin: theme.spacing(1),
-    width: 200,
+    //margin: theme.spacing(1),
+    width: 240,
   },
 }));
 
@@ -100,7 +109,7 @@ export default function CustomRequest(submitFunc) {
   // console.log(classes)
 
   return (
-    <FormControl className={classes.formControl}>
+    <FormControl>
       <FormGroup row>
         <CheckBoxWithLabel
           {...lined}
@@ -139,7 +148,7 @@ export default function CustomRequest(submitFunc) {
         />
       </FormGroup>
 
-      <FormGroup className={classes.formGroup}>
+      <FormGroup className={classes.root}>
         {/* {selectId, selectLabel, selectList, currentSelection, onSelectionChange} */}
         {/* <NativeSelect {...lintelDesign} currentSelectionProp={requestState.lintelDesign}  handleChangeProp={handleChange("lintelDesign") }/> */}
 
@@ -210,10 +219,12 @@ export default function CustomRequest(submitFunc) {
 
       </FormGroup>
 
+      <Box py={5}>
       <ReactDropZone
             dropZoneText={"Click to select files..."}
             handleFilesChange={handleFilesChange}       
             />
+      </Box>
 
       {DisplayFilesWithDeleteOption(requestState.fileUploads, handleFileDelete)}
 

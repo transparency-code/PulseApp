@@ -2,6 +2,19 @@
 import React from "react";
 import InputLabel from '@material-ui/core/InputLabel';
 import NativeSelect from '@material-ui/core/NativeSelect';
+import Box from '@material-ui/core/Box';
+import FormControl from '@material-ui/core/FormControl';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+//Using Form control and styles
+
+//https://material-ui.com/components/text-fields/
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    minWidth: 240,
+  },
+}));
 
 //this requires a CurrentSlection and handleChangeProp
 export default function Select({selectId, selectLabel, selectList, currentSelection, onSelectionChange}) {
@@ -11,6 +24,7 @@ export default function Select({selectId, selectLabel, selectList, currentSelect
     // console.log(selectOptions)
 
 
+    const classes = useStyles();
 
   const handleChange = event => {
     onSelectionChange(event.target.value);
@@ -20,8 +34,9 @@ export default function Select({selectId, selectLabel, selectList, currentSelect
 
 
   return (
-    <div>
-      <InputLabel htmlFor={selectId}>{selectLabel}</InputLabel>
+    <Box py={5}>
+     <FormControl className={classes.formControl}>
+      <InputLabel htmlFor={selectId} >{selectLabel}</InputLabel>
       <NativeSelect
         value={currentSelection}
         onChange={handleChange}
@@ -36,7 +51,10 @@ export default function Select({selectId, selectLabel, selectList, currentSelect
         {selectList.map(listItem => (<option key={listItem.value} value={listItem.value}>{listItem.label}</option> ))}
 
       </NativeSelect>
-    </div>
+
+      </FormControl>
+      </Box>
+     
   );
 }
 
