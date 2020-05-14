@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
   table: {
@@ -21,13 +22,14 @@ export default function SimpleTable({rows}) {
   const classes = useStyles();
 
   return (
+      <Box mx={10} py={5}>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Client</TableCell>
             <TableCell align="left">Initial Request Date</TableCell>
-            <TableCell align="left">Progress</TableCell>
+            <TableCell align="left">View Details</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -37,11 +39,12 @@ export default function SimpleTable({rows}) {
                 {row.hashId}
               </TableCell>
               <TableCell align="left">{row.sortId}</TableCell>
-              <TableCell align="left"><Button variant="contained">Details</Button></TableCell>        
+              <TableCell align="left"><Button variant="contained">View Details</Button></TableCell>        
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    </Box>
   );
 }
