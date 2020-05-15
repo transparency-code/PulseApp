@@ -29,27 +29,28 @@ export function CreateParamsForRequestTypeQuery(tableName,requestStatus,limit) {
   const params = {
     TableName: tableName,
     IndexName : 'requeststatus-index',
-    KeyConditionExpression: "requeststatus = :hkey",
+    KeyConditionExpression: "requeststatus = :indexkey",
     ExpressionAttributeValues: {
-      ":hkey": requestStatus,
+      ":indexkey": requestStatus,
     },
     Limit : limit
   };
- console.log(params);
+// console.log(params);
   return params;
 }
 
 export function CreateParamsForUserEmailQuery(tableName,user,limit) {
+
   const params = {
     TableName: tableName,
-   // IndexName : 'requeststatus-index',
-    KeyConditionExpression: "hashid = :hkey",
+    //IndexName : 'requeststatus-index',
+    KeyConditionExpression: "hashId = :hkey",
     ExpressionAttributeValues: {
       ":hkey": user,
     },
     Limit : limit
   };
- console.log(params);
+ //console.log(params);
   return params;
 }
 

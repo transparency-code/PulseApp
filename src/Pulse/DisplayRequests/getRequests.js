@@ -41,7 +41,7 @@ export async function getRequestsForUserEmail(aStateMutater, user) {
            
            const params = CreateParamsForUserEmailQuery(process.env.REACT_APP_DYNAMO_TESTTABLE, user);
    
-           //console.log(params)
+           console.log(params)
            console.log("Retriving from DataBase...");
            const result = await QueryFromDynamo(params);
            console.log("Retrieved " + result.count + " items");

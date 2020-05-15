@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Request from "Pulse/RequestSelection"
 import DisplayRequestsByRequestStatus from "Pulse/DisplayRequests/DisplayRequestsByRequestStatus"
+import DisplayRequestsByUser from "Pulse/DisplayRequests/DislplayRequestsByUser"
 import { Router, Link } from "@reach/router"
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -25,13 +26,15 @@ ReactDOM.render(
     <div style={{ flex: 1 }}></div>
     <nav>
       <Link to="/createRequest">Create Request</Link> |{" "}
-      <Link to="/displayinitial">Display Request</Link>
+      <Link to="/displayinitial">Display Initial Requests</Link>|{" "}
+      <Link to="/displayuser">Display User Requests</Link>
     </nav>
   </Toolbar>
 </AppBar>
 <Router>
     <Request path="/createRequest" />
     <DisplayRequestsByRequestStatus path="/displayinitial" status={requestStates.initialRequest}/>
+    <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"}/>
   </Router>
     </ThemeProvider>
   </React.Fragment>,

@@ -19,7 +19,9 @@ const useStyles = makeStyles({
 });
 
 
-export default function DisplayRequestsTable({rows}) {
+export default function DisplayRequestsTable({rows, headers,propertiesToDisplay}) {
+
+  console.log(propertiesToDisplay[1])
   const classes = useStyles();
 
   return (
@@ -29,30 +31,24 @@ export default function DisplayRequestsTable({rows}) {
         <TableHead>
           <TableRow>
 
-            <TableCell>
-              <b>Client</b>
-              </TableCell>
-           
-
-            <TableCell>
-              <b>  Initial Request Date</b>          
-              </TableCell>
-
-        
-            <TableCell>
-              <b>  View Details</b>           
-              </TableCell>
-         
+            {headers.map( (header,index) => 
+              <TableCell key={index}>
+                 <b>{header}</b>
+                  </TableCell>
+            )}
+          
           </TableRow>
         </TableHead>
         
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.sortId}>
+
+              {/* first cell always date. so that it can be converted to proper string format */}
               <TableCell component="th" scope="row">
-                {row.hashId}
+              {getDateStringFromID(row.sortId.toString())}
               </TableCell>
-              <TableCell align="left">{getDateStringFromID(row.sortId.toString())}</TableCell>
+              <TableCell align="left">{ row[propertiesToDisplay[1]] }</TableCell>
               <TableCell align="left"><Button variant="contained">View Details</Button></TableCell>        
             </TableRow>
           ))}
