@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import getDateStringFromID from 'Pulse/utilfunctions/getDateStringFromID'
 
 const useStyles = makeStyles({
   table: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
 });
 
 
-export default function SimpleTable({rows}) {
+export default function DisplayRequestsTable({rows}) {
   const classes = useStyles();
 
   return (
@@ -27,18 +28,31 @@ export default function SimpleTable({rows}) {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Client</TableCell>
-            <TableCell align="left">Initial Request Date</TableCell>
-            <TableCell align="left">View Details</TableCell>
+
+            <TableCell>
+              <b>Client</b>
+              </TableCell>
+           
+
+            <TableCell>
+              <b>  Initial Request Date</b>          
+              </TableCell>
+
+        
+            <TableCell>
+              <b>  View Details</b>           
+              </TableCell>
+         
           </TableRow>
         </TableHead>
+        
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.sortId}>
               <TableCell component="th" scope="row">
                 {row.hashId}
               </TableCell>
-              <TableCell align="left">{row.sortId}</TableCell>
+              <TableCell align="left">{getDateStringFromID(row.sortId.toString())}</TableCell>
               <TableCell align="left"><Button variant="contained">View Details</Button></TableCell>        
             </TableRow>
           ))}

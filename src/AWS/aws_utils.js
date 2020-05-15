@@ -25,7 +25,7 @@ export function CreateParamsForInitialRequest(tableName, hashId, sortId, request
 //https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Query.html
 //https://stackoverflow.com/questions/33847477/querying-a-global-secondary-index-in-dynamodb-local
 
-export function CreateParamsForRequestQuery(tableName,requestStatus,limit) {
+export function CreateParamsForRequestTypeQuery(tableName,requestStatus,limit) {
   const params = {
     TableName: tableName,
     IndexName : 'requeststatus-index',
@@ -38,6 +38,21 @@ export function CreateParamsForRequestQuery(tableName,requestStatus,limit) {
  console.log(params);
   return params;
 }
+
+export function CreateParamsForUserEmailQuery(tableName,user,limit) {
+  const params = {
+    TableName: tableName,
+   // IndexName : 'requeststatus-index',
+    KeyConditionExpression: "hashid = :hkey",
+    ExpressionAttributeValues: {
+      ":hkey": user,
+    },
+    Limit : limit
+  };
+ console.log(params);
+  return params;
+}
+
 
 export async function putToDynamo(params) {
   var docClient = new AWS.DynamoDB.DocumentClient({

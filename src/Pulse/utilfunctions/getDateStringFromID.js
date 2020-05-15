@@ -3,9 +3,9 @@ export default function getDislayStringFromID(projectId) {
   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice
   //str.slice(beginIndex[, endIndex])
   //The zero-based index at which to begin extraction
- console.log(projectId)
+// console.log(projectId)
   const year = projectId.slice(0,2)
-  console.log(year)
+  //console.log(year)
   const month = projectId.slice(2,4)
   const day = projectId.slice(4,6)
 

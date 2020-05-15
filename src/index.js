@@ -2,12 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Request from "Pulse/RequestSelection"
-import DisplayRequests from "Pulse/DisplayRequests"
+import DisplayRequestsByRequestStatus from "Pulse/DisplayRequests/DisplayRequestsByRequestStatus"
 import { Router, Link } from "@reach/router"
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import theme from './theme'
 import { ThemeProvider } from '@material-ui/core/styles';
+import 'typeface-roboto';
+import {requestStates} from "AWS/constants"
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
@@ -23,13 +25,13 @@ ReactDOM.render(
     <div style={{ flex: 1 }}></div>
     <nav>
       <Link to="/createRequest">Create Request</Link> |{" "}
-      <Link to="/displayrequests">Display Request</Link>
+      <Link to="/displayinitial">Display Request</Link>
     </nav>
   </Toolbar>
 </AppBar>
 <Router>
     <Request path="/createRequest" />
-    <DisplayRequests path="/displayrequests" />
+    <DisplayRequestsByRequestStatus path="/displayinitial" status={requestStates.initialRequest}/>
   </Router>
     </ThemeProvider>
   </React.Fragment>,
