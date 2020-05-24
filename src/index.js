@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Request from "Pulse/RequestSelection"
-import DisplayRequestsByRequestStatus from "Pulse/DisplayRequests/DisplayRequestsByRequestStatus"
-import DisplayRequestsByUser from "Pulse/DisplayRequests/DislplayRequestsByUser"
-import { Router, Link } from "@reach/router"
+import DisplayRequestsByRequestStatus from "Pulse/DisplayRequests/containers/DisplayRequestsByRequestStatus"
+import DisplayRequestsByUser from "Pulse/DisplayRequests/containers/DisplayRequestsByUser"
+import { Router} from "@reach/router"
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import theme from './theme'
@@ -12,6 +12,23 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import 'typeface-roboto';
 import {requestStates} from "AWS/constants"
 import * as serviceWorker from "./serviceWorker";
+import 'bootstrap/dist/css/bootstrap.css';
+
+//bootstrap links
+//https://getbootstrap.com/docs/4.0/components/navs/
+const navlinks = (
+  <ul className="nav">
+  <li className="nav-item">
+    <a className="nav-link active" href="/createRequest">Create Request</a>
+  </li>
+  <li className="nav-item">
+    <a className="nav-link" href="/displayinitial">Display Initial Requests</a>
+  </li>
+  <li className="nav-item">
+    <a className="nav-link" href="displayuser">Display User Requests</a>
+  </li>
+</ul>
+)
 
 ReactDOM.render(
   <React.Fragment>
@@ -24,11 +41,7 @@ ReactDOM.render(
     {/* https://stackoverflow.com/questions/47686456/whats-the-right-way-to-float-right-or-left-using-the-material-ui-appbar-with-ma */}
     {/* "Flex: 1" means "flex-grow: 1" which means that  element should receive all the used space, That pushes the next item to left */}
     <div style={{ flex: 1 }}></div>
-    <nav>
-      <Link to="/createRequest">Create Request</Link> |{" "}
-      <Link to="/displayinitial">Display Initial Requests</Link>|{" "}
-      <Link to="/displayuser">Display User Requests</Link>
-    </nav>
+    {navlinks}
   </Toolbar>
 </AppBar>
 <Router>

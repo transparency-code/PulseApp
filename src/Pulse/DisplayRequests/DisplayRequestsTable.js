@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import getDateStringFromID from 'Pulse/utilfunctions/getDateStringFromID'
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
   table: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
 
 export default function DisplayRequestsTable({rows, headers,propertiesToDisplay}) {
 
-  console.log(propertiesToDisplay[1])
+  //console.log(propertiesToDisplay[1])
   const classes = useStyles();
 
   return (
@@ -44,7 +45,7 @@ export default function DisplayRequestsTable({rows, headers,propertiesToDisplay}
           {rows.map((row) => (
             <TableRow key={row.sortId}>
 
-              {/* first cell always date. so that it can be converted to proper string format */}
+              {/* first cell always date. component converts to proper string format */}
               <TableCell component="th" scope="row">
               {getDateStringFromID(row.sortId.toString())}
               </TableCell>
@@ -58,3 +59,8 @@ export default function DisplayRequestsTable({rows, headers,propertiesToDisplay}
     </Box>
   );
 }
+
+DisplayRequestsTable.propTypes = {
+  rows: PropTypes.array.isRequired,
+  headers : PropTypes.string.isRequired
+};

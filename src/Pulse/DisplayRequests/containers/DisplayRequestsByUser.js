@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from 'react'
-import {getRequestsForUserEmail } from './getRequests'
-import DisplayRequestsTable from './DisplayRequestsTable'
+import {getRequestsForUserEmail } from '../getRequests'
+import DisplayRequestsTable from '../DisplayRequestsTable'
+
 
 export default function DisplayRequestsByUser({user}) {
 
@@ -25,10 +26,8 @@ export default function DisplayRequestsByUser({user}) {
       console.log(requestArray)
 
       const headers=["Initial Request Data","Request Status","View Details"]
-      const propertiesTodDisplay=["sortId","requeststatus"]
-      
 
     return (
-        <DisplayRequestsTable rows={requestArray} headers={headers} propertiesToDisplay={propertiesTodDisplay}/>
+        <DisplayRequestsTable rows={requestArray} headers={headers} />
     )
 }

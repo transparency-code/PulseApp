@@ -16,7 +16,6 @@ Primary sort key	projectid (String)
 index
 requeststatus String
 
-Projectid
 
 https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html
 https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html
