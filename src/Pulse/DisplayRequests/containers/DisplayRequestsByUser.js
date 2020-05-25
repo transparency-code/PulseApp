@@ -1,6 +1,8 @@
 import React,{ useState, useEffect } from 'react'
 import {getRequestsForUserEmail } from '../getRequests'
-import DisplayRequestsTable from '../DisplayRequestsTable'
+import ErrorBoundary from 'Pulse/components/ErrorBoundary'
+import DisplayRequestsByUserTable from '../components/DisplayRequestsByUserTable'
+
 
 
 export default function DisplayRequestsByUser({user}) {
@@ -23,11 +25,14 @@ export default function DisplayRequestsByUser({user}) {
        
       },[user]) 
 
-      console.log(requestArray)
+      //console.log(requestArray)
 
       const headers=["Initial Request Data","Request Status","View Details"]
 
     return (
-        <DisplayRequestsTable rows={requestArray} headers={headers} />
+      <ErrorBoundary>
+        <DisplayRequestsByUserTable data={requestArray} headers={headers} />
+      </ErrorBoundary>
+        
     )
 }

@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from 'react'
 import {getRequestsByRequestState} from '../getRequests'
 import DisplayRequestsByRequestStatusTable from '../components/DisplayRequestsByRequestStatusTable'
-import ErrorBoundary from '../../components/ErrorBoundary'
+import ErrorBoundary from 'Pulse/components/ErrorBoundary'
 
 export default function DisplayRequestsByRequestStatus({status ="InitialRequest" }) {
 
