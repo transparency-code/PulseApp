@@ -1,12 +1,14 @@
 import React from "react";
 import getDateStringFromID from 'Pulse/utilfunctions/getDateStringFromID'
-
+import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
 //https://getbootstrap.com/docs/4.4/content/tables/
 export default function DisplayRequestsByUserTable({headers,data}) {
 
   //console.log(headers)
 
   return (
+    <Box component={Paper} m={1} elevation={1} >
     <table className="table">
     <thead className="thead-dark">
       <tr>
@@ -28,5 +30,6 @@ export default function DisplayRequestsByUserTable({headers,data}) {
 
     </tbody>
   </table>
+  </Box>
   );
 }
