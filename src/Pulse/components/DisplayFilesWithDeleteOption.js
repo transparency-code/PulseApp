@@ -1,11 +1,10 @@
 import React from "react";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import AttachmentIcon from "@material-ui/icons/Attachment";
-import ListItemText from "@material-ui/core/ListItemText";
-import Button from "@material-ui/core/Button";
-import DeleteIcon from '@material-ui/icons/Delete';
+import Box from '@material-ui/core/Box';
+
+
 
 
 export default function DisplayFilesWithDeleteOption(files, handleFileDelete) {
@@ -16,30 +15,31 @@ export default function DisplayFilesWithDeleteOption(files, handleFileDelete) {
     return null;
   }
 
-  //theme can have only primary and secondary.
-  //to give red, we use inline styles
-  const style = {
-    color: 'red',
-  };
 
   //console.log(files);
   const fileItems = files.map((file, index) => (
-    <ListItem key={index}>
-      <ListItemIcon>
-        <AttachmentIcon />
-      </ListItemIcon>
-      <ListItemText primary={file.name} />
+    // <ListItem key={index}>
+    //   <ListItemIcon>
+    //     <AttachmentIcon />
+    //   </ListItemIcon>
+    //   <ListItemText primary={file.name} />
 
-      <Button
-        variant="contained"
-        style={style}
-        startIcon={<DeleteIcon/>}
-        onClick= { ()=> handleFileDelete(index)}>
-        Delete
-      </Button>
 
-    </ListItem>
-  ));
+      <li className="list-group-item" key={index}>
+        <ListItemIcon><AttachmentIcon /></ListItemIcon>
+        {file.name}
 
-  return <List>{fileItems}</List>;
+
+        <button type="button" className="ml-2 btn btn-warning" onClick= { ()=> handleFileDelete(index)}>Delete</button>
+  
+      </li>
+  ))
+
+  return (
+    <Box mt={5}> 
+    <ul className="list-group">
+      {fileItems}
+    </ul>
+    </Box>
+  )
 }

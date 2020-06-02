@@ -1,7 +1,9 @@
 import React from "react";
 
 //default is text. if none provided
-export default function HorizontalFormGroup(id, label, onTypeChange,type="text") {
+export default function HorizontalFormGroup(id, label,type="text", onTypeChange,) {
+
+  //console.log(type)
 
     const handleChange = event => {
         let changedValue = event.target.value

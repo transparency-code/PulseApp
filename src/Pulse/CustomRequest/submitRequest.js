@@ -24,7 +24,7 @@ export default function submitRequest({ requestState }, email) {
     //tableName, hashId, sortID, index, info
     const params = CreateParamsForInitialRequest(process.env.REACT_APP_DYNAMO_TESTTABLE, email,projectId, requestStates.initialRequest, data);
 
-    console.log(params)
+    //console.log(params)
 
     console.log("Adding to DataBase...");
     const resultCode = await putToDynamo(params);
