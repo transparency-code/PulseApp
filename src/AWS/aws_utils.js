@@ -17,7 +17,7 @@ export function CreateParamsForInitialRequest(tableName, hashId, sortId, request
     Item: { hashId, sortId, requeststatus  ,  data },
   };
 
-  console.log(params);
+  //console.log(params);
   return params;
 }
 
