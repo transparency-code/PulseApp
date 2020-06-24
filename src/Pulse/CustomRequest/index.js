@@ -10,10 +10,15 @@ import {
 } from "./CustomRequest.data";
 import ReactDropZone from 'Pulse/components/ReactDropZone'
 import DisplayFilesWithDeleteOption from "Pulse/components/DisplayFilesWithDeleteOption";
+import useNotification from 'Pulse/hooks/useNotification'
 
 
 export default function CustomRequestForm(submitFunc) {
   // console.log(submitRequest)
+
+  //unpackcontextusage
+  const {addNotification} = useNotification()
+
 
   const [requestState, setState] = React.useState({
     ...chkedState,
@@ -85,7 +90,7 @@ export default function CustomRequestForm(submitFunc) {
 {DisplayFilesWithDeleteOption(requestState.fileUploads, handleFileDelete)}
 
 
-<button type="button" className="my-4 btn btn-secondary"  onClick={() => submitFunc({ requestState }, "sht@der.com")}>Submit Request</button>
+<button type="button" className="my-4 btn btn-secondary"  onClick={() => submitFunc({ requestState, addNotification }, "sht@der.com")}>Create</button>
 
     </form>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import App from './App'
-import ContextErrorProvider from 'Pulse/providers/ContextErrorProvider'
+import NotificationContextProvider from 'Pulse/providers/NotificationContextProvider'
 import NotificationBar from 'Pulse/components/NotificationBar'
 
 //bootstrap links
@@ -21,10 +21,10 @@ import NotificationBar from 'Pulse/components/NotificationBar'
 // )
 
 ReactDOM.render(
-  <ContextErrorProvider>
+  <NotificationContextProvider>
   <App/>
   <NotificationBar/>
-  </ContextErrorProvider>,
+  </NotificationContextProvider>,
   document.getElementById("root")
 );
 

@@ -16,9 +16,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
 
-
-
-
   //bootstrap links
 //https://getbootstrap.com/docs/4.0/components/navs/
 const navlinks = (

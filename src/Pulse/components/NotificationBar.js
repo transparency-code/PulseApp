@@ -2,23 +2,16 @@ import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import useNotification from 'Pulse/hooks/useNotification'
 
 //message to display
 //openstate, initial is true, as using this component means snackbasr has to be displayed
 export default function NotificationBar({notificationState, notificationMessage,closeNotification}) {
-  // const [open, setOpen] = React.useState(true);
+ 
+  const {notification, removeNotification} = useNotification()
 
-//   const handleClick = () => {
-//     setOpen(true);
-//   };
-
-  // const handleClose = (event, reason) => {
-  //   if (reason === 'clickaway') {
-  //     return;
-  //   }
-
-  //   setOpen(false);
-  // };
+  //  console.log(notification)
+  // console.log(removeNotification)
 
   return (
     <div>
@@ -28,16 +21,16 @@ export default function NotificationBar({notificationState, notificationMessage,
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        open={notificationState}
-        autoHideDuration={6000}
-        onClose={closeNotification}
-        message={notificationMessage}
+        open={notification.openState}
+        //autoHideDuration={6000}
+        //onClose={removeNotification}
+        message={notification.message}
         action={
           <React.Fragment>
             {/* <Button color="secondary" size="small" onClick={handleClose}>
               UNDO
             </Button> */}
-            <IconButton size="small" aria-label="close" color="inherit" onClick={closeNotification}>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={removeNotification}>
               <CloseIcon fontSize="small" />
             </IconButton>
           </React.Fragment>
