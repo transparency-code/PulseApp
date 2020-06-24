@@ -2,7 +2,7 @@
 import React from "react";
 import NativeSelect from "Pulse/components/NativeSelect";
 import GetSelectedRequest from './GetSelectedRequest'
-import Box from '@material-ui/core/Box';
+import Layout from 'Pulse/components/layout'
 import {requestFieldProps, requestTypeList} from './constants.js'
 
 export default function Request() {
@@ -12,10 +12,10 @@ export default function Request() {
 
 
   return (
-    <Box mx={10}>
+    <Layout>
         <NativeSelect {...requestFieldProps} selectList={requestTypeList} currentSelectionProp={selection} onSelectionChange={ (newValue) => setSelection(newValue) }/>
         <GetSelectedRequest selection={selection} />
-    </Box>
+      </Layout>
   );
 }
 

@@ -2,7 +2,6 @@
 import React from "react";
 import InputLabel from '@material-ui/core/InputLabel';
 import NativeSelect from '@material-ui/core/NativeSelect';
-import Box from '@material-ui/core/Box';
 import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -34,7 +33,7 @@ export default function Select({selectId, selectLabel, selectList, currentSelect
 
 
   return (
-    <Box py={5}>
+ 
      <FormControl className={classes.formControl}>
       <InputLabel htmlFor={selectId} >{selectLabel}</InputLabel>
       <NativeSelect
@@ -53,7 +52,7 @@ export default function Select({selectId, selectLabel, selectList, currentSelect
       </NativeSelect>
 
       </FormControl>
-      </Box>
+
      
   );
 }
