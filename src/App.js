@@ -10,6 +10,7 @@ import theme from './theme'
 import { ThemeProvider } from '@material-ui/core/styles';
 import 'typeface-roboto';
 import {requestStates} from "AWS/constants"
+import StaffView from 'Pulse/ProjectDetail/containers/StaffView'
 import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -52,6 +53,8 @@ const navlinks = (
             status={requestStates.initialRequest}
           />
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
+
+          <StaffView path="/projectdetail" />
         </Router>
 
         {/* Providing a snackBarMesage Component from Root Level */}

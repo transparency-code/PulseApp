@@ -1,6 +1,7 @@
 import React from "react";
 import getDateStringFromID from 'Pulse/utilfunctions/getDateStringFromID'
 import Layout from 'Pulse/components/layout'
+import { Link } from '@reach/router'
 
 //https://getbootstrap.com/docs/4.4/content/tables/
 export default function DisplayRequestsByRequestStatusTable({headers,data}) {
@@ -23,7 +24,11 @@ export default function DisplayRequestsByRequestStatusTable({headers,data}) {
        <tr key={index}>
        <th scope="row">  {getDateStringFromID(row.sortId.toString())}</th>
        <td>{row.hashId}</td>
-       <td><button type="button" className="btn btn-link">View Project Details</button></td>
+
+       {/* using reach router link. can set state in redirect */}
+       {/* https://stackoverflow.com/questions/54925804/how-to-hide-parameters-from-route-after-accessing-parameters-in-reactjs */}
+       {/* <td><button type="button" className="btn btn-link">View Project Details</button></td> */}
+       <td><Link to="/projectdetail" state={{email:row.hashId, projectid : row.sortId}}>View Project Details</Link></td>
  
      </tr>
     ))}

@@ -54,6 +54,35 @@ export function CreateParamsForUserEmailQuery(tableName,user,limit) {
   return params;
 }
 
+//https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/s3-example-photo-album-full.html
+function getManagedUploadFileObject(file, fileKey) {
+  var uploadObject = new AWS.S3.ManagedUpload({
+    params: {
+      Bucket: process.env.REACT_APP_BUCKETNAME,
+      Key: fileKey,
+      Body: file,
+    },
+  });
+
+  return uploadObject;
+}
+
+//https://stackoverflow.com/questions/44948264/using-getitem-with-primary-and-sort-keys
+function createParamsForGet(email,projectid) {
+
+  // console.log(projectid)
+  var params = {
+    TableName: process.env.REACT_APP_DYNAMO_TESTTABLE ,
+    Key: {
+      [process.env.REACT_APP_DYNAMO_TESTTABLE_PRIMARYKEY ]: email,
+      [process.env.REACT_APP_DYNAMO_TESTTABLE_SORTID ]: projectid
+    }
+  };
+
+  // console.log(params)
+  return params
+}
+
 
 export async function putToDynamo(params) {
   var docClient = new AWS.DynamoDB.DocumentClient({
@@ -107,15 +136,19 @@ export async function uploadUserFilesToS3(projectId, fileArray) {
   return uploadedFileKeys;
 }
 
-//https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/s3-example-photo-album-full.html
-function getManagedUploadFileObject(file, fileKey) {
-  var uploadObject = new AWS.S3.ManagedUpload({
-    params: {
-      Bucket: process.env.REACT_APP_BUCKETNAME,
-      Key: fileKey,
-      Body: file,
-    },
+export async function getItemFromDynamo(email,projectId,setData) {
+
+  const params = createParamsForGet(email,projectId)
+
+  var docClient = new AWS.DynamoDB.DocumentClient({
+    apiVersion: "2012-08-10",
   });
 
-  return uploadObject;
+  // console.log(params)
+  const returnObj = await docClient.get(params).promise();
+  
+  setData(returnObj.Item.data)
+
+  //console.log(returnObj)
+  // return result
 }
