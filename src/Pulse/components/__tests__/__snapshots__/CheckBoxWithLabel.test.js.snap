@@ -27,7 +27,6 @@ exports[`snapshot testing 1`] = `
         checked={true}
         className="PrivateSwitchBase-input-16"
         data-indeterminate={false}
-        disabled={false}
         onChange={[Function]}
         type="checkbox"
         value="Lined"
@@ -36,7 +35,6 @@ exports[`snapshot testing 1`] = `
         aria-hidden="true"
         className="MuiSvgIcon-root"
         focusable="false"
-        role="presentation"
         viewBox="0 0 24 24"
       >
         <path

@@ -27,7 +27,7 @@ it('snapshot testing', () => {
     
     const tree = renderer
     // {selectId, selectLabel, selectOptions, currentSelection, onSelectionChange}
-      .create(<NativeSelect {...fieldProps} selectList={options} currentSelectionProp={"value1"} handleChangeProp={mockCallback} />)
+      .create(<NativeSelect {...fieldProps} selectList={options} currentSelection={"value1"} onSelectionChange={mockCallback} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -52,7 +52,7 @@ it('snapshot testing', () => {
     
      const mockCallback = jest.fn();
     
-     const { getByLabelText } = render(<NativeSelect {...fieldProps} selectList={options} currentSelectionProp={"value1"} handleChangeProp={mockCallback} />)
+     const { getByLabelText } = render(<NativeSelect {...fieldProps} selectList={options} currentSelection={"value1"} onSelectionChange={mockCallback} />)
   
     
      const selectNode = getByLabelText('Select Label')

@@ -50,7 +50,6 @@ exports[`team is  rendered when companyUser is set 1`] = `
               aria-hidden="true"
               className="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -90,7 +89,6 @@ exports[`team is  rendered when companyUser is set 1`] = `
               aria-hidden="true"
               className="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -130,7 +128,6 @@ exports[`team is  rendered when companyUser is set 1`] = `
               aria-hidden="true"
               className="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -170,7 +167,6 @@ exports[`team is  rendered when companyUser is set 1`] = `
               aria-hidden="true"
               className="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -225,7 +221,6 @@ exports[`team is  rendered when companyUser is set 1`] = `
               aria-hidden="true"
               className="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -302,7 +297,6 @@ exports[`team is not rendered when companyUser is not set 1`] = `
               aria-hidden="true"
               className="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -343,7 +337,6 @@ exports[`team is not rendered when companyUser is not set 1`] = `
               aria-hidden="true"
               className="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -380,7 +373,6 @@ exports[`team is not rendered when companyUser is not set 1`] = `
               aria-hidden="true"
               className="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -417,7 +409,6 @@ exports[`team is not rendered when companyUser is not set 1`] = `
               aria-hidden="true"
               className="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
