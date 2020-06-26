@@ -25,7 +25,6 @@ export default function StaffView({ location }) {
   const chkedDataArray = intersection(Object.keys(data), Object.keys(chkedState));
 
 
-//   console.log(chkedDataArray);
 
   return (
       <StaffViewList chkedData={chkedDataArray} />
