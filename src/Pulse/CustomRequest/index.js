@@ -4,8 +4,8 @@ import HorizontalFormGroup from "Pulse/components/HorizontalFormGroup";
 import Box from "@material-ui/core/Box";
 import {
   textBoxItems,
-  chkBoxItems,
-  chkedState,
+  chkedItems,
+  chkedItemsWithLabels,
   txtinputState,
 } from "./CustomRequest.data";
 import ReactDropZone from 'Pulse/components/ReactDropZone'
@@ -21,7 +21,7 @@ export default function CustomRequestForm(submitFunc) {
 
 
   const [requestState, setState] = React.useState({
-    ...chkedState,
+    ...chkedItems,
     ...txtinputState,
     fileUploads: []
   });
@@ -60,7 +60,7 @@ export default function CustomRequestForm(submitFunc) {
   //console.log(requestState);
   return (
     <form>
-      {chkBoxItems.map((chkBoxItem) =>
+      {chkedItemsWithLabels.map((chkBoxItem) =>
         CheckBoxBootstrap(
           chkBoxItem.id,
           chkBoxItem.label,

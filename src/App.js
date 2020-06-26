@@ -10,7 +10,7 @@ import theme from './theme'
 import { ThemeProvider } from '@material-ui/core/styles';
 import 'typeface-roboto';
 import {requestStates} from "AWS/constants"
-import StaffView from 'Pulse/ProjectDetail/containers/StaffView'
+import ProjectDetailStaff from 'Pulse/ProjectDetail/containers/ProjectDetailStaff'
 import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -54,7 +54,7 @@ const navlinks = (
           />
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
 
-          <StaffView path="/projectdetail" />
+          <ProjectDetailStaff path="/projectdetail" />
         </Router>
 
         {/* Providing a snackBarMesage Component from Root Level */}

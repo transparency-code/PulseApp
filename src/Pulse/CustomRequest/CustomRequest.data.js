@@ -95,7 +95,7 @@ export const initialCustomRequestState = {
   fileUploads: [],
 };
 
-export const chkBoxItems = [
+export const chkedItemsWithLabels = [
   {
     id: "lined",
     label: "Lined",
@@ -132,7 +132,7 @@ export const chkBoxItems = [
   },
 ];
 
-export const chkedState = {
+export const chkedItems = {
   lined: false,
   calcRequired: false,
   openAwning: false,
