@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getItemFromDynamo } from "AWS/aws_utils";
-import { chkedItems,chkedItemsWithLabels } from "Pulse/CustomRequest/CustomRequest.data";
+import { textBoxItems,chkedItemsWithLabels } from "Pulse/CustomRequest/CustomRequest.data";
 import getCheckedItems from "Pulse/ProjectDetail/getCheckedItems";
+import getTxtItems from "Pulse/ProjectDetail/getTxtItems";
+//import getCheckedItems from "Pulse/ProjectDetail/getTxtItems";
 import StaffViewList from 'Pulse/ProjectDetail/components/ProjectDetailStaffView'
 
 export default function ProjectDetailStaff({ location }) {
@@ -33,10 +35,19 @@ export default function ProjectDetailStaff({ location }) {
   //   checkedTodisplay = [...checkedTodisplay, chkBoxItemObj]
   // })
 
-   const CheckedItems = getCheckedItems(data,chkedItems,chkedItemsWithLabels)
+  const rowLabels={initialDate :"Initial Request Date", id: "Project ID" , email:"Client Email" , optionsLabel : "Building Options"}
+
+   const checkedItems = getCheckedItems(data,chkedItemsWithLabels)
+
+   const txtItems = getTxtItems(data,textBoxItems)
+
+
+  //  console.log(data)
+  //  console.log(chkedItems)
+  //  console.log(txtItems)
 
   return (
-      <StaffViewList checkedItems={CheckedItems} />
+      <StaffViewList email={email} projectid={projectid} rowlabels={rowLabels} checkedItems={checkedItems} txtItems={txtItems} />
   )
 }
 
