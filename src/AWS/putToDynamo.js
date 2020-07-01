@@ -1,4 +1,3 @@
-import AWS from "./aws_config";
 import docClient from 'AWS/docClient'
 
 
