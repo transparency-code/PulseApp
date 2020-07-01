@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { getItemFromDynamo } from "AWS/aws_utils";
 import { textBoxItems,chkedItemsWithLabels } from "Pulse/CustomRequest/CustomRequest.data";
 import getCheckedItems from "Pulse/ProjectDetail/getCheckedItems";
@@ -6,12 +7,17 @@ import getTxtItems from "Pulse/ProjectDetail/getTxtItems";
 //import getCheckedItems from "Pulse/ProjectDetail/getTxtItems";
 import StaffViewList from 'Pulse/ProjectDetail/components/ProjectDetailStaffView'
 
+
+
 export default function ProjectDetailStaff({ location }) {
   const { state } = location;
+
   const { email, projectid } = state;
 
   // console.log(email)
   // console.log(projectid)
+
+ 
 
   const [data, setData] = useState({});
 
@@ -47,7 +53,9 @@ export default function ProjectDetailStaff({ location }) {
   //  console.log(txtItems)
 
   return (
-      <StaffViewList email={email} projectid={projectid} rowlabels={rowLabels} checkedItems={checkedItems} txtItems={txtItems} />
+ 
+        <StaffViewList email={email} projectid={projectid} rowlabels={rowLabels} checkedItems={checkedItems} txtItems={txtItems} />
+
   )
 }
 

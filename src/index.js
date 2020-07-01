@@ -4,6 +4,7 @@ import App from './App'
 import NotificationContextProvider from 'Pulse/providers/NotificationContextProvider'
 import NotificationBar from 'Pulse/components/NotificationBar'
 
+
 //bootstrap links
 //https://getbootstrap.com/docs/4.0/components/navs/
 // const navlinks = (

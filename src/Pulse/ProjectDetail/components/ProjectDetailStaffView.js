@@ -38,7 +38,7 @@ export default function ProjectDetailStaffView({
 
   return (
     <div className="row">
-      <div className="col-4">
+      <div className="col-8">
       <ul className="list-group">
       <li className="list-group-item list-group-item-primary">{rowlabels.initialDate + " : "+ getDateStringFromID(projectid.toString())}</li>
       <li className="list-group-item list-group-item-primary">{rowlabels.id + " : " + projectid}</li>

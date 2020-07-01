@@ -1,6 +1,5 @@
 import React from "react";
 import getDateStringFromID from 'Pulse/utilfunctions/getDateStringFromID'
-import Layout from 'Pulse/components/layout'
 import { Link } from '@reach/router'
 
 //https://getbootstrap.com/docs/4.4/content/tables/
@@ -9,7 +8,7 @@ export default function DisplayRequestsByRequestStatusTable({headers,data}) {
  // console.log(data)
 
   return (
-    <Layout>
+    <React.Fragment>
     <table className="table">
     <thead className="thead-dark">
       <tr>
@@ -35,6 +34,6 @@ export default function DisplayRequestsByRequestStatusTable({headers,data}) {
 
     </tbody>
   </table>
-  </Layout>
+  </React.Fragment>
   );
 }
