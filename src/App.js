@@ -11,7 +11,7 @@ import ErrorBoundary from 'Pulse/components/ErrorBoundary'
 import Layout from 'Pulse/components/layout'
 import NotificationContextProvider from 'Pulse/providers/NotificationContextProvider'
 import NotificationBar from 'Pulse/components/NotificationBar'
-
+import { getItemFromDynamo } from "AWS/getItemFromDynamo";
 
 
 
@@ -32,10 +32,10 @@ function App() {
           />
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
 
-          <ProjectDetailStaff path="/projectdetail" />
+          <ProjectDetailStaff path="/projectdetail" dynamoRetrivalFunc={getItemFromDynamo} />
         </Router>
         </ErrorBoundary>
-        
+
         </Layout>
 
         <NotificationBar/>

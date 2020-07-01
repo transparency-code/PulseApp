@@ -1,6 +1,7 @@
 import createProjectId from "Pulse/utilfunctions/createProjectId";
 import removeKeysWithNull from "Pulse/utilfunctions/removeKeysWithNull";
-import { CreateParamsForInitialRequest, putToDynamo, uploadUserFilesToS3 } from "AWS/aws_utils";
+import { CreateParamsForInitialRequest, putToDynamo } from "AWS/putToDynamo";
+import { uploadUserFilesToS3 } from "AWS/uploadUserFilesToS3";
 import {requestStates} from "AWS/constants"
 import AWS from "AWS/aws_config";
 

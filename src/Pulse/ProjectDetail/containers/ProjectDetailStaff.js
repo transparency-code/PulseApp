@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-
-import { getItemFromDynamo } from "AWS/aws_utils";
 import { textBoxItems,chkedItemsWithLabels } from "Pulse/CustomRequest/CustomRequest.data";
 import getCheckedItems from "Pulse/ProjectDetail/getCheckedItems";
 import getTxtItems from "Pulse/ProjectDetail/getTxtItems";
@@ -9,7 +7,7 @@ import StaffViewList from 'Pulse/ProjectDetail/components/ProjectDetailStaffView
 
 
 
-export default function ProjectDetailStaff({ location }) {
+export default function ProjectDetailStaff({ location,dynamoRetrivalFunc }) {
   const { state } = location;
 
   const { email, projectid } = state;
@@ -23,23 +21,14 @@ export default function ProjectDetailStaff({ location }) {
 
   useEffect(() => {
     async function fetchData() {
-      await getItemFromDynamo(email, projectid, setData);
+      await dynamoRetrivalFunc (email, projectid, setData);
     }
 
     fetchData();
-  }, [email, projectid]);
+  }, [email, projectid,dynamoRetrivalFunc]);
 
  
-  //find objects that exists common in retrived and list of booleans
-  // const chkedDataArray = intersection(Object.keys(data), Object.keys(chkedState));
 
-  // let checkedTodisplay = []
-  // //get label items for the intersected items from array of objects
-  // chkBoxItems.map( (item,index) => {
-  //   const filteredarr = chkBoxItems.filter((chkBoxItem) =>  chkBoxItem.id === item )
-  //   const [chkBoxItemObj] = filteredarr
-  //   checkedTodisplay = [...checkedTodisplay, chkBoxItemObj]
-  // })
 
   const rowLabels={initialDate :"Initial Request Date", id: "Project ID" , email:"Client Email" , optionsLabel : "Building Options"}
 
