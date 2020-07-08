@@ -6,7 +6,7 @@ function createParamsForGet(email,projectid) {
     var params = {
       TableName: process.env.REACT_APP_DYNAMO_TESTTABLE ,
       Key: {
-        [process.env.REACT_APP_DYNAMO_TESTTABLE_PRIMARYKEY ]: email,
+        [process.env.REACT_APP_DYNAMO_TESTTABLE_HASHID ]: email,
         [process.env.REACT_APP_DYNAMO_TESTTABLE_SORTID ]: projectid
       }
     };
@@ -17,6 +17,9 @@ function createParamsForGet(email,projectid) {
   
 export async function getItemFromDynamo(email,projectId,setData) {
 
+  // console.log(email)
+  // console.log(projectId)
+  
     const params = createParamsForGet(email,projectId)
   
     var docClient = new AWS.DynamoDB.DocumentClient({

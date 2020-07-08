@@ -1,6 +1,6 @@
 import createProjectId from "Pulse/utilfunctions/createProjectId";
 import removeKeysWithNull from "Pulse/utilfunctions/removeKeysWithNull";
-import { CreateParamsForInitialRequest, putToDynamo } from "AWS/putToDynamo";
+import { putToDynamo } from "AWS/putToDynamo";
 import { uploadUserFilesToS3 } from "AWS/uploadUserFilesToS3";
 import {requestStates} from "AWS/constants"
 import AWS from "AWS/aws_config";
@@ -22,13 +22,12 @@ export default function submitRequest({ requestState,addNotification }, email) {
 // Credentials will be available when this function is called.
   AWS.config.credentials.get(async function () {
     
-    //tableName, hashId, sortID, index, info
-    const params = CreateParamsForInitialRequest(process.env.REACT_APP_DYNAMO_TESTTABLE, email,projectId, requestStates.initialRequest, data);
 
-    //console.log(params)
+    const requestState = requestStates.initialRequest
 
     console.log("Adding to DataBase...");
-    const resultCode = await putToDynamo(params);
+     //hashId, sortId, index, data
+    const resultCode = await putToDynamo(email,projectId, requestState, data);
     console.log("Status Code:" + resultCode);
 
     if (resultCode === 200 ) {

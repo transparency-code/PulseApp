@@ -44,3 +44,6 @@ The condition must perform an equality test on a single partition key value.
 
 https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html
 Dont use reserved keywords
+
+
+USe environamnet variables, dont use app speciific key words. for portability

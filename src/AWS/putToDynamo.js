@@ -1,25 +1,31 @@
 import docClient from 'AWS/docClient'
 
 
-  export function CreateParamsForInitialRequest(tableName, hashId, sortId, requeststatus, data) {
+  export function CreateParamsForInitialRequest(hashId, sortId, index, data) {
 
-    // console.log(tableName)
+  
     // console.log(hashId)
-    // console.log(sortID)
-    // console.log(info)
-    //console.log(index)
+    // console.log(sortId)
+    // console.log(data)
+    // console.log(index)
   
   
     const params = {
-      TableName: tableName,
-      Item: { hashId, sortId, requeststatus  ,  data },
+      TableName: [process.env.REACT_APP_DYNAMO_TESTTABLE],
+      Item: { 
+        [process.env.REACT_APP_DYNAMO_TESTTABLE_HASHID] : hashId,
+        [process.env.REACT_APP_DYNAMO_TESTTABLE_SORTID]  : sortId,
+        [process.env.REACT_APP_DYNAMO_TESTTABLE_INDEX]: index , 
+         data
+       }
     };
   
     //console.log(params);
     return params;
   }
 
-export  async function putToDynamo(params) {
+export  async function putToDynamo(hashId, sortId, index, data) {
+    const params = CreateParamsForInitialRequest(hashId, sortId, index, data)
     const result = await docClient.put(params).promise();
     return result.$response.httpResponse.statusCode;
   }

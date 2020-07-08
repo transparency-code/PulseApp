@@ -12,7 +12,7 @@ export default function ProjectDetailStaff({ location,dynamoRetrivalFunc }) {
 
   const { email, projectid } = state;
 
-  // console.log(email)
+  //  console.log(email)
   // console.log(projectid)
 
  
@@ -38,7 +38,7 @@ export default function ProjectDetailStaff({ location,dynamoRetrivalFunc }) {
 
 
   //  console.log(data)
-  //  console.log(chkedItems)
+  //  console.log(checkedItems)
   //  console.log(txtItems)
 
   return (
