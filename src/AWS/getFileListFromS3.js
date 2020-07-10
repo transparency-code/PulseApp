@@ -24,6 +24,8 @@ export default async function getFileListFromS3(prefix) {
   
     const data = await s3.listObjectsV2(params).promise();
 
+//    console.log(data)
+//     console.log(data.Contents)
     return data.Contents
 
 }

@@ -1,12 +1,13 @@
 import React from "react";
 import getDateStringFromID from 'Pulse/utilfunctions/getDateStringFromID'
-
+import DisplayFiles from 'Pulse/components/DisplayFiles'
 export default function ProjectDetailStaffView({
   email,
   projectid,
   rowlabels,
   checkedItems,
-  txtItems
+  txtItems,
+  files
 }) {
 
   // console.log(email)
@@ -54,6 +55,8 @@ export default function ProjectDetailStaffView({
       {checkedItemsList}
       {txtItemsList }
       </ul>
+
+      <DisplayFiles files={files} />
 
       </div>
     </div>

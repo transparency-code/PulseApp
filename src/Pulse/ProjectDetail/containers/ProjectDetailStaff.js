@@ -42,7 +42,7 @@ export default function ProjectDetailStaff({ location,getDetailFunc }) {
 
   return (
  
-        <StaffViewList email={email} projectid={projectid} rowlabels={rowLabels} checkedItems={checkedItems} txtItems={txtItems} />
+        <StaffViewList email={email} projectid={projectid} rowlabels={rowLabels} checkedItems={checkedItems} txtItems={txtItems} files={data.files} />
 
   )
 }
