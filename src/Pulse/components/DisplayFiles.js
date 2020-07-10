@@ -2,7 +2,7 @@ import React from "react";
 
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import AttachmentIcon from "@material-ui/icons/Attachment";
-import Box from '@material-ui/core/Box';
+import getFileNameFromPrefixed from "Pulse/utilfunctions/getFileNameFromPrefixed"
 
 
 
@@ -12,7 +12,13 @@ export default function DisplayFiles({files}) {
     // console.log(files)
 
   if (!Array.isArray(files) || files.length === 0) {
-    return null;
+      return(
+    <ul className="list-group">
+        <li className="list-group-item">
+        No files uploaded
+        </li>
+    </ul>
+      )
   }
 
 
@@ -24,7 +30,7 @@ export default function DisplayFiles({files}) {
     return(
       <li className="list-group-item" key={index}>
         <ListItemIcon><AttachmentIcon /></ListItemIcon>
-        {file.Key}
+        {getFileNameFromPrefixed(file.Key)}
 
 
         {/* <button type="button" className="ml-2 btn btn-warning" onClick= { ()=> handleFileDelete(index)}>Delete</button> */}
@@ -34,10 +40,10 @@ export default function DisplayFiles({files}) {
 })
 
   return (
-    <Box mt={5}> 
+ 
     <ul className="list-group">
       {fileItems}
     </ul>
-    </Box>
+ 
   )
 }
