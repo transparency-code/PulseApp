@@ -21,7 +21,8 @@ export async function uploadUserFilesToS3(projectId, fileArray) {
     let uploadedFileKeys = [];
   
     for (const file of fileArray) {
-      const fileKey = projectId + "/useruploads/" + file.name;
+   
+      const fileKey = `${projectId}/${process.env.REACT_APP_USERUPLOADSFOLDER}/` + file.name;
       var uploadResult = await getManagedUploadFileObject(
         file,
         fileKey

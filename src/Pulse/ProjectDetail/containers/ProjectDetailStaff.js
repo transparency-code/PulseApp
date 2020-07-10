@@ -7,7 +7,7 @@ import StaffViewList from 'Pulse/ProjectDetail/components/ProjectDetailStaffView
 
 
 
-export default function ProjectDetailStaff({ location,dynamoRetrivalFunc }) {
+export default function ProjectDetailStaff({ location,getDetailFunc }) {
   const { state } = location;
 
   const { email, projectid } = state;
@@ -21,14 +21,13 @@ export default function ProjectDetailStaff({ location,dynamoRetrivalFunc }) {
 
   useEffect(() => {
     async function fetchData() {
-      await dynamoRetrivalFunc (email, projectid, setData);
+      await getDetailFunc (email, projectid, setData);
     }
 
     fetchData();
-  }, [email, projectid,dynamoRetrivalFunc]);
+  }, [email, projectid,getDetailFunc]);
 
  
-
 
   const rowLabels={initialDate :"Initial Request Date", id: "Project ID" , email:"Client Email" , optionsLabel : "Building Options"}
 

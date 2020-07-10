@@ -1,4 +1,4 @@
-import AWS from "AWS/aws_config"
+import docClient from 'AWS/docClient'
 
 export function CreateParamsForRequestTypeQuery(requestStatus,limit) {
     const params = {
@@ -32,10 +32,7 @@ export function CreateParamsForRequestTypeQuery(requestStatus,limit) {
   
 
 export async function queryFromDynamo(params) {
-    var docClient = new AWS.DynamoDB.DocumentClient({
-      apiVersion: "2012-08-10",
-      convertEmptyValues: true,
-    });
+
     const returnObj = await docClient.query(params).promise();
    
     //console.log(returnObj)

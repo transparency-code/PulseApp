@@ -1,4 +1,4 @@
-import AWS from "./aws_config";
+import docClient from 'AWS/docClient'
 
 function createParamsForGet(email,projectid) {
 
@@ -15,21 +15,19 @@ function createParamsForGet(email,projectid) {
     return params
   }
   
-export async function getItemFromDynamo(email,projectId,setData) {
+export default async function getItemFromDynamo(email,projectId,setData) {
 
   // console.log(email)
   // console.log(projectId)
   
     const params = createParamsForGet(email,projectId)
   
-    var docClient = new AWS.DynamoDB.DocumentClient({
-      apiVersion: "2012-08-10",
-    });
   
     // console.log(params)
     const returnObj = await docClient.get(params).promise();
     
-    setData(returnObj.Item.data)
+    return returnObj.Item.data
+    
   
     //console.log(returnObj)
     // return result
