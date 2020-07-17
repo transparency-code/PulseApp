@@ -4,7 +4,6 @@ import DisplayRequestsByRequestStatus from "Pulse/DisplayRequests/containers/Dis
 import DisplayRequestsByUser from "Pulse/DisplayRequests/containers/DisplayRequestsByUser"
 import { Router} from "@reach/router"
 import 'typeface-roboto';
-import {requestStates} from "AWS/constants"
 import ProjectDetailStaff from 'Pulse/ProjectDetail/containers/ProjectDetailStaff'
 import 'bootstrap/dist/css/bootstrap.css';
 import ErrorBoundary from 'Pulse/components/ErrorBoundary'
@@ -28,7 +27,7 @@ function App() {
           <Request path="/createRequest" />
           <DisplayRequestsByRequestStatus
             path="/displayinitial"
-            status={requestStates.initialRequest}
+            status={0}
           />
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
 

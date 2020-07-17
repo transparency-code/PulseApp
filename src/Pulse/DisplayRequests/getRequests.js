@@ -17,6 +17,7 @@ export async function getRequestsByRequestState(aStateMutater, requestState) {
  //   console.log(typeof(aStateMutater))
     AWS.config.credentials.get(async function () {
 
+        console.log(requestState)
         //tableName,requestStatus,limit
         const params = CreateParamsForRequestTypeQuery( requestState);
 
@@ -35,6 +36,8 @@ export async function getRequestsByRequestState(aStateMutater, requestState) {
 }
 
 export async function getRequestsForUserEmail(aStateMutater, user) {
+
+   // console.log(user)
  
        AWS.config.credentials.get(async function () {
    

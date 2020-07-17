@@ -2,7 +2,6 @@ import createProjectId from "Pulse/utilfunctions/createProjectId";
 import removeKeysWithNull from "Pulse/utilfunctions/removeKeysWithNull";
 import { putToDynamo } from "AWS/putToDynamo";
 import { uploadUserFilesToS3 } from "AWS/uploadUserFilesToS3";
-import {requestStates} from "AWS/constants"
 import AWS from "AWS/aws_config";
 
 //doesnt receive a function to set state. Information is logged into console within itself
@@ -22,8 +21,8 @@ export default function submitRequest({ requestState,addNotification }, email) {
 // Credentials will be available when this function is called.
   AWS.config.credentials.get(async function () {
     
-
-    const requestState = requestStates.initialRequest
+ // 0, the first step in a process 
+    const requestState = 0
 
     console.log("Adding to DataBase...");
      //hashId, sortId, index, data

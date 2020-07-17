@@ -3,8 +3,8 @@ import docClient from 'AWS/docClient'
 export function CreateParamsForRequestTypeQuery(requestStatus,limit) {
     const params = {
       TableName: process.env.REACT_APP_DYNAMO_TESTTABLE,
-      IndexName : 'requeststatus-index',
-      KeyConditionExpression: "requeststatus = :indexkey",
+      IndexName : `${process.env.REACT_APP_DYNAMO_TESTTABLE_INDEX}-index`,
+      KeyConditionExpression: `${process.env.REACT_APP_DYNAMO_TESTTABLE_INDEX} = :indexkey`,
       ExpressionAttributeValues: {
         ":indexkey": requestStatus,
       },
@@ -20,7 +20,7 @@ export function CreateParamsForRequestTypeQuery(requestStatus,limit) {
     const params = {
       TableName: process.env.REACT_APP_DYNAMO_TESTTABLE,
       //IndexName : 'requeststatus-index',
-      KeyConditionExpression: "hashId = :hkey",
+      KeyConditionExpression: `${process.env.REACT_APP_DYNAMO_TESTTABLE_HASHID}= :hkey`,
       ExpressionAttributeValues: {
         ":hkey": user,
       },
@@ -33,6 +33,7 @@ export function CreateParamsForRequestTypeQuery(requestStatus,limit) {
 
 export async function queryFromDynamo(params) {
 
+  // console.log(params);
     const returnObj = await docClient.query(params).promise();
    
     //console.log(returnObj)

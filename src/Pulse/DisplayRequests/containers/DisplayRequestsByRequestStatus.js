@@ -4,7 +4,7 @@ import DisplayRequestsByRequestStatusTable from '../components/DisplayRequestsBy
 import ErrorBoundary from 'Pulse/components/ErrorBoundary'
 
 
-export default function DisplayRequestsByRequestStatus({status ="InitialRequest" }) {
+export default function DisplayRequestsByRequestStatus({status = 0 }) {
 
     //console.log(status)
     const [requestArray, setRequests] = useState([]);
@@ -34,7 +34,7 @@ export default function DisplayRequestsByRequestStatus({status ="InitialRequest"
     return (
       <ErrorBoundary>
         {/* <DisplayRequestsTable rows={requestArray} headers={headers} propertiesToDisplay={propertiesTodDisplay}/> */}
-        <DisplayRequestsByRequestStatusTable headers={headers} data={requestArray}/>
+        <DisplayRequestsByRequestStatusTable headers={headers} data={requestArray} />
      
         </ErrorBoundary>
     )

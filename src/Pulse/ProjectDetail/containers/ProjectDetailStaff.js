@@ -5,7 +5,7 @@ import getTxtItems from "Pulse/ProjectDetail/getTxtItems";
 //import getCheckedItems from "Pulse/ProjectDetail/getTxtItems";
 import StaffViewList from 'Pulse/ProjectDetail/components/ProjectDetailStaffView'
 import Stepper from 'Pulse/components/Stepper'
-import steps from 'Pulse/Data/stepper'
+import steps from 'Pulse/Data/ProcessStates'
 
 
 export default function ProjectDetailStaff({ location,getDetailFunc,  isAdmin }) {

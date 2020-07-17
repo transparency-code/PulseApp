@@ -2,9 +2,9 @@ import React from "react";
 import getDateStringFromID from 'Pulse/utilfunctions/getDateStringFromID'
 
 //https://getbootstrap.com/docs/4.4/content/tables/
-export default function DisplayRequestsByUserTable({headers,data}) {
+export default function DisplayRequestsByUserTable({headers,data,processStates}) {
 
-  //console.log(headers)
+  // console.log(data)
 
   return (
     <React.Fragment>
@@ -20,8 +20,8 @@ export default function DisplayRequestsByUserTable({headers,data}) {
 
     {data.map((row,index) => (
        <tr key={index}>
-       <th scope="row">  {getDateStringFromID(row.sortId.toString())}</th>
-       <td>{row.requeststatus}</td>
+       <th scope="row">  {getDateStringFromID(row.projectid.toString())}</th>
+       <td>{processStates[row.requeststatus]}</td>
        <td><button type="button" className="btn btn-link">View Project Details</button></td>
  
      </tr>
