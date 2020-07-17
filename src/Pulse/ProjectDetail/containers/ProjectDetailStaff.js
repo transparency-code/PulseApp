@@ -4,10 +4,11 @@ import getCheckedItems from "Pulse/ProjectDetail/getCheckedItems";
 import getTxtItems from "Pulse/ProjectDetail/getTxtItems";
 //import getCheckedItems from "Pulse/ProjectDetail/getTxtItems";
 import StaffViewList from 'Pulse/ProjectDetail/components/ProjectDetailStaffView'
+import Stepper from 'Pulse/components/Stepper'
+import steps from 'Pulse/Data/stepper'
 
 
-
-export default function ProjectDetailStaff({ location,getDetailFunc }) {
+export default function ProjectDetailStaff({ location,getDetailFunc,  isAdmin }) {
   const { state } = location;
 
   const { email, projectid } = state;
@@ -41,8 +42,10 @@ export default function ProjectDetailStaff({ location,getDetailFunc }) {
   //  console.log(txtItems)
 
   return (
- 
+        <div>
         <StaffViewList email={email} projectid={projectid} rowlabels={rowLabels} checkedItems={checkedItems} txtItems={txtItems} files={data.files} />
+        <Stepper steps={steps} />
+        </div>
 
   )
 }

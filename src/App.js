@@ -32,7 +32,7 @@ function App() {
           />
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
 
-          <ProjectDetailStaff path="/projectdetail" getDetailFunc={getProjectDetails } />
+          <ProjectDetailStaff path="/projectdetail" getDetailFunc={getProjectDetails } isAdmin={true}/>
         </Router>
         </ErrorBoundary>
 
