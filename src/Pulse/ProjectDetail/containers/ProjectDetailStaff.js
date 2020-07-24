@@ -6,19 +6,21 @@ import getTxtItems from "Pulse/ProjectDetail/getTxtItems";
 import StaffViewList from 'Pulse/ProjectDetail/components/ProjectDetailStaffView'
 import Stepper from 'Pulse/components/Stepper'
 import steps from 'Pulse/Data/ProcessStates'
+import saveStageinDynamo from 'Pulse/ProjectDetail/saveStageinDynamo'
 
-
-export default function ProjectDetailStaff({ location,getDetailFunc,  isAdmin }) {
+export default function ProjectDetailStaff({ location,getDetailFunc, isAdmin }) {
   const { state } = location;
 
   const { email, projectid } = state;
 
-  //  console.log(email)
+
   // console.log(projectid)
 
  
 
   const [data, setData] = useState({});
+
+  // console.log(data)
 
   useEffect(() => {
     async function fetchData() {
@@ -44,7 +46,8 @@ export default function ProjectDetailStaff({ location,getDetailFunc,  isAdmin })
   return (
         <div>
         <StaffViewList email={email} projectid={projectid} rowlabels={rowLabels} checkedItems={checkedItems} txtItems={txtItems} files={data.files} />
-        <Stepper steps={steps} />
+        
+        <Stepper steps={steps} saveStageFunc={saveStageinDynamo} updateKey={{email,projectid}}/>
         </div>
 
   )

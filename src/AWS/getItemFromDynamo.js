@@ -26,6 +26,7 @@ export default async function getItemFromDynamo(email,projectId,setData) {
     // console.log(params)
     const returnObj = await docClient.get(params).promise();
     
+    console.log(returnObj.Item.data)
     return returnObj.Item.data
     
   

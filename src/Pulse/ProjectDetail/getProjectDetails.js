@@ -5,6 +5,8 @@
 export default async function getProjectDetails(email,projectId,setterFunc) {
 
     const dataFromDB =  await getItemFromDynamo(email,projectId)
+
+    console.log(dataFromDB)
     console.log(`Info for ${projectId} `)
     console.log(dataFromDB)
 
@@ -19,7 +21,7 @@ export default async function getProjectDetails(email,projectId,setterFunc) {
  
    const data = {...dataFromDB, files}
 
-//    console.log(data)
+   //console.log(data)
     
     setterFunc(data)
 }

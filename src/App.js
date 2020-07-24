@@ -14,6 +14,7 @@ import getProjectDetails from 'Pulse/ProjectDetail/getProjectDetails'
 
 
 
+
 function App() {
 
   return (
@@ -31,7 +32,7 @@ function App() {
           />
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
 
-          <ProjectDetailStaff path="/projectdetail" getDetailFunc={getProjectDetails } isAdmin={true}/>
+          <ProjectDetailStaff path="/projectdetail" getDetailFunc={getProjectDetails }  isAdmin={true}/>
         </Router>
         </ErrorBoundary>
 
