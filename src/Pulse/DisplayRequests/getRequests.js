@@ -17,11 +17,11 @@ export async function getRequestsByRequestState(aStateMutater, requestState) {
  //   console.log(typeof(aStateMutater))
     AWS.config.credentials.get(async function () {
 
-        console.log(requestState)
+        // console.log(requestState)
         //tableName,requestStatus,limit
         const params = CreateParamsForRequestTypeQuery( requestState);
 
-       // console.log(params)
+    //    console.log(params)
         console.log("Retriving from DataBase...");
         const result = await queryFromDynamo(params);
         console.log("Retrieved " + result.count + " items");

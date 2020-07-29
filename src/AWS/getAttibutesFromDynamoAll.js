@@ -1,5 +1,7 @@
 import docClient from 'AWS/docClient'
 
+//https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#get-property
+
 function createParamsForGet(email,projectid) {
 
     // console.log(projectid)
@@ -14,8 +16,11 @@ function createParamsForGet(email,projectid) {
     // console.log(params)
     return params
   }
+
+
   
-export default async function getItemFromDynamo(email,projectId,setData) {
+  //return data and stage attribute
+export default async function getAttibutesFromDynamoAll(email,projectId) {
 
   // console.log(email)
   // console.log(projectId)
@@ -26,8 +31,8 @@ export default async function getItemFromDynamo(email,projectId,setData) {
     // console.log(params)
     const returnObj = await docClient.get(params).promise();
     
-    console.log(returnObj.Item.data)
-    return returnObj.Item.data
+   // console.log(returnObj.Item.data)
+    return returnObj.Item
     
   
     //console.log(returnObj)

@@ -31,7 +31,7 @@ const navlinks = (
       <a className="nav-link active" href="/createRequest">Create Request</a>
     </li>
     <li className="nav-item">
-      <a className="nav-link" href="/displayinitial">Display Initial Requests</a>
+      <a className="nav-link" href="/displaybystatus">Display Requests By Status</a>
     </li>
     <li className="nav-item">
       <a className="nav-link" href="displayuser">Display User Requests</a>

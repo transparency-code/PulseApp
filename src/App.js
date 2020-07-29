@@ -1,6 +1,6 @@
 import React from 'react';
 import Request from "Pulse/RequestSelection"
-import DisplayRequestsByRequestStatus from "Pulse/DisplayRequests/containers/DisplayRequestsByRequestStatus"
+import DisplayRequestByStatusDropdown from "Pulse/DisplayRequests/containers/DisplayRequestByStatusDropdown"
 import DisplayRequestsByUser from "Pulse/DisplayRequests/containers/DisplayRequestsByUser"
 import { Router} from "@reach/router"
 import 'typeface-roboto';
@@ -26,10 +26,11 @@ function App() {
       <ErrorBoundary>
         <Router>
           <Request path="/createRequest" />
-          <DisplayRequestsByRequestStatus
+          {/* <DisplayRequestsByRequestStatus
             path="/displayinitial"
             status={0}
-          />
+          /> */}
+          <DisplayRequestByStatusDropdown  path="/displaybystatus"/>
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
 
           <ProjectDetailStaff path="/projectdetail" getDetailFunc={getProjectDetails }  isAdmin={true}/>

@@ -4,9 +4,9 @@ import DisplayRequestsByRequestStatusTable from '../components/DisplayRequestsBy
 import ErrorBoundary from 'Pulse/components/ErrorBoundary'
 
 
-export default function DisplayRequestsByRequestStatus({status = 0 }) {
+export default function DisplayRequestsByRequestStatus({status}) {
 
-    //console.log(status)
+    // console.log(status)
     const [requestArray, setRequests] = useState([]);
 
     useEffect(() => {

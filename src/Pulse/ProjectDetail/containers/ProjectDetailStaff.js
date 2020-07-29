@@ -18,13 +18,13 @@ export default function ProjectDetailStaff({ location,getDetailFunc, isAdmin }) 
 
  
 
-  const [data, setData] = useState({});
+  const [projDetail, setProjDetail] = useState({});
 
   // console.log(data)
 
   useEffect(() => {
     async function fetchData() {
-      await getDetailFunc (email, projectid, setData);
+      await getDetailFunc (email, projectid, setProjDetail);
     }
 
     fetchData();
@@ -32,20 +32,36 @@ export default function ProjectDetailStaff({ location,getDetailFunc, isAdmin }) 
 
  
 
-  const rowLabels={initialDate :"Initial Request Date", id: "Project ID" , email:"Client Email" , optionsLabel : "Building Options"}
+  let rowLabels={initialDate :"Initial Request Date", id: "Project ID" , email:"Client Email" , optionsLabel : "Building Options"}
 
-   const checkedItems = getCheckedItems(data,chkedItemsWithLabels)
+  let checkedItems = []
+  let txtItems= []
+  let files = []
+  let status = ""
 
-   const txtItems = getTxtItems(data,textBoxItems)
+  //has retrived data from DynamoDB
+  if (projDetail.hasOwnProperty('data')) {
+    checkedItems = getCheckedItems(projDetail.data,chkedItemsWithLabels)
+
+    txtItems = getTxtItems(projDetail.data,textBoxItems)
+
+    files = projDetail.files
+  }
 
 
-  //  console.log(data)
+  if ( projDetail.hasOwnProperty('requeststatus')) {
+    rowLabels = { ...rowLabels , status: "Request Status"}
+    console.log(steps[projDetail.requeststatus])
+    status = steps[projDetail.requeststatus]
+  }
+
+  // console.log(rowLabels)
   //  console.log(checkedItems)
   //  console.log(txtItems)
 
   return (
         <div>
-        <StaffViewList email={email} projectid={projectid} rowlabels={rowLabels} checkedItems={checkedItems} txtItems={txtItems} files={data.files} />
+        <StaffViewList email={email} projectid={projectid} status={status} rowlabels={rowLabels} checkedItems={checkedItems} txtItems={txtItems} files={files} />
         
         <Stepper steps={steps} saveStageFunc={saveStageinDynamo} updateKey={{email,projectid}}/>
         </div>
