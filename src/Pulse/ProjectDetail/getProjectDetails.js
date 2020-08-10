@@ -2,13 +2,13 @@
  import getFileListFromS3 from "AWS/getFileListFromS3"
 
 
-export default async function getProjectDetails(email,projectId,setterFunc) {
+export default async function getProjectDetails(email,projectId,setProjDetail) {
 
     const dataFromDB =  await getItemFromDynamo(email,projectId)
 
     //console.log(dataFromDB)
     console.log(`Info for ${projectId} `)
-    console.log(dataFromDB)
+    //console.log(dataFromDB)
 
     //setterFunc(dataFromDB)
 
@@ -23,7 +23,8 @@ export default async function getProjectDetails(email,projectId,setterFunc) {
 
    //console.log(data)
     
-    setterFunc(data)
+    setProjDetail(data)
+  //  setReqStage(data.requeststatus)
 }
 
 

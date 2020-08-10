@@ -25,16 +25,23 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
+ // HorizontalLinearStepper is re rendered when step changes
+ // Do cant set storedStep to activeStep, as stored state will replace acive state every time
 
-export default function HorizontalLinearStepper({steps,saveStageFunc,updateKey}) {
-
-  // console.log(updateKey)
+export default function HorizontalLinearStepper({steps,storedStep,saveStageFunc,updateKey}) {
 
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+
+  const [activeStep, setActiveStep] = React.useState(storedStep);
+
+ //console.log(activeStep)
+
+  function handleNext() {
+    setActiveStep((prevActiveStep) => {
+    
+     return prevActiveStep + 1
+    });
   
   };
 
@@ -43,8 +50,8 @@ export default function HorizontalLinearStepper({steps,saveStageFunc,updateKey})
   };
 
 
-//   console.log(activeStep)
-
+ 
+//active step needs to be number
   return (
     <div className={classes.root}>
       <Stepper activeStep={activeStep} orientation="vertical">
