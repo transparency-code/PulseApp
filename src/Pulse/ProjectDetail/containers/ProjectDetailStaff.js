@@ -11,7 +11,7 @@ import Stepper from "Pulse/components/Stepper";
 import steps from "Pulse/Data/ProcessStates";
 import saveStageinDynamo from "Pulse/ProjectDetail/saveStageinDynamo";
 import processStates from "Pulse/Data/ProcessStates";
-
+import useNotification from 'Pulse/hooks/useNotification'
 
 export default function ProjectDetailStaff({
   location,
@@ -26,9 +26,12 @@ export default function ProjectDetailStaff({
 
   const [projDetail, setProjDetail] = useState({});
 
+  const {addNotification} = useNotification()
+
   //const [reqStage, setReqStage] = useState(null);
 
   // console.log(data)
+ 
 
   useEffect(() => {
     async function fetchData() {
@@ -48,6 +51,13 @@ export default function ProjectDetailStaff({
 
   let checkedItems = [];
   let txtItems = [];
+
+  async function saveStage(updateKey,activeStep) {
+     const result = await saveStageinDynamo(updateKey,activeStep)
+     if (result === 200) {
+      addNotification(`Set to ${steps[activeStep]}` )
+     }
+  }
 
   //has retrived data from DynamoDB
   if (projDetail.hasOwnProperty("data")) {
@@ -78,7 +88,7 @@ export default function ProjectDetailStaff({
         <Stepper
           steps={steps}
           storedStep={projDetail.requeststatus}
-          saveStageFunc={saveStageinDynamo}
+          saveStageFunc={saveStage}
           updateKey={{ email, projectid }}
           labelArray={processStates}
         />

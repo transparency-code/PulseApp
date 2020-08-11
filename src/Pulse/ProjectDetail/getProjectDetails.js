@@ -8,7 +8,7 @@ export default async function getProjectDetails(email,projectId,setProjDetail) {
 
     //console.log(dataFromDB)
     console.log(`Info for ${projectId} `)
-    //console.log(dataFromDB)
+    console.log(dataFromDB)
 
     //setterFunc(dataFromDB)
 

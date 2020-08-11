@@ -30,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HorizontalLinearStepper({steps,storedStep,saveStageFunc,updateKey}) {
 
+
+  //console.log(updateKey)
   const classes = useStyles();
 
 
@@ -79,6 +81,14 @@ export default function HorizontalLinearStepper({steps,storedStep,saveStageFunc,
                   >               
                    Next
                   </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => saveStageFunc(updateKey,activeStep)}
+                    className={classes.button}
+                  >               
+                   Set Here
+                  </Button>
               </div>
               </div>
               </StepContent>
@@ -87,8 +97,8 @@ export default function HorizontalLinearStepper({steps,storedStep,saveStageFunc,
         })}
       </Stepper>
 
-
-      <button type="button" className="btn btn-primary" onClick={() => saveStageFunc(updateKey , activeStep)}>Save Stage</button>
+{/* 
+      <button type="button" className="btn btn-primary" onClick={() => saveStageFunc(updateKey , activeStep)}>Save Stage</button> */}
     
 
           </div>
