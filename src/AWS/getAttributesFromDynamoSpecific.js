@@ -1,3 +1,5 @@
+import docClient from 'AWS/docClient'
+
 //create parms that retrives nly an attribute
   function createParamsForGet(email,projectid,attributeArray,) {
 
@@ -18,6 +20,8 @@ export default async function getAttibutesFromDynamoSpecific(email,projectId,att
 
   
       const params = createParamsForGet(email,projectId,attributeArray)
+
+      //console.log(params)
      
       const returnObj = await docClient.get(params).promise();
       

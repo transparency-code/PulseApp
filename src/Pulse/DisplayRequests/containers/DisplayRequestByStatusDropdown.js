@@ -18,7 +18,8 @@ export default function DisplayRequestByStatusDropdown() {
               />
 
             <Box component="div" mt={4}>
-             <DisplayRequestsByRequestStatus status={selection}/>
+                {/* selection is array based at 0, status starts from 1 */}
+             <DisplayRequestsByRequestStatus status={selection + 1}/>
              </Box>
 
         </React.Fragment>

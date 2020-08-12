@@ -1,10 +1,10 @@
- import getItemFromDynamo from "AWS/getAttibutesFromDynamoAll"
+ import getAttibutesFromDynamoAll from "AWS/getAttibutesFromDynamoAll"
  import getFileListFromS3 from "AWS/getFileListFromS3"
 
 
 export default async function getProjectDetails(email,projectId,setProjDetail) {
 
-    const dataFromDB =  await getItemFromDynamo(email,projectId)
+    const dataFromDB =  await getAttibutesFromDynamoAll(email,projectId)
 
     //console.log(dataFromDB)
     console.log(`Info for ${projectId} `)

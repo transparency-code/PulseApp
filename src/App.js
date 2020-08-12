@@ -11,6 +11,7 @@ import Layout from 'Pulse/components/layout'
 import NotificationContextProvider from 'Pulse/providers/NotificationContextProvider'
 import NotificationBar from 'Pulse/components/NotificationBar'
 import getProjectDetails from 'Pulse/ProjectDetail/getProjectDetails'
+import getProjStatusOnly from 'Pulse/ProjectDetail/getProjStatusOnly'
 
 
 
@@ -33,7 +34,7 @@ function App() {
           <DisplayRequestByStatusDropdown  path="/displaybystatus"/>
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
 
-          <ProjectDetailStaff path="/projectdetail" getDetailFunc={getProjectDetails }  isAdmin={true}/>
+          <ProjectDetailStaff path="/projectdetail" getDetailFunc={getProjectDetails } getStatusOnly={getProjStatusOnly} isAdmin={true}/>
         </Router>
         </ErrorBoundary>
 

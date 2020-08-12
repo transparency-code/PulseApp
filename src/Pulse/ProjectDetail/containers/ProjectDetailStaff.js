@@ -11,11 +11,12 @@ import Stepper from "Pulse/components/Stepper";
 import steps from "Pulse/Data/ProcessStates";
 import saveStageinDynamo from "Pulse/ProjectDetail/saveStageinDynamo";
 import processStates from "Pulse/Data/ProcessStates";
-import useNotification from 'Pulse/hooks/useNotification'
+import useNotification from "Pulse/hooks/useNotification";
 
 export default function ProjectDetailStaff({
   location,
   getDetailFunc,
+  getStatusOnly,
   isAdmin,
 }) {
   const { state } = location;
@@ -26,20 +27,25 @@ export default function ProjectDetailStaff({
 
   const [projDetail, setProjDetail] = useState({});
 
-  const {addNotification} = useNotification()
+  //needs to update in stage progess, so seperate statevariable
+  const [reqStatus, setReqStatus] = useState(0);
+
+  const { addNotification } = useNotification();
 
   //const [reqStage, setReqStage] = useState(null);
 
   // console.log(data)
- 
 
+  //called more than once because of gotchas, see console
   useEffect(() => {
     async function fetchData() {
       await getDetailFunc(email, projectid, setProjDetail);
     }
 
-    fetchData();
-  }, [email, projectid, getDetailFunc]);
+      fetchData();
+      //sets reqState  Detail is retrived
+      setReqStatus(projDetail.requeststatus);
+  }, [email, projectid, projDetail.requeststatus, getDetailFunc]);
 
   let rowLabels = {
     initialDate: "Initial Request Date",
@@ -52,11 +58,19 @@ export default function ProjectDetailStaff({
   let checkedItems = [];
   let txtItems = [];
 
-  async function saveStage(updateKey,activeStep) {
-     const result = await saveStageinDynamo(updateKey,activeStep)
-     if (result === 200) {
-      addNotification(`Set to ${steps[activeStep]}` )
-     }
+  async function saveStage(updateKey, activeStep) {
+    // console.log(updateKey)
+    // console.log(activeStep)
+    const result = await saveStageinDynamo(updateKey, activeStep);
+    if (result === 200) {
+      addNotification(`Set to ${steps[activeStep-1]}`);
+      
+      //const newStateReponse = await getStatusOnly(email, projectid, ['requeststatus'])
+      //const avar = await getStatusOnly(email, projectid, ['requeststatus'])
+      setReqStatus(await getStatusOnly(email, projectid, ['requeststatus']))
+     // console.log(reqStatus)
+    }
+    
   }
 
   //has retrived data from DynamoDB
@@ -70,15 +84,17 @@ export default function ProjectDetailStaff({
   //gets details after useEffect
   //console.log(projDetail)
 
-  //render after useEffect 
+  //render after useEffect
   //https://stackoverflow.com/questions/5113374/javascript-check-if-variable-exists-is-defined-initialized
-  if (projDetail.hasOwnProperty("requeststatus")) {
+  //reQStatus has default 0 unless updated from db, if wont render 0
+  if (reqStatus) {
     return (
       <div>
         <StaffViewList
           email={email}
           projectid={projectid}
-          status={steps[projDetail.requeststatus]}
+          //DB stores from 1, array is 0 based
+          status={steps[reqStatus-1]}
           rowlabels={rowLabels}
           checkedItems={checkedItems}
           txtItems={txtItems}
@@ -87,7 +103,7 @@ export default function ProjectDetailStaff({
 
         <Stepper
           steps={steps}
-          storedStep={projDetail.requeststatus}
+          storedStep={reqStatus}
           saveStageFunc={saveStage}
           updateKey={{ email, projectid }}
           labelArray={processStates}

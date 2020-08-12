@@ -21,8 +21,8 @@ export default function submitRequest({ requestState,addNotification }, email) {
 // Credentials will be available when this function is called.
   AWS.config.credentials.get(async function () {
     
- // 0, the first step in a process 
-    const requestState = 0
+ // 1, the first step in a process , dont use zero,
+    const requestState = 1
 
     console.log("Adding to DataBase...");
      //hashId, sortId, index, data

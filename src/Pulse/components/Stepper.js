@@ -34,10 +34,12 @@ export default function HorizontalLinearStepper({steps,storedStep,saveStageFunc,
   //console.log(updateKey)
   const classes = useStyles();
 
+ //active step is zero based. 
+ //db stores from 1
+  const [activeStep, setActiveStep] = React.useState(storedStep - 1);
 
-  const [activeStep, setActiveStep] = React.useState(storedStep);
-
- //console.log(activeStep)
+//   console.log(storedStep)
+// console.log(activeStep)
 
   function handleNext() {
     setActiveStep((prevActiveStep) => {
@@ -84,8 +86,10 @@ export default function HorizontalLinearStepper({steps,storedStep,saveStageFunc,
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => saveStageFunc(updateKey,activeStep)}
+                    //dbstores from 1, send activestep + 1
+                    onClick={() => saveStageFunc(updateKey,activeStep+1)}
                     className={classes.button}
+                    disabled={activeStep === storedStep - 1}
                   >               
                    Set Here
                   </Button>
