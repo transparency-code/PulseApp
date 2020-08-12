@@ -48,8 +48,7 @@ export default function ProjectDetailStaffView({
 
 
   return (
-    <div className="row">
-      <div className="col-8">
+<React.Fragment>
       <ul className="list-group">
       <li className="list-group-item list-group-item-primary">{rowlabels.initialDate + " : "+ getDateStringFromID(projectid.toString())}</li>
       <li className="list-group-item list-group-item-primary">{rowlabels.id + " : " + projectid}</li>
@@ -63,8 +62,7 @@ export default function ProjectDetailStaffView({
 
       <DisplayFiles files={files} />
 
-
-      </div>
-    </div>
+      </React.Fragment>
+     
   );
 }

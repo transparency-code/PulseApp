@@ -12,6 +12,7 @@ import steps from "Pulse/Data/ProcessStates";
 import saveStageinDynamo from "Pulse/ProjectDetail/saveStageinDynamo";
 import processStates from "Pulse/Data/ProcessStates";
 import useNotification from "Pulse/hooks/useNotification";
+import LinearProgressBar from 'Pulse/components/LinearProgressBar'
 
 export default function ProjectDetailStaff({
   location,
@@ -89,7 +90,8 @@ export default function ProjectDetailStaff({
   //reQStatus has default 0 unless updated from db, if wont render 0
   if (reqStatus) {
     return (
-      <div>
+      <div className="row">
+      <div className="col-6">
         <StaffViewList
           email={email}
           projectid={projectid}
@@ -108,10 +110,11 @@ export default function ProjectDetailStaff({
           updateKey={{ email, projectid }}
           labelArray={processStates}
         />
-      </div>
+       </div>
+    </div>
     );
   } else {
-    return null;
+    return <LinearProgressBar/>
   }
 }
 
