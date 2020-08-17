@@ -36,16 +36,13 @@ export default function ProjectDetailStaff({
 
   const { addNotification } = useNotification();
 
-
-  //called more than once because of gotchas, see console
-  //using projDetail in dependendy aray causes unlmited rerender
   useEffect(() => {
     async function fetchData() {
       await getDetailFunc(email, projectid, setProjDetail);
     }
 
     //reducing re-render
-      if (reqStatus === 0 ) {
+      if (isEmpty(projDetail)) {
         fetchData();
       }
     
@@ -53,7 +50,7 @@ export default function ProjectDetailStaff({
        const requestStatus = get(projDetail,'requeststatus')
       setReqStatus(requestStatus);
      }
-  }, [email, projectid,projDetail,reqStatus,getDetailFunc]);
+  }, [email, projectid,projDetail,getDetailFunc]);
 
   let checkedItems = [];
   let txtItems = [];
