@@ -13,7 +13,7 @@ import saveStageinDynamo from "Pulse/ProjectDetail/saveStageinDynamo";
 import processStates from "Pulse/Data/ProcessStates";
 import useNotification from "Pulse/hooks/useNotification";
 import LinearProgressBar from 'Pulse/components/LinearProgressBar'
-import { get, isEmpty } from 'lodash';
+import { get, isEmpty, has } from 'lodash';
 import UIRowLabels from '../UIRowLabels'
 
 export default function ProjectDetailStaff({
@@ -31,21 +31,29 @@ export default function ProjectDetailStaff({
   const [projDetail, setProjDetail] = useState({});
 
   //needs to update in stage progess, so seperate statevariable
+  //db should not have zero
   const [reqStatus, setReqStatus] = useState(0);
 
   const { addNotification } = useNotification();
 
 
   //called more than once because of gotchas, see console
+  //using projDetail in dependendy aray causes unlmited rerender
   useEffect(() => {
     async function fetchData() {
       await getDetailFunc(email, projectid, setProjDetail);
     }
 
-      fetchData();
-      //sets reqState  Detail is retrived
-      setReqStatus(projDetail.requeststatus);
-  }, [email, projectid, projDetail.requeststatus, getDetailFunc]);
+    //reducing re-render
+      if (reqStatus === 0 ) {
+        fetchData();
+      }
+    
+     if (has(projDetail,'requeststatus') ) {
+       const requestStatus = get(projDetail,'requeststatus')
+      setReqStatus(requestStatus);
+     }
+  }, [email, projectid, projDetail.requeststatus,projDetail,reqStatus,getDetailFunc]);
 
   let checkedItems = [];
   let txtItems = [];
