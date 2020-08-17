@@ -53,7 +53,7 @@ export default function ProjectDetailStaff({
        const requestStatus = get(projDetail,'requeststatus')
       setReqStatus(requestStatus);
      }
-  }, [email, projectid, projDetail.requeststatus,projDetail,reqStatus,getDetailFunc]);
+  }, [email, projectid,projDetail,reqStatus,getDetailFunc]);
 
   let checkedItems = [];
   let txtItems = [];
