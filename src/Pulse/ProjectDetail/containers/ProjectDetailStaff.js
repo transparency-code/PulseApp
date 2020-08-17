@@ -13,6 +13,8 @@ import saveStageinDynamo from "Pulse/ProjectDetail/saveStageinDynamo";
 import processStates from "Pulse/Data/ProcessStates";
 import useNotification from "Pulse/hooks/useNotification";
 import LinearProgressBar from 'Pulse/components/LinearProgressBar'
+import { get, isEmpty } from 'lodash';
+import UIRowLabels from '../UIRowLabels'
 
 export default function ProjectDetailStaff({
   location,
@@ -33,9 +35,6 @@ export default function ProjectDetailStaff({
 
   const { addNotification } = useNotification();
 
-  //const [reqStage, setReqStage] = useState(null);
-
-  // console.log(data)
 
   //called more than once because of gotchas, see console
   useEffect(() => {
@@ -48,38 +47,24 @@ export default function ProjectDetailStaff({
       setReqStatus(projDetail.requeststatus);
   }, [email, projectid, projDetail.requeststatus, getDetailFunc]);
 
-  let rowLabels = {
-    initialDate: "Initial Request Date",
-    id: "Project ID",
-    email: "Client Email",
-    optionsLabel: "Building Options",
-    status: "Current Status",
-  };
-
   let checkedItems = [];
   let txtItems = [];
 
   async function saveStage(updateKey, activeStep) {
     // console.log(updateKey)
     // console.log(activeStep)
-    const result = await saveStageinDynamo(updateKey, activeStep);
-    if (result === 200) {
-      addNotification(`Set to ${steps[activeStep-1]}`);
-      
-      //const newStateReponse = await getStatusOnly(email, projectid, ['requeststatus'])
-      //const avar = await getStatusOnly(email, projectid, ['requeststatus'])
-      setReqStatus(await getStatusOnly(email, projectid, ['requeststatus']))
-     // console.log(reqStatus)
-    }
-    
+     await saveStageinDynamo(updateKey, activeStep, getStatusOnly, setReqStatus, addNotification);
+ 
   }
 
-  //has retrived data from DynamoDB
-  if (projDetail.hasOwnProperty("data")) {
+  const data = get(projDetail,'data',{})
+
+  if(!isEmpty(data)) {
     checkedItems = getCheckedItems(projDetail.data, chkedItemsWithLabels);
 
     txtItems = getTxtItems(projDetail.data, textBoxItems);
   }
+
 
   //empty object first
   //gets details after useEffect
@@ -88,6 +73,7 @@ export default function ProjectDetailStaff({
   //render after useEffect
   //https://stackoverflow.com/questions/5113374/javascript-check-if-variable-exists-is-defined-initialized
   //reQStatus has default 0 unless updated from db, if wont render 0
+  //LinearProgessbar will be rendered if zerp
   if (reqStatus) {
     return (
       <div className="row">
@@ -97,7 +83,7 @@ export default function ProjectDetailStaff({
           projectid={projectid}
           //DB stores from 1, array is 0 based
           status={steps[reqStatus-1]}
-          rowlabels={rowLabels}
+          rowlabels={UIRowLabels}
           checkedItems={checkedItems}
           txtItems={txtItems}
           files={projDetail.files}
