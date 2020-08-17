@@ -1,19 +1,20 @@
 import React from 'react'
 
-import ChatTextArea from 'Pulse/Chat/components/ChatTextArea'
- import ChatButton from 'Pulse/Chat/components/ChatButton'
-
 export default function index() {
 
     return (
 
-    <div>
-            <ChatTextArea/>
-            <div className="float-right">
-            <ChatButton text="Send" />
-            </div>
-       
-            </div>
+        <form>
+        <div className="form-group">
+          <textarea
+            className="form-control"
+            id="chatTextArea"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <button type="button" className="btn btn-primary">Send</button>
+      </form>
 
       
     )
