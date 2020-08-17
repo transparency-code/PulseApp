@@ -9,7 +9,6 @@ import getTxtItems from "Pulse/ProjectDetail/getTxtItems";
 import StaffViewList from "Pulse/ProjectDetail/components/ProjectDetailStaffView";
 import Stepper from "Pulse/components/Stepper";
 import steps from "Pulse/Data/ProcessStates";
-import saveStageinDynamo from "Pulse/ProjectDetail/saveStageinDynamo";
 import processStates from "Pulse/Data/ProcessStates";
 import useNotification from "Pulse/hooks/useNotification";
 import LinearProgressBar from 'Pulse/components/LinearProgressBar'
@@ -20,6 +19,7 @@ export default function ProjectDetailStaff({
   location,
   getDetailFunc,
   getStatusOnly,
+  saveStageInDynamo,
   isAdmin,
 }) {
   const { state } = location;
@@ -58,7 +58,7 @@ export default function ProjectDetailStaff({
   async function saveStage(updateKey, activeStep) {
     // console.log(updateKey)
     // console.log(activeStep)
-     await saveStageinDynamo(updateKey, activeStep, getStatusOnly, setReqStatus, addNotification);
+     await saveStageInDynamo(updateKey, activeStep, getStatusOnly, setReqStatus, addNotification);
  
   }
 

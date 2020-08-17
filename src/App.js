@@ -12,6 +12,7 @@ import NotificationContextProvider from 'Pulse/providers/NotificationContextProv
 import NotificationBar from 'Pulse/components/NotificationBar'
 import getProjectDetails from 'Pulse/ProjectDetail/getProjectDetails'
 import getProjStatusOnly from 'Pulse/ProjectDetail/getProjStatusOnly'
+import saveStageinDynamo from 'Pulse/ProjectDetail/saveStageinDynamo'
 import ChatBox from 'Pulse/Chat'
 
 
@@ -34,7 +35,7 @@ function App() {
           <DisplayRequestByStatusDropdown  path="/displaybystatus"/>
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
 
-          <ProjectDetailStaff path="/projectdetail" getDetailFunc={getProjectDetails } getStatusOnly={getProjStatusOnly} isAdmin={true}/>
+          <ProjectDetailStaff path="/projectdetail" getDetailFunc={getProjectDetails } getStatusOnly={getProjStatusOnly} saveStageInDynamo={saveStageinDynamo} isAdmin={true}/>
           <ChatBox path="/chat" />
         </Router>
         </ErrorBoundary>
