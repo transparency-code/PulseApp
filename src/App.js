@@ -13,7 +13,7 @@ import NotificationBar from 'Pulse/components/NotificationBar'
 import getProjectDetails from 'Pulse/ProjectDetail/getProjectDetails'
 import getProjStatusOnly from 'Pulse/ProjectDetail/getProjStatusOnly'
 import saveStageinDynamo from 'Pulse/ProjectDetail/saveStageinDynamo'
-import ChatBox from 'Pulse/Chat'
+import ChatBox from 'Pulse/Chat/ChatBox.js'
 
 
 

@@ -1,8 +1,9 @@
 /**
  * 
  * @param {string} email 
- * @param {number} projectid 
- * @param {object} chatObj 
+ * @param {number} timestamp
+ * @param {string} chatStr
+ * @param {object} existingObj
  * pass an empty onject is no existing chatObj, ie first chat
  */
 export default function createChatObj(email,timestamp, chatStr, existingObj={}) {

@@ -14,7 +14,8 @@ import useNotification from "Pulse/hooks/useNotification";
 import LinearProgressBar from 'Pulse/components/LinearProgressBar'
 import { get, isEmpty, has } from 'lodash';
 import UIRowLabels from '../UIRowLabels'
-import Chatbox from 'Pulse/Chat'
+import Chatbox from 'Pulse/Chat/ChatBox.js'
+import addChat from 'Pulse/Chat/addChat'
 
 export default function ProjectDetailStaff({
   location,
@@ -105,7 +106,7 @@ export default function ProjectDetailStaff({
        </div>
 
        <div className="col-6">
-         <Chatbox email={email} projectid={projectid}/>
+         <Chatbox email={email} projectid={projectid} addChatFunc={addChat}/>
        </div>
     </div>
     );
