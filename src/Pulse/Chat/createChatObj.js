@@ -1,11 +1,18 @@
-import React from 'react';
+/**
+ * 
+ * @param {string} email 
+ * @param {number} projectid 
+ * @param {object} chatObj 
+ * pass an empty onject is no existing chatObj, ie first chat
+ */
+export default function createChatObj(email,timestamp, chatStr, existingObj={}) {
+   
+   
+    const chatObj = { [timestamp] : {  [email] : chatStr   }  }
 
-//
-function createChatObj(email,projectid, newObj) {
-    return (
-        <div>
-            
-        </div>
-    );
+    console.log(chatObj)
+    const newObj = {...existingObj, ...chatObj}
+    console.log(newObj)
+    return newObj
 }
 
