@@ -14,6 +14,7 @@ import useNotification from "Pulse/hooks/useNotification";
 import LinearProgressBar from 'Pulse/components/LinearProgressBar'
 import { get, isEmpty, has } from 'lodash';
 import UIRowLabels from '../UIRowLabels'
+import Chatbox from 'Pulse/Chat'
 
 export default function ProjectDetailStaff({
   location,
@@ -101,6 +102,10 @@ export default function ProjectDetailStaff({
           updateKey={{ email, projectid }}
           labelArray={processStates}
         />
+       </div>
+
+       <div className="col-6">
+         <Chatbox email={email} projectid={projectid}/>
        </div>
     </div>
     );

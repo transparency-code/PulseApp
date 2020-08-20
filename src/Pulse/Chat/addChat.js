@@ -4,7 +4,7 @@
 import updateIteminDynamoGeneric from 'AWS/updateIteminDynamoGeneric'
 
 //export default async function saveStageinDynamo(key, chatObj) {
-    export default async function addChat() {
+    export default async function addChat(email,projectid,chatObj) {
 
     // const {email, projectid} = key
 

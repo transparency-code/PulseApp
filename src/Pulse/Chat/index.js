@@ -1,7 +1,13 @@
 import React from 'react'
 
-export default function index() {
+/**
+ * 
+ * @param {*} param0 
+ */
+export default function index({email,projectid}) {
 
+  // console.log(email)
+  // console.log(projectid)
     return (
 
         <form>
