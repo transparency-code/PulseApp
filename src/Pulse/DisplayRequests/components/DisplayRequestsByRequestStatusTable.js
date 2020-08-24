@@ -1,5 +1,5 @@
 import React from "react";
-import getDateStringFromID from 'Pulse/utilfunctions/getDateStringFromID'
+import getDateStringFromID from 'Pulse/utilfunctions/getDateDislayStringFromID'
 import { Link } from '@reach/router'
 
 //https://getbootstrap.com/docs/4.4/content/tables/

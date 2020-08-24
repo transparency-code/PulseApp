@@ -1,4 +1,4 @@
-export default function getDislayStringFromID(projectId) {
+export default function c(projectId) {
   //eg:20050916180983
   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice
   //str.slice(beginIndex[, endIndex])

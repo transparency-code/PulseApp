@@ -17,6 +17,8 @@ import UIRowLabels from '../UIRowLabels'
 import Chatbox from 'Pulse/Chat/ChatBox.js'
 import addChat from 'Pulse/Chat/addChat'
 
+
+
 export default function ProjectDetailStaff({
   location,
   getDetailFunc,
@@ -36,6 +38,8 @@ export default function ProjectDetailStaff({
   //db should not have zero
   const [reqStatus, setReqStatus] = useState(0);
 
+  const [chatObj, setChatObj] = useState({});
+
   const { addNotification } = useNotification();
 
   useEffect(() => {
@@ -52,6 +56,11 @@ export default function ProjectDetailStaff({
        const requestStatus = get(projDetail,'requeststatus')
       setReqStatus(requestStatus);
      }
+
+     if ( has(projDetail,'chat')) {
+      setChatObj(get(projDetail,'chat'))
+    }
+
   }, [email, projectid,projDetail,getDetailFunc]);
 
   let checkedItems = [];
@@ -66,21 +75,24 @@ export default function ProjectDetailStaff({
 
   const data = get(projDetail,'data',{})
 
+
+
   if(!isEmpty(data)) {
     checkedItems = getCheckedItems(projDetail.data, chkedItemsWithLabels);
 
     txtItems = getTxtItems(projDetail.data, textBoxItems);
+
+    
   }
 
 
-  //empty object first
-  //gets details after useEffect
-  //console.log(projDetail)
 
+
+ 
   //render after useEffect
   //https://stackoverflow.com/questions/5113374/javascript-check-if-variable-exists-is-defined-initialized
   //reQStatus has default 0 unless updated from db, if wont render 0
-  //LinearProgessbar will be rendered if zerp
+  //LinearProgessbar will be rendered if zero
   if (reqStatus) {
     return (
       <div className="row">
@@ -106,7 +118,7 @@ export default function ProjectDetailStaff({
        </div>
 
        <div className="col-6">
-         <Chatbox email={email} projectid={projectid} addChatFunc={addChat}/>
+         <Chatbox email={email} projectid={projectid} addChatFunc={addChat} chatObj={chatObj}/>
        </div>
     </div>
     );

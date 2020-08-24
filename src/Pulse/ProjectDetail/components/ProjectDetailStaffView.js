@@ -1,5 +1,5 @@
 import React from "react";
-import getDateStringFromID from 'Pulse/utilfunctions/getDateStringFromID'
+import getDateStringFromID from 'Pulse/utilfunctions/getDateDislayStringFromID'
 import DisplayFiles from 'Pulse/components/DisplayFiles'
 
 export default function ProjectDetailStaffView({
