@@ -1,4 +1,4 @@
-export default function c(projectId) {
+export default function getDateDisplayStringFromID(projectId) {
   //eg:20050916180983
   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice
   //str.slice(beginIndex[, endIndex])
@@ -9,7 +9,7 @@ export default function c(projectId) {
   const month = projectId.slice(2,4)
   const day = projectId.slice(4,6)
 
-  const dateString = day + "-" + month + "-" + year
+  const dateString = `${day}-${month}-${year}`
 
   return dateString
 
