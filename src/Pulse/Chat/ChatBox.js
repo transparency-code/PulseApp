@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
-import Box from '@material-ui/core/Box';
 import ChatHistory from './ChatHistory'
+import SendChat from './SendChat'
 
 ChatBox.propTypes = {
   email : PropTypes.string.isRequired,
@@ -14,6 +14,7 @@ ChatBox.propTypes = {
 //React functional component names must be start with uppercase letter.
 function ChatBox({email,projectid,addChatFunc,chatObj}) {
 
+
   const [chatTxt, setChatTxt] = useState("");
 
   function handleSubmit(event) {
@@ -21,27 +22,17 @@ function ChatBox({email,projectid,addChatFunc,chatObj}) {
          event.preventDefault();
      }
 
-   console.log(chatObj)
+  //  console.log(chatObj)
   
   return (
-    <Box component="div" p={1}>
+   <div>
 
     <ChatHistory userEmail={email} chatObj={chatObj} />
-    
-    <form onSubmit={handleSubmit}>
-        <div className="form-group">
-         <textarea
-            className="form-control"
-            id="chatTextArea"
-            rows="3"
-            value={chatTxt}
-            onChange={ event => setChatTxt(event.target.value)}
-          ></textarea>
-        </div>
+    <SendChat handleSubmitFunc={handleSubmit} chatTxt={chatTxt} setChatTxtFunc={setChatTxt} />
 
-        <input type="submit" className="btn btn-primary"  value="Send"/>
-      </form>
-      </Box>
+    
+  
+      </div>
   );
 }
 

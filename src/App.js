@@ -13,7 +13,7 @@ import NotificationBar from 'Pulse/components/NotificationBar'
 import getProjectDetails from 'Pulse/ProjectDetail/getProjectDetails'
 import getProjStatusOnly from 'Pulse/ProjectDetail/getProjStatusOnly'
 import saveStageinDynamo from 'Pulse/ProjectDetail/saveStageinDynamo'
-import ChatBox from 'Pulse/Chat/ChatBox.js'
+
 
 
 
@@ -36,7 +36,7 @@ function App() {
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
 
           <ProjectDetailStaff path="/projectdetail" getDetailFunc={getProjectDetails } getStatusOnly={getProjStatusOnly} saveStageInDynamo={saveStageinDynamo} isAdmin={true}/>
-          <ChatBox path="/chat" />
+ 
         </Router>
         </ErrorBoundary>
 

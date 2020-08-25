@@ -1,5 +1,5 @@
 import React from "react";
-import getDateStringFromID from 'Pulse/utilfunctions/getDateDislayStringFromID'
+import getDateStringFromID from 'Pulse/utilfunctions/getDateDisplayStringFromID'
 
 //https://getbootstrap.com/docs/4.4/content/tables/
 export default function DisplayRequestsByUserTable({headers,data,processStates}) {
