@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Box from '@material-ui/core/Box';
+
 
 SendChat.propTypes = {
     handleSubmitFunc : PropTypes.func.isRequired,
@@ -12,8 +12,8 @@ function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc}) {
 
 
     return (
-        <Box component="div" pt={1}>
-        <form onSubmit={handleSubmitFunc}>
+
+        <form onSubmit={handleSubmitFunc} pt={1}>
         <div className="form-group">
          <textarea
             className="form-control"
@@ -24,9 +24,9 @@ function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc}) {
           ></textarea>
         </div>
 
-        <input type="submit" className="btn btn-primary"  value="Send"/>
+        <input type="submit" className="btn btn-primary float-right"  value="Send" />
       </form>
-      </Box>
+
     );
 }
 
