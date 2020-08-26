@@ -26,15 +26,15 @@ function ChatLine({ timestamp, chatObj, userEmail }) {
 
     const dateTimeString = getDateTimeDisplayString(timestamp)
 
-    
+    //https://getbootstrap.com/docs/4.0/utilities/colors/
     //align to right if seeingmyOwnChat
     const seeingMyOwnChat = <React.Fragment>
-        <div className="p-3 bg-info text-white text-right" >{`${email} ${dateTimeString} `}<MessageIcon/></div>
+        <div className="p-3 bg-dark text-white text-right" ><span className="text-info">{email}</span> {dateTimeString} <MessageIcon/></div>
         <div className="p-3 bg-light text-black text-right" >{`${chatString} `}</div>
     </React.Fragment>
 
     const seeingOtherChat = <React.Fragment>
-        <div className="p-3 bg-info text-white" ><CommentIcon/>{` ${dateTimeString} ${email}`}</div>
+        <div className="p-3 bg-dark text-white" ><CommentIcon/> {dateTimeString} <span className="text-info">{email}</span></div>
         <div className="p-3 bg-light text-black" >{` ${chatString}`}</div>
     </React.Fragment>
 
