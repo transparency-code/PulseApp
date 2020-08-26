@@ -16,7 +16,7 @@ function ChatHistory({ userEmail, chatObj }) {
   // console.log(userEmail)
   // console.log(chatObj)
 
-  const chatList = map(chatObj, (value, key) => {
+  const chatLines = map(chatObj, (value, key) => {
 
     // console.log(value)
     // console.log(key)
@@ -26,7 +26,15 @@ function ChatHistory({ userEmail, chatObj }) {
    }
 
   )
-  return chatList
+
+  //https://material-ui.com/system/flexbox/
+  //FlexBox Container
+  //https://material-ui.com/system/palette/
+  //bgcolor is to be from palette
+
+  return  chatLines
+
+
 
 }
 

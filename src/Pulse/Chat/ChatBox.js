@@ -25,7 +25,8 @@ function ChatBox({email,projectid,addChatFunc,chatObj}) {
   //  console.log(chatObj)
   
   return (
-   <div>
+    //https://material-ui.com/system/flexbox/
+    <div >
 
     <ChatHistory userEmail={email} chatObj={chatObj} />
     <SendChat handleSubmitFunc={handleSubmit} chatTxt={chatTxt} setChatTxtFunc={setChatTxt} />
