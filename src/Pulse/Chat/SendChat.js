@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 SendChat.propTypes = {
     handleSubmitFunc : PropTypes.func.isRequired,
     chatTxt : PropTypes.string.isRequired,
-    setChatTxtFunc : PropTypes.func.isRequired
+    setChatTxtFunc : PropTypes.func.isRequired,
 };
 
 function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc}) {

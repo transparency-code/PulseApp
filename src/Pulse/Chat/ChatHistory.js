@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChatLine from './ChatLine'
-import { map } from 'lodash'
+import { map, orderBy } from 'lodash'
 
 //https://www.w3schools.com/howto/howto_css_chat.asp
 ChatHistory.propTypes = {
@@ -14,25 +14,28 @@ ChatHistory.propTypes = {
 function ChatHistory({ userEmail, chatObj }) {
 
   // console.log(userEmail)
-  // console.log(chatObj)
+   //console.log(chatObj)
 
   const chatLines = map(chatObj, (value, key) => {
 
     // console.log(value)
-    // console.log(key)
+  
     //timestamp is key
-    return    <ChatLine timestamp={key} chatObj={value} key={key} userEmail={userEmail} />
+    return    <ChatLine timestamp={key} chatObj={value} key={key}  userEmail={userEmail} />
 
    }
 
   )
 
-  //https://material-ui.com/system/flexbox/
-  //FlexBox Container
-  //https://material-ui.com/system/palette/
-  //bgcolor is to be from palette
+//https://stackoverflow.com/questions/43112327/sorting-a-map-of-keys-and-values-please-to-order-a-list-in-es6-with-lodash-keep
+//https://lodash.com/docs/4.17.15#orderBy
 
-  return  chatLines
+const orderedChatLines = orderBy(chatLines,['key'])
+
+// console.log(chatLines)
+// console.log(orderedChatLines)
+
+  return   orderedChatLines
 
 
 

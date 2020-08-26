@@ -18,7 +18,7 @@ function ChatBox({email,projectid,addChatFunc,chatObj}) {
   const [chatTxt, setChatTxt] = useState("");
 
   function handleSubmit(event) {
-         addChatFunc(email,projectid,chatTxt)
+         addChatFunc(email,projectid,chatTxt,chatObj)
          event.preventDefault();
      }
 
