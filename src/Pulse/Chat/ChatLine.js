@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import getDateTimeDisplayString from 'Pulse/utilfunctions/getDateTimeDisplayString'
 import { keys, get } from 'lodash'
+import CommentIcon from '@material-ui/icons/Comment';
+import MessageIcon from '@material-ui/icons/Message';
+
 
 ChatLine.propTypes = {
     timestamp: PropTypes.string.isRequired,
@@ -26,12 +29,12 @@ function ChatLine({ timestamp, chatObj, userEmail }) {
     
     //align to right if seeingmyOwnChat
     const seeingMyOwnChat = <React.Fragment>
-        <div className="p-3 bg-info text-white text-right" >{`${email} ${dateTimeString}`}</div>
+        <div className="p-3 bg-info text-white text-right" >{`${email} ${dateTimeString} `}<MessageIcon/></div>
         <div className="p-3 bg-light text-black text-right" >{`${chatString} `}</div>
     </React.Fragment>
 
     const seeingOtherChat = <React.Fragment>
-        <div className="p-3 bg-info text-white" >{`${email} ${dateTimeString}`}</div>
+        <div className="p-3 bg-info text-white" ><CommentIcon/>{` ${dateTimeString} ${email}`}</div>
         <div className="p-3 bg-light text-black" >{` ${chatString}`}</div>
     </React.Fragment>
 
