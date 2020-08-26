@@ -30,12 +30,12 @@ function ChatLine({ timestamp, chatObj, userEmail }) {
     //align to right if seeingmyOwnChat
     const seeingMyOwnChat = <React.Fragment>
         <div className="p-3 bg-dark text-white text-right" ><span className="text-info">{email}</span> {dateTimeString} <MessageIcon/></div>
-        <div className="p-3 bg-light text-black text-right" >{`${chatString} `}</div>
+        <div className="p-3 bg-light text-black text-right" style={{overflowWrap: "break-word"}} >{`${chatString} `}</div>
     </React.Fragment>
 
     const seeingOtherChat = <React.Fragment>
         <div className="p-3 bg-dark text-white" ><CommentIcon/> {dateTimeString} <span className="text-info">{email}</span></div>
-        <div className="p-3 bg-light text-black" >{` ${chatString}`}</div>
+        <div className="p-3 bg-light text-black"  style={{overflowWrap: "break-word"}}><p>{` ${chatString}`}</p></div>
     </React.Fragment>
 
     //if email from db for chat is current user, 
