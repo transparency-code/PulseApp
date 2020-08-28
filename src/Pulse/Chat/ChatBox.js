@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import ChatHistory from './ChatHistory'
 import SendChat from './SendChat'
+import Box from '@material-ui/core/Box';
 
 ChatBox.propTypes = {
   email : PropTypes.string.isRequired,
@@ -26,14 +27,15 @@ function ChatBox({email,projectid,addChatFunc,chatObj}) {
   
   return (
     //https://material-ui.com/system/flexbox/
-    <div >
+    <Box border={1} p={2}>
 
+    <p className="lead text-white bg-dark p-1">Chat Box</p>
     <ChatHistory userEmail={email} chatObj={chatObj} />
     <SendChat handleSubmitFunc={handleSubmit} chatTxt={chatTxt} setChatTxtFunc={setChatTxt} />
 
     
   
-      </div>
+      </Box>
   );
 }
 
