@@ -23,7 +23,7 @@ function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc}) {
 
     return (
        <div>
-        <form onSubmit={handleSubmitFunc} pt={1}>
+        <form pt={1}>
         <div className="form-group">
          <textarea
             className="form-control"
@@ -34,7 +34,7 @@ function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc}) {
           ></textarea>
         </div>
 
-        <input type="submit" className="btn btn-primary" style={styles.input} value="Send" />
+        <button type="button" className="btn btn-primary" style={styles.input} onClick={handleSubmitFunc}> Send </button>
       </form>
     </div>  
 

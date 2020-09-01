@@ -2,9 +2,9 @@ import getAttributesFromDynamoSpecific from "AWS/getAttributesFromDynamoSpecific
 
 
 
-export default async function getProjStatusOnly(email,projectId,attribute) {
+export default async function getProjStatus(email,projectId, setFunc) {
 
-   const dataFromDB =  await getAttributesFromDynamoSpecific(email,projectId,attribute)
+   const dataFromDB =  await getAttributesFromDynamoSpecific(email,projectId,['requeststatus'])
 
    //console.log(dataFromDB)
    console.log(`Specific Attribute  Info for ${projectId} `)
@@ -24,7 +24,7 @@ export default async function getProjStatusOnly(email,projectId,attribute) {
  //https://stackoverflow.com/questions/983267/how-to-access-the-first-property-of-a-javascript-object
   //console.log(dataFromDB[Object.keys(dataFromDB)[0]])
   
-  return dataFromDB[Object.keys(dataFromDB)[0]]
+  setFunc( dataFromDB[Object.keys(dataFromDB)[0]] )
  //  setReqStage(data.requeststatus)
  
 }

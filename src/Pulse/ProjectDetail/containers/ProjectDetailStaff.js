@@ -16,16 +16,19 @@ import { get, isEmpty, has } from 'lodash';
 import UIRowLabels from '../UIRowLabels'
 import Chatbox from 'Pulse/Chat/ChatBox.js'
 import addChat from 'Pulse/Chat/addChat'
+import getUpdatedChat from 'Pulse/Chat/getUpdatedChat'
 
 
 
 export default function ProjectDetailStaff({
   location,
-  getDetailFunc,
-  getStatusOnly,
-  saveStageInDynamo,
+  getProjectDetailsFunc,
+  getProjStatusFunc,
+  saveStageInDynamoFunc,
   isAdmin,
 }) {
+
+  // console.log(location)
   const { state } = location;
 
   const { email, projectid } = state;
@@ -38,13 +41,13 @@ export default function ProjectDetailStaff({
   //db should not have zero
   const [reqStatus, setReqStatus] = useState(0);
 
-  const [chatObj, setChatObj] = useState({});
+  
 
   const { addNotification } = useNotification();
 
   useEffect(() => {
     async function fetchData() {
-      await getDetailFunc(email, projectid, setProjDetail);
+      await getProjectDetailsFunc(email, projectid, setProjDetail);
     }
 
     //reducing re-render
@@ -57,36 +60,36 @@ export default function ProjectDetailStaff({
       setReqStatus(requestStatus);
      }
 
-     if ( has(projDetail,'chat')) {
-      setChatObj(get(projDetail,'chat'))
-    }
+ 
 
-  }, [email, projectid,projDetail,getDetailFunc]);
+  }, [email, projectid,projDetail,getProjectDetailsFunc]);
 
   let checkedItems = [];
   let txtItems = [];
 
-  async function saveStage(updateKey, activeStep) {
+  function saveStage(updateKey, activeStep) {
     // console.log(updateKey)
     // console.log(activeStep)
-     await saveStageInDynamo(updateKey, activeStep, getStatusOnly, setReqStatus, addNotification);
- 
+    //these are async fuctions passed in
+    saveStageInDynamoFunc(updateKey, activeStep, addNotification);
+    getProjStatusFunc(email,projectid, setReqStatus)
+   
   }
 
   const data = get(projDetail,'data',{})
 
-
+  const chat = get(projDetail,'chat',{})
 
   if(!isEmpty(data)) {
-    checkedItems = getCheckedItems(projDetail.data, chkedItemsWithLabels);
+    checkedItems = getCheckedItems(data, chkedItemsWithLabels);
 
-    txtItems = getTxtItems(projDetail.data, textBoxItems);
+    txtItems = getTxtItems(data, textBoxItems);
 
     
   }
 
 
-
+ //console.log(chat)
 
  
   //render after useEffect
@@ -118,7 +121,7 @@ export default function ProjectDetailStaff({
        </div>
 
        <div className="col-6">
-         <Chatbox email={email} projectid={projectid} addChatFunc={addChat} chatObj={chatObj}/>
+         <Chatbox email={email} projectid={projectid} addChatFunc={addChat} getUpdatedChatFunc={getUpdatedChat} DBChatObj={chat} />
        </div>
     </div>
     );

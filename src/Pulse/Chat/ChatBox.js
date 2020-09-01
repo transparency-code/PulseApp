@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ChatHistory from './ChatHistory'
 import SendChat from './SendChat'
 import Box from '@material-ui/core/Box';
+import useNotification from 'Pulse/hooks/useNotification'
 
 ChatBox.propTypes = {
   email : PropTypes.string.isRequired,
@@ -13,17 +14,28 @@ ChatBox.propTypes = {
 
 ////https://rangle.io/blog/simplifying-controlled-inputs-with-hooks/
 //React functional component names must be start with uppercase letter.
-function ChatBox({email,projectid,addChatFunc,chatObj}) {
+function ChatBox({email,projectid,DBChatObj,addChatFunc,getUpdatedChatFunc}) {
 
-
+  const [chatObj, setChatObj] = useState(DBChatObj);
   const [chatTxt, setChatTxt] = useState("");
 
-  function handleSubmit(event) {
-         addChatFunc(email,projectid,chatTxt,chatObj)
-         event.preventDefault();
+    //unpackcontextusage
+    const {addNotification} = useNotification()
+
+  // console.log(email)
+  // console.log(projectid)
+  // console.log(chatObj)
+  // console.log(addChatFunc)
+
+  function  handleSubmit(event) {
+  
+        addChatFunc(email,projectid,chatTxt,chatObj, setChatTxt,addNotification)
+        getUpdatedChatFunc(email,projectid,setChatObj)
+       
+  
      }
 
-  //  console.log(chatObj)
+
   
   return (
     //https://material-ui.com/system/flexbox/

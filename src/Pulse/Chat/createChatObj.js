@@ -11,9 +11,9 @@ export default function createChatObj(email,timestamp, chatStr, existingObj={}) 
    
     const chatObj = { [timestamp] : {  [email] : chatStr   }  }
 
-    console.log(chatObj)
+   // console.log(chatObj)
     const newObj = {...existingObj, ...chatObj}
-    console.log(newObj)
+  //  console.log(newObj)
     return newObj
 }
 

@@ -4,8 +4,9 @@ import { putToDynamo } from "AWS/putToDynamo";
 import { uploadUserFilesToS3 } from "AWS/uploadUserFilesToS3";
 import AWS from "AWS/aws_config";
 
+
 //doesnt receive a function to set state. Information is logged into console within itself
-export default function submitRequest({ requestState,addNotification }, email) {
+export default function submitRequest({ requestState, addNotification }, email) {
   //console.log(requestState)
 
   const projectId = createProjectId();
@@ -16,7 +17,7 @@ export default function submitRequest({ requestState,addNotification }, email) {
 
   const data = removeKeysWithNull(requestState);
 
-  
+
  
 // Credentials will be available when this function is called.
   AWS.config.credentials.get(async function () {

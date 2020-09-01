@@ -13,7 +13,7 @@ import createChatTimeStamp from 'Pulse/utilfunctions/createChatTimeStamp'
      * @param {string} chatStr 
      * @param {object} existChatObj  existing chat object stored in Db
      */
-    export default async function addChat(email,projectid,chatStr,existChatObj) {
+    export default async function addChat(email,projectid,chatStr,existChatObj,clearChatBoxFunc, notificationFunc) {
 
     // const {email, projectid} = key
     //create Time stamp here here
@@ -26,6 +26,7 @@ import createChatTimeStamp from 'Pulse/utilfunctions/createChatTimeStamp'
 
     const response = await updateIteminDynamoGeneric(email,projectid,attrToUpdate, newChatObj)
 
-    return response
+    response === 200 ? clearChatBoxFunc("") : notificationFunc(response)
+    //return response
 }
 

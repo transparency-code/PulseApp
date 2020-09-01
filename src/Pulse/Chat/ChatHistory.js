@@ -16,6 +16,8 @@ function ChatHistory({ userEmail, chatObj }) {
   // console.log(userEmail)
    //console.log(chatObj)
 
+ 
+
   const chatLines = map(chatObj, (value, key) => {
 
     // console.log(value)
