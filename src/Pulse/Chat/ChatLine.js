@@ -8,17 +8,17 @@ import MessageIcon from '@material-ui/icons/Message';
 
 ChatLine.propTypes = {
     timestamp: PropTypes.string.isRequired,
-    chatObj: PropTypes.object.isRequired
+    chatItem: PropTypes.object.isRequired
 };
 
 //chatObj is a single object
 
-function ChatLine({ timestamp, chatObj, userEmail }) {
+function ChatLine({ timestamp, chatItem, userEmail }) {
 
     //https://stackoverflow.com/a/56757009/669577
-    const email = get(keys(chatObj), 0);
+    const email = get(keys(chatItem), 0);
 
-    const chatString = get(chatObj, email)
+    const chatString = get(chatItem, email)
 
     // console.log(email)
     // console.log(chatString)
