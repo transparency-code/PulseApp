@@ -15,6 +15,10 @@ ChatLine.propTypes = {
 
 function ChatLine({ timestamp, chatItem, userEmail }) {
 
+    // console.log(timestamp)
+    // console.log(chatItem)
+    // console.log(userEmail)
+
     //https://stackoverflow.com/a/56757009/669577
     const email = get(keys(chatItem), 0);
 

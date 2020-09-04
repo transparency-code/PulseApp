@@ -8,13 +8,15 @@ export default function Pagination({postsPerPage, totalPosts, setCurrentPage}) {
         pageNumbers = pageNumbers.concat(i)
     }
 
+    //console.log(pageNumbers)
+
     return (
        <nav>
            <ul className="pagination">
                {
                    pageNumbers.map( number => (
                        <li key={number} className='page-item'>
-                           <a onClick={() => setCurrentPage(number)}  className='page-link' href="#">
+                           <a onClick={() => setCurrentPage(number)}  className='page-link' >
                                {number}
                            </a>
                        </li>
