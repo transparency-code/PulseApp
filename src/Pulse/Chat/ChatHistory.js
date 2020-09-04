@@ -17,32 +17,39 @@ ChatHistory.propTypes = {
 function ChatHistory({ userEmail, chatObj }) {
 
   // console.log(userEmail)
-   //console.log(chatObj)
+ //  console.log(chatObj)
 
    
   const chatKeys= keys(chatObj)
   const orderedChatKeys = sortBy(chatKeys)
+  //console.log(orderedChatKeys )
 
-   const [chats, setChats] = useState(orderedChatKeys)
-  // const [loading, setLoading] = useState(false)
-   const [currentPage, setCurrentPage] = useState(1)
+
+   console.log(orderedChatKeys)
+  //  console.log(chats)
    const [postsPerPage] = useState(5)
+   const pageCount = Math.ceil(orderedChatKeys.length/ postsPerPage)
+  // const [loading, setLoading] = useState(false)
+   const [currentPage, setCurrentPage] = useState(pageCount)
+  
 
     //Get current posts
  const indexOfLastPost = currentPage * postsPerPage
  const indexOfFirstPost = indexOfLastPost - postsPerPage
 
- //console.log(orderedChatKeys)
+//  console.log(indexOfLastPost)
+//  console.log(indexOfFirstPost)
+//  console.log(chats)
 
- const sliced = chats.slice(indexOfFirstPost, indexOfLastPost)
+ const sliced = orderedChatKeys.slice(indexOfFirstPost, indexOfLastPost)
  const current = pick(chatObj,sliced)
 
- const pageCount = Math.ceil(chats.length/ postsPerPage)
+ //console.log(current)
 
   return (  <Box mb={2}>
     <ChatPage chats={current} userEmail={userEmail}/>
     {/* <Pagination postsPerPage={postsPerPage} totalPosts={chats.length} setCurrentPage={setCurrentPage}/> */}
-    <Pagination count={pageCount} variant="outlined" shape="rounded" defaultPage={1} onChange={(event,page) => setCurrentPage(page)} />
+    <Pagination count={pageCount} variant="outlined" shape="rounded" defaultPage={pageCount} onChange={(event,page) => setCurrentPage(page)} />
   </Box>)
   
 
