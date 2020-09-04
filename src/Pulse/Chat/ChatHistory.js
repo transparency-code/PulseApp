@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import ChatPage from './ChatPage'
 import { keys,sortBy , pick} from 'lodash'
-import Pagination from './Pagination'
+import Pagination from '@material-ui/lab/Pagination'
+import Box from '@material-ui/core/Box';
+// import Pagination from './Pagination'
 
 //https://www.w3schools.com/howto/howto_css_chat.asp
 ChatHistory.propTypes = {
@@ -35,11 +37,13 @@ function ChatHistory({ userEmail, chatObj }) {
  const sliced = chats.slice(indexOfFirstPost, indexOfLastPost)
  const current = pick(chatObj,sliced)
 
+ const pageCount = Math.ceil(chats.length/ postsPerPage)
 
-  return (  <React.Fragment>
+  return (  <Box mb={2}>
     <ChatPage chats={current} userEmail={userEmail}/>
-    <Pagination postsPerPage={postsPerPage} totalPosts={chats.length} setCurrentPage={setCurrentPage}/>
-  </React.Fragment>)
+    {/* <Pagination postsPerPage={postsPerPage} totalPosts={chats.length} setCurrentPage={setCurrentPage}/> */}
+    <Pagination count={pageCount} variant="outlined" shape="rounded" defaultPage={1} onChange={(event,page) => setCurrentPage(page)} />
+  </Box>)
   
 
 

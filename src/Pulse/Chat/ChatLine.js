@@ -39,7 +39,7 @@ function ChatLine({ timestamp, chatItem, userEmail }) {
 
     const seeingOtherChat = <React.Fragment>
         <div className="p-3 bg-dark text-white" ><CommentIcon/> {dateTimeString} <span className="text-info">{email}</span></div>
-        <div className="p-3 bg-light text-black"  style={{overflowWrap: "break-word"}}><p>{` ${chatString}`}</p></div>
+        <div className="p-3 bg-light text-black"  style={{overflowWrap: "break-word"}}>{` ${chatString}`}</div>
     </React.Fragment>
 
     //if email from db for chat is current user, 
