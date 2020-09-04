@@ -1,12 +1,17 @@
 import React from 'react'
+import {range} from 'lodash'
 
 export default function Pagination({postsPerPage, totalPosts, setCurrentPage}) {
 
-    let pageNumbers = []
 
-    for(let i = 1 ; i <= Math.ceil(totalPosts/ postsPerPage); i++) {
-        pageNumbers = pageNumbers.concat(i)
-    }
+    const pageNumbers = range(1,Math.ceil(totalPosts/ postsPerPage)+1)
+
+    // console.log(numbers)
+    // let pageNumbers = []
+
+    // for(let i = 1 ; i <= Math.ceil(totalPosts/ postsPerPage); i++) {
+    //     pageNumbers = pageNumbers.concat(i)
+    // }
 
     //console.log(pageNumbers)
 
