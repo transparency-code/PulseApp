@@ -33,13 +33,13 @@ function ChatLine({ timestamp, chatItem, userEmail }) {
     //https://getbootstrap.com/docs/4.0/utilities/colors/
     //align to right if seeingmyOwnChat
     const seeingMyOwnChat = <React.Fragment>
-        <div className="p-3 bg-dark text-white text-right" ><span className="text-info">{email}</span> {dateTimeString} <MessageIcon/></div>
-        <div className="p-3 bg-light text-black text-right" style={{overflowWrap: "break-word"}} >{`${chatString} `}</div>
+        <div className="p-1 bg-dark text-white text-right" ><span className="text-info">{email}</span> {dateTimeString} <MessageIcon/></div>
+        <div className="p-1 bg-light text-black text-right" style={{overflowWrap: "break-word"}} >{`${chatString} `}</div>
     </React.Fragment>
 
     const seeingOtherChat = <React.Fragment>
-        <div className="p-3 bg-dark text-white" ><CommentIcon/> {dateTimeString} <span className="text-info">{email}</span></div>
-        <div className="p-3 bg-light text-black"  style={{overflowWrap: "break-word"}}>{` ${chatString}`}</div>
+        <div className="p-1 bg-dark text-white" ><CommentIcon/> {dateTimeString} <span className="text-info">{email}</span></div>
+        <div className="p-1 bg-light text-black"  style={{overflowWrap: "break-word"}}>{` ${chatString}`}</div>
     </React.Fragment>
 
     //if email from db for chat is current user, 
