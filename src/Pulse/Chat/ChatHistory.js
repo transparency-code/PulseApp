@@ -25,11 +25,11 @@ function ChatHistory({ userEmail, chatObj }) {
   //console.log(orderedChatKeys )
 
 
-   console.log(orderedChatKeys)
+  // console.log(orderedChatKeys)
   //  console.log(chats)
    const [postsPerPage] = useState(5)
    const pageCount = Math.ceil(orderedChatKeys.length/ postsPerPage)
-  // const [loading, setLoading] = useState(false)
+
    const [currentPage, setCurrentPage] = useState(pageCount)
   
 
