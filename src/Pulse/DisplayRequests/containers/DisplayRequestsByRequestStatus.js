@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from 'react'
 import {getRequestsByRequestState} from '../getRequests'
 import DisplayRequestsByRequestStatusTable from '../components/DisplayRequestsByRequestStatusTable'
 import ErrorBoundary from 'Pulse/components/ErrorBoundary'
-
+import { sortBy } from 'lodash'
 
 export default function DisplayRequestsByRequestStatus({status}) {
 
@@ -25,16 +25,20 @@ export default function DisplayRequestsByRequestStatus({status}) {
        
       },[status]) 
 
-      //console.log(requestArray)
+     // console.log(requestArray)
 
-      const headers=["Initial Request Data","User","View Details"]
+      const sortedArray = sortBy(requestArray, ['projectid'])
+
+      console.log(sortedArray)
+
+      const headers=["ID","Initial Request Data","User","View Details"]
    
       
 
     return (
       <ErrorBoundary>
         {/* <DisplayRequestsTable rows={requestArray} headers={headers} propertiesToDisplay={propertiesTodDisplay}/> */}
-        <DisplayRequestsByRequestStatusTable headers={headers} data={requestArray} />
+        <DisplayRequestsByRequestStatusTable headers={headers} data={sortedArray} />
      
         </ErrorBoundary>
     )

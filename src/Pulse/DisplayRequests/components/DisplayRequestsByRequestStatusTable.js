@@ -15,13 +15,15 @@ export default function DisplayRequestsByRequestStatusTable({headers,data}) {
         <th scope="col">{headers[0]}</th>
         <th scope="col">{headers[1]}</th>
         <th scope="col">{headers[2]}</th>
+        <th scope="col">{headers[3]}</th>
       </tr>
     </thead>
     <tbody>
 
     {data.map((row,index) => (
        <tr key={index}>
-       <th scope="row">  {getDateStringFromID(row.projectid.toString())}</th>
+       <th scope="row">  {row.projectid}</th>
+       <td>  {getDateStringFromID(row.projectid.toString())}</td>
        <td>{row.email}</td>
 
        {/* using reach router link. can set state in redirect */}
