@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import ChatPage from './ChatPage'
 import { keys,sortBy , pick} from 'lodash'
@@ -17,7 +17,7 @@ ChatHistory.propTypes = {
 function ChatHistory({ userEmail, chatObj }) {
 
   // console.log(userEmail)
- //  console.log(chatObj)
+ // console.log(chatObj)
 
    
   const chatKeys= keys(chatObj)
@@ -29,8 +29,18 @@ function ChatHistory({ userEmail, chatObj }) {
   //  console.log(chats)
    const [postsPerPage] = useState(5)
    const pageCount = Math.ceil(orderedChatKeys.length/ postsPerPage)
+ //  console.log(pageCount)
 
+
+   //default sets it to last page pageCount
+   //gotcha- doesnt change state on prop change of chatObj
    const [currentPage, setCurrentPage] = useState(pageCount)
+
+   // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    setCurrentPage(pageCount)
+  },[pageCount]);
   
 
     //Get current posts
@@ -42,14 +52,16 @@ function ChatHistory({ userEmail, chatObj }) {
 //  console.log(chats)
 
  const sliced = orderedChatKeys.slice(indexOfFirstPost, indexOfLastPost)
+ //console.log(sliced)
  const current = pick(chatObj,sliced)
 
- //console.log(current)
+
+ //console.log(currentPage)
 
   return (  <Box mb={2}>
     <ChatPage chats={current} userEmail={userEmail}/>
     {/* <Pagination postsPerPage={postsPerPage} totalPosts={chats.length} setCurrentPage={setCurrentPage}/> */}
-    <Pagination count={pageCount} variant="outlined" shape="rounded" defaultPage={pageCount} onChange={(event,page) => setCurrentPage(page)} />
+    <Pagination count={pageCount} variant="outlined" shape="rounded"  onChange={(event,page) => setCurrentPage(page)} />
   </Box>)
   
 

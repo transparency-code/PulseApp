@@ -31,7 +31,7 @@ export default function DisplayRequestsByRequestStatus({status}) {
 
       console.log(sortedArray)
 
-      const headers=["ID","Initial Request Data","User","View Details"]
+      const headers=["ID","Initial Request Made","User","View Details"]
    
       
 

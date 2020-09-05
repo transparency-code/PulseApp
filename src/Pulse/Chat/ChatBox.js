@@ -15,6 +15,7 @@ ChatBox.propTypes = {
 
 ////https://rangle.io/blog/simplifying-controlled-inputs-with-hooks/
 //React functional component names must be start with uppercase letter.
+//This is parent of Chat
 function ChatBox({email,projectid,DBChatObj,addChatFunc,getUpdatedChatFunc}) {
 
   const [chatObj, setChatObj] = useState(DBChatObj);

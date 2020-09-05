@@ -9,7 +9,11 @@ export default function getDateDisplayStringFromID(projectId) {
   const month = projectId.slice(2,4)
   const day = projectId.slice(4,6)
 
-  const dateString = `${day}-${month}-${year}`
+  const hour = projectId.slice(6,8)
+
+  const minute = projectId.slice(8,10)
+
+  const dateString = `${day}-${month}-${year} ${hour}:${minute}`
 
   return dateString
 

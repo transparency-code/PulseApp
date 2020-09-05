@@ -8,7 +8,7 @@ export default function createProjectId() {
   //console.log(timestamp)
 
   //https://stackoverflow.com/questions/15735159/javascript-generate-a-two-digits-positive-random-number
-  const random =  Math.floor(Math.random() * 90 + 10);
+  const random =  Math.floor(Math.random() * 9 + 1);
   
   const id = `${timestamp}${random}`
   
