@@ -11,17 +11,22 @@ function createTimeStamp() {
 
   const year2digit = year4digit.slice(-2)
 
-  const hours = date_ob.getHours();
+  const hours = ("0" + (date_ob.getHours())).slice(-2)
+  
+  //console.log(hours)
 
   const month = ("0" + (date_ob.getMonth() + 1)).slice(-2)
 
   const minutes = ("0" + date_ob.getMinutes()).slice(-2)
+
 
   const date = ("0" + date_ob.getDate()).slice(-2);
 
   const seconds = ("0" + date_ob.getSeconds()).slice(-2);
 
   const timestamp = year2digit + month + date + hours + minutes + seconds
+
+ // console.log(timestamp)
 
   return Number(timestamp)
 }
