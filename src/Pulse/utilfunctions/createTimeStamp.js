@@ -26,7 +26,7 @@ function createTimeStamp() {
 
   const timestamp = year2digit + month + date + hours + minutes + seconds
 
- // console.log(timestamp)
+ //console.log(timestamp)
 
   return Number(timestamp)
 }

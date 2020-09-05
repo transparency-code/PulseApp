@@ -5,14 +5,14 @@ export default function createProjectId() {
 
  
   const timestamp = createTimeStamp()
-
+  //console.log(timestamp)
 
   //https://stackoverflow.com/questions/15735159/javascript-generate-a-two-digits-positive-random-number
   const random =  Math.floor(Math.random() * 90 + 10);
   
-  const id = timestamp + random
+  const id = `${timestamp}${random}`
   
-  // console.log(id)
+ // console.log(id)
 
   return Number(id)
 }
