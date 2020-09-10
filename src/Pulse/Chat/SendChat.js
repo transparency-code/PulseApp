@@ -18,8 +18,8 @@ SendChat.propTypes = {
     setChatTxtFunc : PropTypes.func.isRequired,
 };
 
-function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc}) {
-
+function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc, loading, displayMsg}) {
+console.log(loading)
 
     return (
        <div>
@@ -34,7 +34,11 @@ function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc}) {
           ></textarea>
         </div>
 
-        <button type="button" className="btn btn-primary" style={styles.input} onClick={handleSubmitFunc}> Send </button>
+        <div style={styles.input}>
+       <span>{displayMsg}</span>
+        <button type="button" className="btn btn-primary" style={styles.input} onClick={handleSubmitFunc} disabled={loading}> Send </button>
+        </div>
+
       </form>
     </div>  
 
