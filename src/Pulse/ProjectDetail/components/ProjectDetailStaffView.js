@@ -50,11 +50,16 @@ export default function ProjectDetailStaffView({
   return (
 <React.Fragment>
       <ul className="list-group">
-      <li className="list-group-item list-group-item-primary">{rowlabels.initialDate + " : "+ getDateStringFromID(projectid.toString())}</li>
-      <li className="list-group-item list-group-item-primary">{rowlabels.id + " : " + projectid}</li>
+      <div class="p-3 mb-1 bg-primary text-black">{rowlabels.initialDate + " : "+ getDateStringFromID(projectid.toString())}</div>
+      <div class="p-3 mb-1 bg-primary text-black">{rowlabels.id + " : " + projectid}</div>
+      <div class="p-3 mb-1 bg-primary text-black">{rowlabels.email + " : " + email}</div>
+      <div class="p-3 mb-1 bg-primary text-white">{rowlabels.status + " : " + status}</div>
+      <div class="p-3 mb-1 bg-primary text-black">{rowlabels.optionsLabel}</div>
+      
+      {/* <li className="list-group-item list-group-item-primary">{rowlabels.id + " : " + projectid}</li>
       <li className="list-group-item list-group-item-primary">{rowlabels.email + " : " + email}</li>
       <li className="list-group-item list-group-item-secondary">{rowlabels.status + " : " + status}</li>
-      <li className="list-group-item list-group-item-primary">{rowlabels.optionsLabel}</li>
+      <li className="list-group-item list-group-item-primary">{rowlabels.optionsLabel}</li> */}
      
       {checkedItemsList}
       {txtItemsList }
