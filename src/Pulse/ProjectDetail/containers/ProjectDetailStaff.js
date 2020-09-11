@@ -17,7 +17,8 @@ import UIRowLabels from '../UIRowLabels'
 import Chatbox from 'Pulse/Chat/ChatBox.js'
 import addChat from 'Pulse/Chat/addChat'
 import getUpdatedChat from 'Pulse/Chat/getUpdatedChat'
-
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
 
 export default function ProjectDetailStaff({
@@ -27,6 +28,21 @@ export default function ProjectDetailStaff({
   saveStageInDynamoFunc,
   isAdmin,
 }) {
+
+  // const styles = {
+
+  //   container : {
+  //     display:"flex",
+  //     flexDirection : "row",
+  //     flexWrap : wrap,
+  //     justifyContent : "flex-start"
+  //   },
+  
+  //   projectInfo : {
+  //     width:'50%',
+  //     float: "left"
+  //   }
+  // }
 
   // console.log(location)
   const { state } = location;
@@ -98,8 +114,10 @@ export default function ProjectDetailStaff({
   //LinearProgessbar will be rendered if zero
   if (reqStatus) {
     return (
-      <div className="row">
-      <div className="col-6">
+      <Grid container>
+    
+    <Grid item xs={12} sm={6}>
+    <Box component="div" p={2}>
         <StaffViewList
           email={email}
           projectid={projectid}
@@ -110,20 +128,25 @@ export default function ProjectDetailStaff({
           txtItems={txtItems}
           files={projDetail.files}
         />
-
-        <Stepper
+          <Stepper
           steps={steps}
           storedStep={reqStatus}
           saveStageFunc={saveStage}
           updateKey={{ email, projectid }}
           labelArray={processStates}
         />
-       </div>
+        </Box>
+    </Grid>
 
-       <div className="col-6">
-         <Chatbox email={email} projectid={projectid} addChatFunc={addChat} getUpdatedChatFunc={getUpdatedChat} DBChatObj={chat} />
-       </div>
-    </div>
+    <Grid item xs={12} sm={6}>
+    <Box component="div" p={2}>
+    <Chatbox email={email} projectid={projectid} addChatFunc={addChat} getUpdatedChatFunc={getUpdatedChat} DBChatObj={chat} />
+    </Box>
+      </Grid>
+     
+
+  
+    </Grid>
     );
   } else {
     return <LinearProgressBar/>

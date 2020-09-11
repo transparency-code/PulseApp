@@ -19,7 +19,7 @@ SendChat.propTypes = {
 };
 
 function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc, loading, displayMsg}) {
-console.log(loading)
+//console.log(loading)
 
     return (
        <div>

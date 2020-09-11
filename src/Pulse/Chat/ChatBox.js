@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import ChatHistory from './ChatHistory'
 import SendChat from './SendChat'
 import Box from '@material-ui/core/Box';
-import useNotification from 'Pulse/hooks/useNotification'
+
 
 ChatBox.propTypes = {
   email: PropTypes.string.isRequired,
@@ -22,11 +22,10 @@ function ChatBox({ email, projectid, DBChatObj, addChatFunc, getUpdatedChatFunc 
   const [loading, setLoading] = useState(false)
   const [displayMsg, setDisplayMsg] = useState('')
 
-  const loadingRef = useRef(loading)
 
 
   //unpackcontextusage
-  const { addNotification } = useNotification()
+  //const { addNotification } = useNotification()
 
   // console.log(email)
   // console.log(projectid)
@@ -45,7 +44,7 @@ function ChatBox({ email, projectid, DBChatObj, addChatFunc, getUpdatedChatFunc 
     if (responseCode === 200) {
       await new Promise((resolve) => {
         setTimeout(() => {
-          resolve(getUpdatedChatFunc(email, projectid, setChatObj, setDisplayMsg)) }, 3000)
+          resolve(getUpdatedChatFunc(email, projectid, setChatObj, setDisplayMsg)) }, 1000)
         })
         
       }

@@ -29,7 +29,7 @@ export default function DisplayRequestsByRequestStatus({status}) {
 
       const sortedArray = sortBy(requestArray, ['projectid'])
 
-      console.log(sortedArray)
+      //console.log(sortedArray)
 
       const headers=["ID","Initial Request Made","User","View Details"]
    
