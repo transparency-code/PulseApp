@@ -6,11 +6,8 @@ import S3FileLink from 'Pulse/components/S3FileLink';
 
 
 const nofiles = (
-  <ul className="list-group">
-  <li className="list-group-item">
-  No files uploaded
-  </li>
-</ul>
+  
+  <div class="p-3 bg-primary text-black">No files uploaded</div>
 )
 
 

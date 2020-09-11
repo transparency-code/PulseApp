@@ -19,7 +19,7 @@ export default function ProjectDetailStaffView({
 
   //a filter function whose output that will be used as a parameter to map. cant use assignmnets inside map
   const checkedItemsList = checkedItems.map((item, index) => (
-    <div class="p-3  bg-primary text-black" key={index}> {item}</div>
+    <div class="p-3  bg-secondary text-black" key={index}> {item}</div>
     // <li className="list-group-item list-group-item-info" key={index}>
     //   {item}
     // </li>
@@ -33,7 +33,7 @@ export default function ProjectDetailStaffView({
     // console.log(value)
 
     return (
-      <div class="p-3  bg-primary text-black" key={index}>
+      <div class="p-3  bg-secondary text-black" key={index}>
         <div className="row">
           <div className="col-6">{`${label} :`}</div>
           <div className="col-6">{value}</div>
@@ -52,11 +52,11 @@ export default function ProjectDetailStaffView({
   return (
     <React.Fragment>
 
-      <div class="p-3 mb-1 bg-primary text-black">{rowlabels.initialDate + " : " + getDateStringFromID(projectid.toString())}</div>
-      <div class="p-3 mb-1 bg-primary text-black">{rowlabels.id + " : " + projectid}</div>
-      <div class="p-3 mb-1 bg-primary text-black">{rowlabels.email + " : " + email}</div>
-      <div class="p-3 mb-1 bg-primary text-white">{rowlabels.status + " : " + status}</div>
-      <div class="p-3 mb-1 bg-primary text-black">{rowlabels.optionsLabel}</div>
+      <div class="p-3 mb-1 bg-secondary text-black">{rowlabels.initialDate + " : " + getDateStringFromID(projectid.toString())}</div>
+      <div class="p-3 mb-1 bg-secondary text-black">{rowlabels.id + " : " + projectid}</div>
+      <div class="p-3 mb-1 bg-secondary text-black">{rowlabels.email + " : " + email}</div>
+      <div class="p-3 mb-1 bg-secondary text-white">{rowlabels.status + " : " + status}</div>
+      <div class="p-3  bg-secondary text-black">{rowlabels.optionsLabel}</div>
 
       {/* <li className="list-group-item list-group-item-primary">{rowlabels.id + " : " + projectid}</li>
       <li className="list-group-item list-group-item-primary">{rowlabels.email + " : " + email}</li>

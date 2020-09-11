@@ -64,7 +64,7 @@ function ChatBox({ email, projectid, DBChatObj, addChatFunc, getUpdatedChatFunc 
     //https://material-ui.com/system/flexbox/
     <Box border={1} p={2}>
 
-      <p className="lead text-white bg-dark p-1">Chat Box</p>
+      <p className="lead text-white bg-secondary p-1">Chat Box</p>
       <ChatHistory userEmail={email} chatObj={chatObj} />
       <SendChat handleSubmitFunc={handleSubmit} chatTxt={chatTxt} setChatTxtFunc={setChatTxt} loading={loading} displayMsg={displayMsg} />
 
