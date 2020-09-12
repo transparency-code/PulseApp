@@ -23,6 +23,6 @@ export default async function saveStageinDynamo(key, activeStep, NotifyFunc) {
   
     }
      
-
+    return response
  
 }

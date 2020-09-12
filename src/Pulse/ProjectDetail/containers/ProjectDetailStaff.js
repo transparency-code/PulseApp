@@ -56,10 +56,12 @@ export default function ProjectDetailStaff({
   //needs to update in stage progess, so seperate statevariable
   //db should not have zero
   const [reqStatus, setReqStatus] = useState(0);
-
+  //console.log(reqStatus)
   
 
   const { addNotification } = useNotification();
+
+
 
   useEffect(() => {
     async function fetchData() {
@@ -83,12 +85,24 @@ export default function ProjectDetailStaff({
   let checkedItems = [];
   let txtItems = [];
 
-  function saveStage(updateKey, activeStep) {
+  //this is for use in savestage
+  const updateKey = { email, projectid }
+
+  async function saveStage(activeStep) {
     // console.log(updateKey)
     // console.log(activeStep)
     //these are async fuctions passed in
-    saveStageInDynamoFunc(updateKey, activeStep, addNotification);
-    getProjStatusFunc(email,projectid, setReqStatus)
+
+    const responseCode  = await saveStageInDynamoFunc(updateKey, activeStep, addNotification)
+
+    //console.log(responseCode)
+    if (responseCode === 200) {
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(getProjStatusFunc(email,projectid, setReqStatus)) }, 1000)
+        })
+        
+      }
    
   }
 
@@ -132,7 +146,7 @@ export default function ProjectDetailStaff({
           steps={steps}
           storedStep={reqStatus}
           saveStageFunc={saveStage}
-          updateKey={{ email, projectid }}
+        //  updateKey={{ email, projectid }}
           labelArray={processStates}
         />
         </Box>

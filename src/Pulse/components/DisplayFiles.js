@@ -7,7 +7,7 @@ import S3FileLink from 'Pulse/components/S3FileLink';
 
 const nofiles = (
   
-  <div class="p-3 bg-primary text-black">No files uploaded</div>
+  <div className="p-3 mb-1 bg-secondary text-black">No files uploaded</div>
 )
 
 
@@ -47,9 +47,10 @@ export default function DisplayFiles({files}) {
 
   return (
  
-    <ul className="list-group">
+    <div>
+       {/* <div class="p-3 bg-secondary text-black">Files</div> */}
       {fileItems}
-    </ul>
+    </div>
  
   )
 }
