@@ -9,7 +9,7 @@ export default function DisplayRequestsByRequestStatusTable({headers,data}) {
 
   return (
     <React.Fragment>
-    <table className="table">
+    <table className="table  table-striped table-sm table-responsive-sm ">
     <thead className="thead-dark">
       <tr>
         <th scope="col">{headers[0]}</th>

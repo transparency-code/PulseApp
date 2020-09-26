@@ -3,6 +3,7 @@ import {getRequestsByRequestState} from '../getRequests'
 import DisplayRequestsByRequestStatusTable from '../components/DisplayRequestsByRequestStatusTable'
 import ErrorBoundary from 'Pulse/components/ErrorBoundary'
 import { sortBy } from 'lodash'
+import Grid from '@material-ui/core/Grid';
 
 export default function DisplayRequestsByRequestStatus({status}) {
 
@@ -37,9 +38,12 @@ export default function DisplayRequestsByRequestStatus({status}) {
 
     return (
       <ErrorBoundary>
+        <Grid container>
+        <Grid item xs={12} >
         {/* <DisplayRequestsTable rows={requestArray} headers={headers} propertiesToDisplay={propertiesTodDisplay}/> */}
         <DisplayRequestsByRequestStatusTable headers={headers} data={sortedArray} />
-     
+        </Grid>
+        </Grid>
         </ErrorBoundary>
     )
 }

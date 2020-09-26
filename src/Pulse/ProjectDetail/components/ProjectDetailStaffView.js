@@ -2,6 +2,7 @@ import React from "react";
 import getDateStringFromID from 'Pulse/utilfunctions/getDateDisplayStringFromID'
 import DisplayFiles from 'Pulse/components/DisplayFiles'
 
+
 export default function ProjectDetailStaffView({
   email,
   projectid,
