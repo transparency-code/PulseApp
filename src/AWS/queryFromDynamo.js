@@ -3,7 +3,7 @@ import docClient from 'AWS/docClient'
 export function CreateParamsForRequestTypeQuery(requestStatus,limit) {
     const params = {
       TableName: process.env.REACT_APP_DYNAMO_TESTTABLE,
-      IndexName : `${process.env.REACT_APP_DYNAMO_TESTTABLE_INDEX}-index`,
+      IndexName : `${process.env.REACT_APP_DYNAMO_TESTTABLE_INDEX}-index-copy`,
       KeyConditionExpression: `${process.env.REACT_APP_DYNAMO_TESTTABLE_INDEX} = :indexkey`,
       ExpressionAttributeValues: {
         ":indexkey": requestStatus,
