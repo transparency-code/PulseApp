@@ -23,19 +23,20 @@ const useStyles = makeStyles((theme) => ({
   }));
 
   
-function MUITable({headers, rowsPerPage, rows}) {
+function MUITable({headers, rowsPerPage, rows, onRowClick}) {
 
     // console.log(headers)
     // console.log(rowsPerPage)
-    // console.log(rows)
+    //console.log(rows)
+    //console.log(onRowClick)
 
     const classes = useStyles();
 
     const [page, setPage] = React.useState(0);
 
-    const handleClick = (event, name) => {
-        console.log(name)
-    };
+    // const handleClick = (index,e) => {
+    //     console.log(index)
+    // };
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -68,15 +69,16 @@ function MUITable({headers, rowsPerPage, rows}) {
 rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
     .map((row,index) => {
 
+        //because map can be used an array
 const objToArrayPair = toPairs(row)
 
-// console.log(row)
-// console.log(objToArrayPair)
+ //console.log(row)
+ //console.log(objToArrayPair)
 
         return (
             <TableRow
                 hover
-                onClick={(event) => handleClick(event, row.name)}
+                onClick={(e) => onRowClick(objToArrayPair)}
                 //role="checkbox"
                 tabIndex={-1}
                 key={index}
@@ -101,6 +103,7 @@ const objToArrayPair = toPairs(row)
 </TableBody>
                         
                     </Table>
+
                 </TableContainer>
                 <TablePagination
 

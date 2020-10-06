@@ -44,7 +44,7 @@ export default function ProjectDetailStaff({
   //   }
   // }
 
-  // console.log(location)
+  //console.log(location)
   const { state } = location;
 
   const { email, projectid } = state;

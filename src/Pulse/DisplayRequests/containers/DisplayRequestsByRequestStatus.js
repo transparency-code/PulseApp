@@ -5,6 +5,7 @@ import { sortBy } from 'lodash'
 import Grid from '@material-ui/core/Grid';
 import getDateStringFromID from 'Pulse/utilfunctions/getDateDisplayStringFromID'
 import MUITable from 'Pulse/Table/MUITable'
+import { navigate } from "@reach/router"
 
 export default function DisplayRequestsByRequestStatus({status}) {
 
@@ -36,6 +37,7 @@ export default function DisplayRequestsByRequestStatus({status}) {
       const headers=["ID","Initial Request Made","User"]
 
 
+      //return mapped array
       const dataTodisplay = sortedArray.map( row => {
         return {
           projectid: row.projectid,
@@ -45,6 +47,16 @@ export default function DisplayRequestsByRequestStatus({status}) {
       })
 
 
+      function onRowClick(arrayPair) {
+        // console.log(arrayPair)
+        // console.log(arrayPair[0][1])
+        //https://reach.tech/router/api/navigate
+        // navigate("/todos", { state: { newId: id } })
+        //need email and projectid to retrive project info . primary and sort key
+        navigate('/projectdetail', {state : { projectid : arrayPair[0][1] , email : arrayPair[2][1] }}  )
+
+  }
+  
         
  
   //  console.log(headers)
@@ -57,7 +69,7 @@ export default function DisplayRequestsByRequestStatus({status}) {
         <Grid container>
         <Grid item xs={12} >
         {/* <DisplayRequestsTable rows={requestArray} headers={headers} propertiesToDisplay={propertiesTodDisplay}/> */}
-        <MUITable headers={headers} rows={dataTodisplay} rowsPerPage={5} />
+        <MUITable headers={headers} rows={dataTodisplay} rowsPerPage={5} onRowClick={onRowClick}/>
         </Grid>
         </Grid>
         </ErrorBoundary>
