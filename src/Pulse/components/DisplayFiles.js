@@ -3,11 +3,12 @@ import React from 'react';
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import AttachmentIcon from "@material-ui/icons/Attachment";
 import S3FileLink from 'Pulse/components/S3FileLink';
+import DisplayText from "Pulse/components/DisplayText"
 
 
 const nofiles = (
   
-  <div className="p-3 mb-1 bg-secondary text-black">No files uploaded</div>
+  <DisplayText text={"No files uploaded"}/>
 )
 
 
