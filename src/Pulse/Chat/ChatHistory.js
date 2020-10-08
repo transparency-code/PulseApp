@@ -4,6 +4,9 @@ import ChatPage from './ChatPage'
 import { keys,sortBy , pick} from 'lodash'
 import Pagination from '@material-ui/lab/Pagination'
 import Box from '@material-ui/core/Box';
+import MUITable from 'Pulse/Table/MUITable'
+import { map} from 'lodash'
+import ChatLine from './ChatLine'
 // import Pagination from './Pagination'
 
 //https://www.w3schools.com/howto/howto_css_chat.asp
@@ -57,11 +60,17 @@ function ChatHistory({ userEmail, chatObj }) {
 
 
  //console.log(currentPage)
+ const headers=["Chat Box"]
+
+ const chatRows = map(chatObj , (valueObj,key) => {
+  return    <ChatLine timestamp={key} chatItem={valueObj} key={key}  userEmail={userEmail} />
+})
 
   return (  <Box mb={2}>
     <ChatPage chats={current} userEmail={userEmail}/>
     {/* <Pagination postsPerPage={postsPerPage} totalPosts={chats.length} setCurrentPage={setCurrentPage}/> */}
     <Pagination count={pageCount} variant="outlined" shape="rounded"  onChange={(event,page) => setCurrentPage(page)} />
+    <MUITable headers={headers} rows={chatRows} />
   </Box>)
   
 

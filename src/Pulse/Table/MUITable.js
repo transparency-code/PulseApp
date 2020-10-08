@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
   
-function MUITable({headers, rowsPerPage, rows, onRowClick}) {
+function MUITable({headers=[], rowsPerPage=0, rows=[], onRowClick}) {
 
     // console.log(headers)
     // console.log(rowsPerPage)
