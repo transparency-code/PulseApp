@@ -7,6 +7,11 @@ import Box from '@material-ui/core/Box';
 import MUITable from 'Pulse/Table/MUITable'
 import { map} from 'lodash'
 import ChatLine from './ChatLine'
+import StyledTableCell from 'Pulse/Styled/StyledTableCell'
+import TableContainer from '@material-ui/core/TableContainer';
+import Table from '@material-ui/core/Table'
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 // import Pagination from './Pagination'
 
 //https://www.w3schools.com/howto/howto_css_chat.asp
@@ -66,14 +71,29 @@ function ChatHistory({ userEmail, chatObj }) {
   return    <ChatLine timestamp={key} chatItem={valueObj} key={key}  userEmail={userEmail} />
 })
 
-  return (  <Box mb={2}>
-    <ChatPage chats={current} userEmail={userEmail}/>
-    {/* <Pagination postsPerPage={postsPerPage} totalPosts={chats.length} setCurrentPage={setCurrentPage}/> */}
-    <Pagination count={pageCount} variant="outlined" shape="rounded"  onChange={(event,page) => setCurrentPage(page)} />
-    <MUITable headers={headers} rows={chatRows} />
-  </Box>)
+  // return (  <Box mb={2}>
+  //   <ChatPage chats={current} userEmail={userEmail}/>
+  //   {/* <Pagination postsPerPage={postsPerPage} totalPosts={chats.length} setCurrentPage={setCurrentPage}/> */}
+  //   <Pagination count={pageCount} variant="outlined" shape="rounded"  onChange={(event,page) => setCurrentPage(page)} />
+  //   <MUITable headers={headers} rows={chatRows} />
+  // </Box>)
   
+return(
+  <TableContainer>
+  <Table    
+    aria-labelledby="tableTitle"
+      size={'medium'}
+      aria-label="MUItable"
+  >
 
+     <TableHead>
+<TableRow>
+<StyledTableCell>Chat Box</StyledTableCell>)}
+</TableRow>
+</TableHead>
+</Table>
+</TableContainer>
+)
 
 
 }

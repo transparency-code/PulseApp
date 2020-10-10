@@ -14,7 +14,7 @@ import useNotification from "Pulse/hooks/useNotification";
 import LinearProgressBar from 'Pulse/components/LinearProgressBar'
 import { get, isEmpty, has } from 'lodash';
 import UIRowLabels from '../UIRowLabels'
-import Chatbox from 'Pulse/Chat/ChatBox.js'
+import ChatBoxContainer from 'Pulse/Chat/containers/ChatBoxContainer'
 import addChat from 'Pulse/Chat/addChat'
 import getUpdatedChat from 'Pulse/Chat/getUpdatedChat'
 import Grid from '@material-ui/core/Grid';
@@ -154,7 +154,7 @@ export default function ProjectDetailStaff({
 
     <Grid item xs={12} md={6}>
     <Box component="div" p={2}>
-    <Chatbox email={email} projectid={projectid} addChatFunc={addChat} getUpdatedChatFunc={getUpdatedChat} DBChatObj={chat} />
+    <ChatBoxContainer email={email} projectid={projectid} addChatFunc={addChat} getUpdatedChatFunc={getUpdatedChat} DBChatObj={chat} />
     </Box>
       </Grid>
      

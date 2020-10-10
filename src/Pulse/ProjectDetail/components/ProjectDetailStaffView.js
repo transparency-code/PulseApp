@@ -55,11 +55,7 @@ export default function ProjectDetailStaffView({
       <DisplayText lbltext={rowlabels.status} datatext={status} />
       
 
-      {/* <li className="list-group-item list-group-item-primary">{rowlabels.id + " : " + projectid}</li>
-      <li className="list-group-item list-group-item-primary">{rowlabels.email + " : " + email}</li>
-      <li className="list-group-item list-group-item-secondary">{rowlabels.status + " : " + status}</li>
-      <li className="list-group-item list-group-item-primary">{rowlabels.optionsLabel}</li> */}
-
+    
       {checkedItems.length > 0 ? <div>
         <DisplayText lbltext={rowlabels.optionsLabel} />
         {checkedItemsList}

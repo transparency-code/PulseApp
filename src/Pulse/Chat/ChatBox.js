@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import ChatHistory from './ChatHistory'
 import SendChat from './SendChat'
 import Box from '@material-ui/core/Box';
+import MUITable from 'Pulse/Table/MUITable'
+import { map, keys, values} from 'lodash'
 
 
 ChatBox.propTypes = {
@@ -29,7 +31,7 @@ function ChatBox({ email, projectid, DBChatObj, addChatFunc, getUpdatedChatFunc 
 
   // console.log(email)
   // console.log(projectid)
-  // console.log(chatObj)
+  //console.log(chatObj)
   // console.log(addChatFunc)
 
 
@@ -57,16 +59,30 @@ function ChatBox({ email, projectid, DBChatObj, addChatFunc, getUpdatedChatFunc 
   }
 
 
+  const headers = ["Chat Box"]
+
+    //return mapped array
+    const dataTodisplay = map(chatObj, (value,key) => {
+
+      const timestamp = key
+      const chatEmail = keys(value)[0]
+      const chatMsg = values(value)[0]
+      // console.log(timestamp)
+      // console.log(chatEmail)
+      // console.log(chatMsg)
+      return [timestamp,chatEmail,chatMsg]
+    })
 
 
-
+    console.log(dataTodisplay)
   return (
     //https://material-ui.com/system/flexbox/
     <Box border={1} p={2}>
-
+{/* 
       <p className="lead text-white bg-secondary p-1">Chat Box</p>
       <ChatHistory userEmail={email} chatObj={chatObj} />
-      <SendChat handleSubmitFunc={handleSubmit} chatTxt={chatTxt} setChatTxtFunc={setChatTxt} loading={loading} displayMsg={displayMsg} />
+      <SendChat handleSubmitFunc={handleSubmit} chatTxt={chatTxt} setChatTxtFunc={setChatTxt} loading={loading} displayMsg={displayMsg} /> */}
+      <MUITable headers={headers}  />
 
 
 
