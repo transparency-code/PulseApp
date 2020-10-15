@@ -32,6 +32,7 @@ import createChatTimeStamp from 'Pulse/utilfunctions/createChatTimeStamp'
     // console.log(newChatObj)
     // console.log(response)
 
+    
     if (response === 200 ) {
         clearChatBoxFunc("")
         //dont display success here..wait 3 seconds for cloud
@@ -39,6 +40,7 @@ import createChatTimeStamp from 'Pulse/utilfunctions/createChatTimeStamp'
         notificationFunc(`Error Sending Message`)
     }
 
+    // return response
     return response
 }
 

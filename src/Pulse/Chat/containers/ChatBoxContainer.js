@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
-//import ChatHistory from './ChatHistory'
-//import SendChat from './SendChat'
+import { sortBy} from 'lodash'
+import SendChat from 'Pulse/Chat/components//SendChat'
 import ChatBox from 'Pulse/Chat/components/ChatBox'
 
 import { map, keys, values } from 'lodash'
 
 
-ChatBox.propTypes = {
+ChatBoxContainer.propTypes = {
     email: PropTypes.string.isRequired,
     projectid: PropTypes.number.isRequired,
     addChatFunc: PropTypes.func.isRequired,
@@ -25,10 +25,18 @@ export default function ChatBoxContainer({ email, projectid, DBChatObj, addChatF
     const [displayMsg, setDisplayMsg] = useState('')
     const [page, setPage] = React.useState(0);
 
-
    
-    console.log(DBChatObj)
-    console.log(chatObj)
+
+
+
+    // console.log(DBChatObj)
+     console.log(chatObj)
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+
 
     async function handleSubmit(event) {
         // console.log(chatTxt)
@@ -54,33 +62,40 @@ export default function ChatBoxContainer({ email, projectid, DBChatObj, addChatF
 
     }
 
+    // const sortedData = sortBy(chatObj,['timestamp'] )
 
-    const dataInArrayFormat = map(chatObj, (value, key) => {
+    // console.log(sortedData)
 
-        const timestamp = key
-        const chatEmail = keys(value)[0]
-        const chatMsg = values(value)[0]
+    // const data = map(chatObj, (value,key) => {
 
-        return [timestamp, chatEmail, chatMsg]
-    })
+    //    console.log(key)
+    //    console.log(value)
+    //     const timestamp = key
+    //     // const chatEmail = keys(value)[0]
+    //     // const chatMsg = values(value)[0]
+
+    //   //  return [timestamp, chatEmail, chatMsg]
+    // })
+
+    
 
 
+    //console.log(dataInArrayFormat)
 
-    console.log(dataInArrayFormat)
 
-    const rowsPerPage = 5
+    
 
-    const rowsInPage = dataInArrayFormat.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, dataInArrayFormat.length - page * rowsPerPage);
 
     return (
         <div>
- {/* <ChatBox rowsPerPage={0} rowsInPage={rowsInPage} page={page} onChangePage={setPage} /> */}
-
+            <ChatBox data={chatObj} totalRows={chatObj.length}  page={page} onChangePage={handleChangePage} />
+            <SendChat handleSubmitFunc={handleSubmit} chatTxt={chatTxt} setChatTxtFunc={setChatTxt} loading={loading} displayMsg={displayMsg} /> 
         </div>
-     
- 
+
+
+
+
 
 
 

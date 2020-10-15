@@ -18,7 +18,8 @@ SendChat.propTypes = {
     setChatTxtFunc : PropTypes.func.isRequired,
 };
 
-function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc, loading, displayMsg}) {
+
+export default function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc, loading, displayMsg}) {
 //console.log(loading)
 
     return (
@@ -44,5 +45,3 @@ function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc, loading, displayMs
 
     );
 }
-
-export default SendChat;

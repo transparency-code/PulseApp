@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import ChatHistory from './ChatHistory'
-import SendChat from './SendChat'
+import SendChat from './components/SendChat'
 import Box from '@material-ui/core/Box';
 import MUITable from 'Pulse/Table/MUITable'
 import { map, keys, values} from 'lodash'

@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import ChatPage from './ChatPage'
-import { keys,sortBy , pick} from 'lodash'
+import {sortBy} from 'lodash'
 import Pagination from '@material-ui/lab/Pagination'
 import Box from '@material-ui/core/Box';
 import MUITable from 'Pulse/Table/MUITable'
 import { map} from 'lodash'
-import ChatLine from './ChatLine'
+import ChatLine from './components/ChatItem'
 import StyledTableCell from 'Pulse/Styled/StyledTableCell'
 import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table'

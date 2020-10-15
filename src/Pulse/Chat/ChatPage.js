@@ -1,6 +1,6 @@
 import React from 'react';
 import { map} from 'lodash'
-import ChatLine from './ChatLine'
+import ChatLine from './components/ChatItem'
 
 function ChatPage({chats,userEmail}) {
 // console.log(chats)
