@@ -21,13 +21,13 @@ import createChatTimeStamp from 'Pulse/utilfunctions/createChatTimeStamp'
     const timestamp = createChatTimeStamp()
 
 
-    const newChatObj = createChatObj(email,timestamp,chatStr,existChatObj)
+    const dynamoList = createChatObj(email,timestamp,chatStr,existChatObj)
 
    const attrToUpdate = "chat"
 
-   
+   console.log(dynamoList )
 
-    const response = await updateIteminDynamoGeneric(email,projectid,attrToUpdate, newChatObj)
+    const response = await updateIteminDynamoGeneric(email,projectid,attrToUpdate, dynamoList)
 
     // console.log(newChatObj)
     // console.log(response)

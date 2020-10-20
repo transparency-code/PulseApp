@@ -12,15 +12,15 @@ import ChatItem from 'Pulse/Chat/components/ChatItem'
 export default function ChatBox({ data = [], page, onChangePage }) {
 
 
-    const rowsPerPage = 5
+    const chatsPerPage = 5
     // console.log(rowsInPage)
 
-    console.log(page)
+    //console.log(page)
 
     // console.log(onChangePage)
 
-    const rowsInPage = data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+    const chatsInPage = data.slice(page * chatsPerPage, page * chatsPerPage + chatsPerPage)
+    const emptyRows = chatsPerPage - Math.min(chatsPerPage, data.length - page * chatsPerPage);
 
     return (
         <div>
@@ -39,16 +39,22 @@ export default function ChatBox({ data = [], page, onChangePage }) {
                     </TableHead>
 
                     <TableBody>
-                        <TableRow>
-                            <TableCell>
+                        
+              
                                 {
-                                    rowsInPage.map((row) => {
-                                        console.log(row)
-                                        return <ChatItem key={row.timestamp} timestamp={row.timestamp.toString()} chatEmail={row.email} chatString={row.message} />
+                                    chatsInPage.map((row,index) => {
+                                        return (
+                                        <TableRow  key={index} >
+                          
+                                        {/* No Table cell to avoid to associated padding/margin  */}
+                                        {/* <TableCell> */}
+                                        <ChatItem   timestamp={row.timestamp.toString()} chatEmail={row.email} chatString={row.message} />
+                                        {/* </TableCell> */}
+                                        </TableRow>
+                                        )
                                     })
                                 }
-                            </TableCell>
-                        </TableRow>
+                            
 
                         {emptyRows > 0 && (
                             // height is reuired for making it visible

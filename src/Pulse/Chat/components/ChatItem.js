@@ -3,16 +3,25 @@ import PropTypes from 'prop-types';
 import getDateTimeDisplayString from 'Pulse/utilfunctions/getDateTimeDisplayString'
 import CommentIcon from '@material-ui/icons/Comment';
 import MessageIcon from '@material-ui/icons/Message';
-
-
+import TableCell from '@material-ui/core/TableCell';
+import { makeStyles } from '@material-ui/core/styles';
 
 //TableCell
 //The component renders a <th> element when the parent context is a header or otherwise a <td> element.
+
+//Only Table cell can contain div
+//Table cell comes with padding. using makestyles to avoid padding
 
 ChatItem.propTypes = {
     timestamp: PropTypes.string.isRequired,
     chatString: PropTypes.string.isRequired
 };
+
+const useStyles = makeStyles({
+    root: {
+      padding: '0',
+    },
+  });
 
 //chatObj is a single object
 
@@ -22,28 +31,24 @@ export default function ChatItem({ timestamp, chatEmail, chatString, userEmail="
     // console.log(chatItem)
     // console.log(userEmail)
 
-    //https://stackoverflow.com/a/56757009/669577
-   // const email = get(keys(chatItem), 0);
 
-   // const chatString = get(chatItem, email)
 
-    // console.log(email)
-    // console.log(chatString)
+    const classes = useStyles();
 
 
     const dateTimeString = getDateTimeDisplayString(timestamp)
 
     //https://getbootstrap.com/docs/4.0/utilities/colors/
     //align to right if seeingmyOwnChat
-    const seeingMyOwnChat = <React.Fragment>
-        <div className="p-1 bg-secondary text-white text-right" ><span className="text-dark">{chatEmail}</span> {dateTimeString} <MessageIcon/></div>
+    const seeingMyOwnChat = <TableCell className={classes.root}>
+        <div className="p-1 bg-dark text-white text-right" >{chatEmail} {dateTimeString} <MessageIcon/></div>
         <div className="p-1 bg-light text-black text-right" style={{overflowWrap: "break-word"}} >{`${chatString} `}</div>
-        </React.Fragment>
+        </TableCell>
 
-    const seeingOtherChat = <React.Fragment>
-        <div className="p-1 bg-secondary text-white" ><CommentIcon/> {dateTimeString} <span className="text-dark">{chatEmail}</span></div>
+    const seeingOtherChat = <TableCell className={classes.root}>
+        <div className="p-1 bg-dark text-white" ><CommentIcon/> {dateTimeString} <span className="text-dark">{chatEmail}</span></div>
         <div className="p-1 bg-light text-black"  style={{overflowWrap: "break-word"}}>{` ${chatString}`}</div>
-        </React.Fragment>
+        </TableCell>
 
     //if email from db for chat is current user, 
      if (chatEmail === userEmail )  return seeingMyOwnChat 
