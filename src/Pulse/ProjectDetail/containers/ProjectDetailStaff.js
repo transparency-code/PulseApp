@@ -108,7 +108,8 @@ export default function ProjectDetailStaff({
 
   const data = get(projDetail,'data',{})
 
-  const chat = get(projDetail,'chat',{})
+  //chat should return an array, if not existing
+  const chat = get(projDetail,'chat',[])
 
   if(!isEmpty(data)) {
     checkedItems = getCheckedItems(data, chkedItemsWithLabels);
@@ -154,7 +155,7 @@ export default function ProjectDetailStaff({
 
     <Grid item xs={12} md={6}>
     <Box component="div" p={2}>
-    <ChatBoxContainer email={email} projectid={projectid} addChatFunc={addChat} getUpdatedChatFunc={getUpdatedChat} DBChatObj={chat} />
+    <ChatBoxContainer email={email} projectid={projectid} addChatFunc={addChat} getUpdatedChatFunc={getUpdatedChat} DBChatMap={chat} />
     </Box>
       </Grid>
      

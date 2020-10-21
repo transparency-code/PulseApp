@@ -17,10 +17,10 @@ ChatBoxContainer.propTypes = {
 ////https://rangle.io/blog/simplifying-controlled-inputs-with-hooks/
 //React functional component names must be start with uppercase letter.
 //This is parent of Chat
-export default function ChatBoxContainer({ email, projectid, DBChatObj, addChatFunc, getUpdatedChatFunc }) {
+export default function ChatBoxContainer({ email, projectid, DBChatMap, addChatFunc, getUpdatedChatFunc }) {
 
-    const [chatObj, setChatObj] = useState(DBChatObj);
-    const [chatTxt, setChatTxt] = useState("");
+    const [chatMap, setChatMap] = useState(DBChatMap);
+    const [chatMsg, setChatMsg] = useState("");
     const [loading, setLoading] = useState(false)
     const [displayMsg, setDisplayMsg] = useState('')
     const [page, setPage] = React.useState(0);
@@ -30,7 +30,7 @@ export default function ChatBoxContainer({ email, projectid, DBChatObj, addChatF
 
 
     // console.log(DBChatObj)
-     console.log(chatObj)
+    // console.log(chatMap)
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -43,13 +43,16 @@ export default function ChatBoxContainer({ email, projectid, DBChatObj, addChatF
 
         setLoading(true)
 
-        const responseCode = await addChatFunc(email, projectid, chatTxt, chatObj, setChatTxt, setDisplayMsg)
+        //if chatMap is not empty,  this is not first chat
+        const addToList = chatMap.length === 0 ? false : true
+
+        const responseCode = await addChatFunc(email, projectid, chatMsg, setChatMsg, setDisplayMsg, addToList)
 
         //https://stackoverflow.com/a/63821006/669577
         if (responseCode === 200) {
             await new Promise((resolve) => {
                 setTimeout(() => {
-                    resolve(getUpdatedChatFunc(email, projectid, setChatObj, setDisplayMsg))
+                    resolve(getUpdatedChatFunc(email, projectid, setChatMap, setDisplayMsg))
                 }, 1000)
             })
 
@@ -89,8 +92,8 @@ export default function ChatBoxContainer({ email, projectid, DBChatObj, addChatF
 
     return (
         <div>
-            <ChatBox data={chatObj} totalRows={chatObj.length}  page={page} onChangePage={handleChangePage} />
-            <SendChat handleSubmitFunc={handleSubmit} chatTxt={chatTxt} setChatTxtFunc={setChatTxt} loading={loading} displayMsg={displayMsg} /> 
+            <ChatBox data={chatMap} totalRows={chatMap.length}  page={page} onChangePage={handleChangePage} />
+            <SendChat handleSubmitFunc={handleSubmit} chatTxt={chatMsg} setChatTxtFunc={setChatMsg} loading={loading} displayMsg={displayMsg} /> 
         </div>
 
 

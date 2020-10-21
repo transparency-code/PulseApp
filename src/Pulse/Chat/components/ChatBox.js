@@ -15,7 +15,7 @@ export default function ChatBox({ data = [], page, onChangePage }) {
     const chatsPerPage = 5
     // console.log(rowsInPage)
 
-    //console.log(page)
+    //console.log(data)
 
     // console.log(onChangePage)
 
@@ -48,7 +48,7 @@ export default function ChatBox({ data = [], page, onChangePage }) {
                           
                                         {/* No Table cell to avoid to associated padding/margin  */}
                                         {/* <TableCell> */}
-                                        <ChatItem   timestamp={row.timestamp.toString()} chatEmail={row.email} chatString={row.message} />
+                                        <ChatItem   timestamp={row.TimeStamp.toString()} chatEmail={row.Email} chatString={row.Message} />
                                         {/* </TableCell> */}
                                         </TableRow>
                                         )

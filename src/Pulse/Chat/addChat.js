@@ -2,7 +2,7 @@
 //updating chat, can add attribute , if not existing
 
 import updateIteminDynamoGeneric from 'AWS/updateIteminDynamoGeneric'
-import createChatObj from './createChatObj'
+import createMapAttribute from './createMapAttribute'
 import createChatTimeStamp from 'Pulse/utilfunctions/createChatTimeStamp'
 
 //export default async function saveStageinDynamo(key, chatObj) {
@@ -13,21 +13,21 @@ import createChatTimeStamp from 'Pulse/utilfunctions/createChatTimeStamp'
      * @param {string} chatStr 
      * @param {object} existChatObj  existing chat object stored in Db
      */
-    export default async function addChat(email,projectid,chatStr,existChatObj,clearChatBoxFunc, notificationFunc) {
+    export default async function addChat(email,projectid,message,clearChatBoxFunc, notificationFunc, addToList) {
 
     notificationFunc("Sending Message...")
     // const {email, projectid} = key
     //create Time stamp here here
     const timestamp = createChatTimeStamp()
 
-
-    const dynamoList = createChatObj(email,timestamp,chatStr,existChatObj)
+    
+    const mapItem = createMapAttribute(email,timestamp,message)
 
    const attrToUpdate = "chat"
 
-   console.log(dynamoList )
+   //console.log(mapItem)
 
-    const response = await updateIteminDynamoGeneric(email,projectid,attrToUpdate, dynamoList)
+    const response = await updateIteminDynamoGeneric(email,projectid,attrToUpdate, mapItem, addToList)
 
     // console.log(newChatObj)
     // console.log(response)
