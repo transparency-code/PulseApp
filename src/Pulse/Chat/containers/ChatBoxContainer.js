@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
-import { sortBy} from 'lodash'
 import SendChat from 'Pulse/Chat/components//SendChat'
 import ChatBox from 'Pulse/Chat/components/ChatBox'
-
-import { map, keys, values } from 'lodash'
 
 
 ChatBoxContainer.propTypes = {
