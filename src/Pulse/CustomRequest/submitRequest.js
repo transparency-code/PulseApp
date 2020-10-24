@@ -7,7 +7,7 @@ import AWS from "AWS/aws_config";
 
 //doesnt receive a function to set state. Information is logged into console within itself
 export default function submitRequest({ requestState, addNotification }, email) {
-  //console.log(requestState)
+  console.log(requestState)
 
   const projectId = createProjectId();
 

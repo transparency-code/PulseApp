@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import DoneButton from 'Pulse/components/DoneButton'
 
 //flex	Displays an element as a block-level flex container
 //The margin-left property sets the left margin of an element.
@@ -37,7 +38,9 @@ export default function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc, loa
 
         <div style={styles.input}>
        <span>{displayMsg}</span>
-        <button type="button" className="btn btn-primary" style={styles.input} onClick={handleSubmitFunc} disabled={loading}> Send </button>
+        {/* <button type="button" className="btn btn-primary" style={styles.input} onClick={handleSubmitFunc} disabled={loading}> Send </button> */}
+
+        <DoneButton label={"Send"} DoneFunc={handleSubmitFunc} StyleObject={styles.input}/>
         </div>
 
       </form>
