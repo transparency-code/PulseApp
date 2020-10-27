@@ -1,0 +1,20 @@
+import getAttributesFromDynamoSpecific from 'AWS/getAttributesFromDynamoSpecific'
+import { get } from 'lodash';
+
+export default async function getStaffList (setFunc) {
+   
+    const email = "transparencygroup.nz"
+
+    const projectid = 100
+
+    const staffList = await getAttributesFromDynamoSpecific(email,projectid,['data'])
+
+    //console.log("New Staff List")
+
+   // console.log(staffList)
+
+    //the data field of this row has stafflist
+    setFunc(get(staffList,'data',[]))
+    
+}
+

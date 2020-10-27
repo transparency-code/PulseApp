@@ -13,8 +13,9 @@ import NotificationBar from 'Pulse/components/NotificationBar'
 import getProjectDetails from 'Pulse/ProjectDetail/getProjectDetails'
 import getProjStatus from 'Pulse/ProjectDetail/getProjStatus'
 import saveStageinDynamo from 'Pulse/ProjectDetail/saveStageinDynamo'
-
-
+import SystemAndProcess from 'Pulse/SystemAndProcess/AddStaff'
+import addStaffFunc from 'Pulse/SystemAndProcess/addStaffFunc'
+import getStaffList from 'Pulse/SystemAndProcess/getStaffList'
 
 
 function App() {
@@ -36,7 +37,8 @@ function App() {
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
 
           <ProjectDetailStaff path="/projectdetail" getProjectDetailsFunc={getProjectDetails } getProjStatusFunc={getProjStatus} saveStageInDynamoFunc={saveStageinDynamo} isAdmin={true}/>
- 
+          <SystemAndProcess path="/admin" addStaffFunc={addStaffFunc} getStaffListFunc={getStaffList}/>
+     
         </Router>
         </ErrorBoundary>
 
