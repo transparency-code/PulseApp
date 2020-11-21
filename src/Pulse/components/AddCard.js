@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -14,9 +14,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list}) {
+export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list,handleAdd}) {
+
+ // console.log(list)
+
   const classes = useStyles();
 
+  const [value, setValue] = useState('');
+
+// console.log(value)
+
+  
 
   return (
     <Card className={classes.root}>
@@ -28,8 +36,13 @@ export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg,
       />
       <ListDisplay emptyMsg={listEmptyMsg} listArray={list}/>
 
-         <input className="form-control" type="text" placeholder={placeholderTextForInput}></input>
-         <DoneButton label={"Add"} />
+         <input className="form-control" type="text" placeholder={placeholderTextForInput}  onChange={(event) => setValue(event.target.value)} ></input>
+
+         <DoneButton 
+         label={"Add"}
+        execFunc={() => handleAdd(value)}
+         />
+
       </CardContent>
       <CardActions disableSpacing>
       </CardActions>

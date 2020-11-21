@@ -4,10 +4,14 @@ import { isEmpty } from 'lodash'
 
 export default function ListDisplay({ emptyMsg, listArray = [] }) {
 
-    const UITree = listArray.map((listItem) => {
+
+    // console.log(emptyMsg)
+    // console.log(listArray)
+
+    const liTree = listArray.map((listItem,index) => {
 
         return (
-            <li className="list-group-item">{listItem}</li>
+            <li className="list-group-item" key={index}>{listItem}</li>
         )
        
     })
@@ -24,7 +28,7 @@ export default function ListDisplay({ emptyMsg, listArray = [] }) {
     //else, if not empty
     return (
         <ul className="list-group">
-            {UITree}
+            {liTree}
         </ul>
     );
 }

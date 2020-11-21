@@ -1,24 +1,32 @@
-import updateIteminDynamoGeneric from 'AWS/updateIteminDynamoGeneric'
+import updateIteminDynamo from 'AWS/updateIteminDynamo'
 
-export default async function addStaff(newStaffEmail, notificationFunc) {
+export default async function addStaff(newStaffEmail, addToList, notificationFunc) {
 
+    // console.log(newStaffEmail)
+    // console.log(notificationFunc)
 
+  //  console.log(addToList)
     //constants for staffdata
     const email = "transparencygroup.nz"
 
     const projectid = 100
 
-    const addToList = true
+    //dynamodb , only lists can be appended
+    const listItem = [newStaffEmail] 
 
-    const response = await updateIteminDynamoGeneric(email,projectid,['data'],newStaffEmail,true)
+   const attrToUpdate = "data"
 
-    if (response === 200 ) {
-        notificationFunc("Added Staff.")
-        //dont display success here..wait 3 seconds for cloud
-    } else {
-        notificationFunc(`Error Adding Staff.`)
-    }
+   //console.log(mapItem)
+    //add to list is set to true
+    const response = await updateIteminDynamo(email,projectid,attrToUpdate, listItem, addToList)
+
+    // if (response === 200 ) {
+    //     notificationFunc("Added Staff.")
+    //     //dont display success here..wait 3 seconds for cloud
+    // } else {
+    //     notificationFunc(`Error Adding Staff.`)
+    // }
 
     // return response
-    return response
+    //return response
 }

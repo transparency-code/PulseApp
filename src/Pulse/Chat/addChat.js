@@ -1,7 +1,7 @@
 //updating requeststatus - index
 //updating chat, can add attribute , if not existing
 
-import updateIteminDynamoGeneric from 'AWS/updateIteminDynamoGeneric'
+import updateIteminDynamo from 'AWS/updateIteminDynamo'
 import createMapAttribute from './createMapAttribute'
 import createChatTimeStamp from 'Pulse/utilfunctions/createChatTimeStamp'
 
@@ -27,7 +27,7 @@ import createChatTimeStamp from 'Pulse/utilfunctions/createChatTimeStamp'
 
    //console.log(mapItem)
 
-    const response = await updateIteminDynamoGeneric(email,projectid,attrToUpdate, mapItem, addToList)
+    const response = await updateIteminDynamo(email,projectid,attrToUpdate, mapItem, addToList)
 
     // console.log(newChatObj)
     // console.log(response)

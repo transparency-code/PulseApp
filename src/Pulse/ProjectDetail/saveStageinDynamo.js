@@ -1,5 +1,5 @@
 
-import updateIteminDynamoGeneric from 'AWS/updateIteminDynamoGeneric'
+import updateIteminDynamo from 'AWS/updateIteminDynamo'
 import steps from "Pulse/Data/ProcessStates";
 
 export default async function saveStageinDynamo(key, activeStep, NotifyFunc) {
@@ -8,7 +8,7 @@ export default async function saveStageinDynamo(key, activeStep, NotifyFunc) {
 
    // const response = await updateIteminDynamo(email,projectid,stagetoSave)
     //email,projectid,attr,newAttrValue
-    const response = await updateIteminDynamoGeneric(email,projectid,['requeststatus'],activeStep)
+    const response = await updateIteminDynamo(email,projectid,['requeststatus'],activeStep)
 
 
 

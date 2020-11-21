@@ -21,9 +21,11 @@ export default async function getAttibutesFromDynamoSpecific(email,projectId,att
   
       const params = createParamsForGet(email,projectId,attributeArray)
 
-      //console.log(params)
+      // console.log(params)
      
       const returnObj = await docClient.get(params).promise();
+
+      // console.log(returnObj)
       
       return returnObj.Item
       
