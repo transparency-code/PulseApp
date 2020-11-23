@@ -20,13 +20,13 @@ export default async function addStaff(newStaffEmail, addToList, notificationFun
     //add to list is set to true
     const response = await updateIteminDynamo(email,projectid,attrToUpdate, listItem, addToList)
 
-    // if (response === 200 ) {
-    //     notificationFunc("Added Staff.")
-    //     //dont display success here..wait 3 seconds for cloud
-    // } else {
-    //     notificationFunc(`Error Adding Staff.`)
-    // }
+    if (response === 200 ) {
+        notificationFunc("Added Staff.")
+        //dont display success here..wait 3 seconds for cloud
+    } else {
+        notificationFunc(`Error Adding Staff.`)
+    }
 
     // return response
-    //return response
+    return response
 }

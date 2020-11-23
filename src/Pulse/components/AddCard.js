@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list,handleAdd}) {
+export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list,handleAdd, loading}) {
 
  // console.log(list)
 
@@ -24,7 +24,7 @@ export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg,
 
 // console.log(value)
 
-  
+
 
   return (
     <Card className={classes.root}>
@@ -36,11 +36,13 @@ export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg,
       />
       <ListDisplay emptyMsg={listEmptyMsg} listArray={list}/>
 
-         <input className="form-control" type="text" placeholder={placeholderTextForInput}  onChange={(event) => setValue(event.target.value)} ></input>
+         <input className="form-control mt-4" type="text" placeholder={placeholderTextForInput}  onChange={(event) => setValue(event.target.value)} ></input>
 
          <DoneButton 
          label={"Add"}
         execFunc={() => handleAdd(value)}
+        loading={loading}
+    
          />
 
       </CardContent>

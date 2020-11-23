@@ -15,6 +15,7 @@ export default function useGetList(getListFunc) {
 
         //removing the dependency aray causes unlimited rerender
     }, [getListFunc]);
+
     
     return currentList
 }

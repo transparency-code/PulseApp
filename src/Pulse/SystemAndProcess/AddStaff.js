@@ -1,48 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import AddCard from 'Pulse/components/AddCard'
 import useNotification from "Pulse/hooks/useNotification";
-import useGetList from "Pulse/hooks/useGetList";
-import handleUIListAdd from 'Pulse/Functional/UIListAdd'
+
+//import handleUIListAdd from 'Pulse/Functional/UIListAdd'
 //https://medium.com/better-programming/understanding-the-useeffect-dependency-array-2913da504c44
 export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListFunc }) {
 
+   // console.log(getStaffListFunc)
 
-    const currentStaffList = useGetList(getStaffListFunc)
+    const [loading, setLoading] = useState(false)
+
+    const [currentStaff, setCurrentStaff] = useState([])
+
+    //console.log(currentStaff)
+
 
    //if currentStaffList is  empty,  this is first staff, addTOList should be false
-           const addToList =  currentStaffList.length === 0 ?   false : true
+           const addToList =  currentStaff.length === 0 ?   false : true
 
     const { addNotification } = useNotification();
 
-   // const handleStaffAdd = handleAdd(addStaffFunc, addNotification)
+    useEffect(() => {
 
-    //console.log(handleStaffAdd)
+        //https://medium.com/javascript-in-plain-english/how-to-use-async-function-in-react-hook-useeffect-typescript-js-6204a788a435
+        // Create an scoped async function in the hook
+        async function fetchData() {
+            //await should be inside
+            const list = await getStaffListFunc()
+            //console.log(list)
+            setCurrentStaff(list)
+        }
+        fetchData();
 
-    //get current staff list
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         //await should be inside
-    //         setCurrentStaffList(await getStaffListFunc())
-    //     }
-    //     fetchData();
-
-    //     //removing the dependency aray causes unlimited rerender
-    // },[getStaffListFunc]);
-
-    //this return a function that can take a new value
-   // const composedFunc = handleUIListAdd(addStaffFunc, addNotification)
-
-
-    // function handleStaffAdd(value) {
-    //    const response = composedFunc(value)
-    // //    console.log(response)
-
-    // }
+        //removing the dependency aray causes unlimited rerender
+    }, [getStaffListFunc]);
 
     async function handleStaffAdd(newStaffEmail) {
 
 
-     
+        setLoading(true)
           
 
         //   console.log(addToList)
@@ -52,26 +48,30 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
         //https://stackoverflow.com/a/63821006/669577
         if (responseCode === 200) {
             await new Promise((resolve) => {
-                setTimeout(() => {
-                    resolve(getStaffListFunc())
+                setTimeout(async () => {
+                    const list = await getStaffListFunc()
+                    setCurrentStaff(list)
                 }, 1000)
             })
 
         }
 
-        // setLoading(false)
+        setLoading(false)
 
 
 
 
     }
+
+
     return (
         <AddCard 
         titleText={'Alottment Staff'} 
         placeholderTextForInput={"Add Staff here."} 
         listEmptyMsg={"No Staff Added"} 
-        list={currentStaffList} 
+        list={currentStaff} 
         handleAdd={handleStaffAdd}
+        loading={loading}
         />
       
      
