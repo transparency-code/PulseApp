@@ -43,6 +43,8 @@ export default function ChatBox({ data = [], page, onChangePage }) {
               
                                 {
                                     chatsInPage.map((row,index) => {
+
+                                       // console.log(row)
                                         return (
                                         <TableRow  key={index} >
                           

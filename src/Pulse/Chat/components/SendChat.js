@@ -40,7 +40,11 @@ export default function SendChat({handleSubmitFunc, chatTxt, setChatTxtFunc, loa
        <span>{displayMsg}</span>
         {/* <button type="button" className="btn btn-primary" style={styles.input} onClick={handleSubmitFunc} disabled={loading}> Send </button> */}
 
-        <DoneButton label={"Send"} execFunc={handleSubmitFunc} StyleObject={styles.input}/>
+        <DoneButton label={"Send"}
+         execFunc={handleSubmitFunc} 
+         StyleObject={styles.input}
+         loading={loading} 
+         />
         </div>
 
       </form>

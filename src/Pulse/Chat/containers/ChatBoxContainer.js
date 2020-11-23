@@ -85,12 +85,18 @@ export default function ChatBoxContainer({ email, projectid, DBChatMap, addChatF
 
     
 
-
+   //console.log(loading)
 
     return (
         <div>
             <ChatBox data={chatMap} totalRows={chatMap.length}  page={page} onChangePage={handleChangePage} />
-            <SendChat handleSubmitFunc={handleSubmit} chatTxt={chatMsg} setChatTxtFunc={setChatMsg} loading={loading} displayMsg={displayMsg} /> 
+
+            <SendChat 
+            handleSubmitFunc={handleSubmit} 
+            chatTxt={chatMsg} 
+            setChatTxtFunc={setChatMsg} 
+            loading={loading}
+            displayMsg={displayMsg} /> 
         </div>
 
 
