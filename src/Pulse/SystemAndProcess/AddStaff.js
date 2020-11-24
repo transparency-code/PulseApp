@@ -26,9 +26,9 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
         // Create an scoped async function in the hook
         async function fetchData() {
             //await should be inside
-            const list = await getStaffListFunc()
+            const list = await getStaffListFunc(setCurrentStaff)
             //console.log(list)
-            setCurrentStaff(list)
+            //setCurrentStaff(list)
         }
         fetchData();
 
@@ -37,33 +37,23 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
 
     async function handleStaffAdd(newStaffEmail) {
 
-
         setLoading(true)
-          
-
         //   console.log(addToList)
-
          const responseCode = await addStaffFunc(newStaffEmail, addToList,addNotification)
 
         //https://stackoverflow.com/a/63821006/669577
         if (responseCode === 200) {
             await new Promise((resolve) => {
-                setTimeout(async () => {
-                    const list = await getStaffListFunc()
-                    setCurrentStaff(list)
+                setTimeout(() => {
+                    resolve(getStaffListFunc(setCurrentStaff))
                 }, 1000)
             })
-
         }
-
         setLoading(false)
-
-
-
-
     }
 
-
+   // console.log(loading)
+   
     return (
         <AddCard 
         titleText={'Alottment Staff'} 

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list,handleAdd, loading}) {
 
- // console.log(list)
+ console.log(loading)
 
   const classes = useStyles();
 
