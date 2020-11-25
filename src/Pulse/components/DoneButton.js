@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DoneButton({label, execFunc, StyleObject={}, loading}) {
+export default function DoneButton({label, execFunc, StyleObject={}, loading, }) {
 
    // console.log(loading)
     return (

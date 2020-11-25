@@ -6,6 +6,7 @@ export default async function addStaff(newStaffEmail, addToList, notificationFun
     // console.log(notificationFunc)
 
   //  console.log(addToList)
+  //console.log(clearTextFunc)
     //constants for staffdata
     const email = "transparencygroup.nz"
 

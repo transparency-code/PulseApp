@@ -15,8 +15,9 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
     //If state is undefined it will default to an empty object and this would log undefined, but if state is null it doesn't use default params and this would throw an error.
     const [currentStaff, setCurrentStaff] = useState(undefined)
 
-    //console.log(currentStaff)
+    const [txtValue, settxtValue] = useState('')
 
+    //console.log(currentStaff)
 
    
 
@@ -41,8 +42,9 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
     async function handleStaffAdd(newStaffEmail) {
 
         setLoading(true)
-        //   console.log(addToList)
-
+        console.log(newStaffEmail)
+     
+    
         //if currentStaffList is  empty,  this is first staff, addTOList should be false
         const addToList =  currentStaff.length === 0 ?   false : true
 
@@ -56,19 +58,27 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
                     resolve(getStaffListFunc(setCurrentStaff))
                 }, 1000)
             })
+            settxtValue('')
+          
         }
         setLoading(false)
+       
+
     }
 
 
    if ( currentStaff === undefined ) return <Spinner/> 
+
+   console.log(txtValue)
    
     return (
         <AddCard 
         titleText={'Alottment Staff'} 
         placeholderTextForInput={"Add Staff here."} 
         listEmptyMsg={"No Staff Added"} 
-        list={currentStaff} 
+        list={currentStaff}
+        txtValue={txtValue}
+        settxtValue={settxtValue}
         handleAdd={handleStaffAdd}
         loading={loading}
         />
