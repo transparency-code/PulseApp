@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list,handleAdd, loading}) {
 
- console.log(loading)
+ //console.log(loading)
 
   const classes = useStyles();
 
@@ -34,8 +34,7 @@ export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg,
         title={titleText}
 
       />
-      <ListDisplay emptyMsg={listEmptyMsg} listArray={list}/>
-
+      <ListDisplay emptyMsg={listEmptyMsg} listArray={list} /> 
          <input className="form-control mt-4" type="text" placeholder={placeholderTextForInput}  onChange={(event) => setValue(event.target.value)} ></input>
 
          <DoneButton 

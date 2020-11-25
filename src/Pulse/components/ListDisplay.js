@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash'
 
-export default function ListDisplay({ emptyMsg, listArray = [] }) {
+
+export default function ListDisplay({ emptyMsg, listArray = [], displaySpinner=false }) {
 
 
     // console.log(emptyMsg)
@@ -16,13 +17,16 @@ export default function ListDisplay({ emptyMsg, listArray = [] }) {
        
     })
 
-    if (isEmpty(listArray)) {
-        return (
-            <ul className="list-group my-2">
-                <li className="list-group-item">{emptyMsg}</li>
-            </ul>
-        )
+   
 
+    if (isEmpty(listArray)) {
+    
+            return (
+                <ul className="list-group my-2">
+                    <li className="list-group-item">{emptyMsg}</li>
+                </ul>
+            )
+        
     }
 
     //else, if not empty

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AddCard from 'Pulse/components/AddCard'
 import useNotification from "Pulse/hooks/useNotification";
+import Spinner from 'Pulse/components/CircularIndeterminate'
 
 //import handleUIListAdd from 'Pulse/Functional/UIListAdd'
 //https://medium.com/better-programming/understanding-the-useeffect-dependency-array-2913da504c44
@@ -10,13 +11,14 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
 
     const [loading, setLoading] = useState(false)
 
-    const [currentStaff, setCurrentStaff] = useState([])
+    //https://github.com/facebook/react/issues/7204
+    //If state is undefined it will default to an empty object and this would log undefined, but if state is null it doesn't use default params and this would throw an error.
+    const [currentStaff, setCurrentStaff] = useState(undefined)
 
     //console.log(currentStaff)
 
 
-   //if currentStaffList is  empty,  this is first staff, addTOList should be false
-           const addToList =  currentStaff.length === 0 ?   false : true
+   
 
     const { addNotification } = useNotification();
 
@@ -26,11 +28,12 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
         // Create an scoped async function in the hook
         async function fetchData() {
             //await should be inside
-            const list = await getStaffListFunc(setCurrentStaff)
+            await getStaffListFunc(setCurrentStaff)
             //console.log(list)
             //setCurrentStaff(list)
         }
         fetchData();
+
 
         //removing the dependency aray causes unlimited rerender
     }, [getStaffListFunc]);
@@ -39,6 +42,11 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
 
         setLoading(true)
         //   console.log(addToList)
+
+        //if currentStaffList is  empty,  this is first staff, addTOList should be false
+        const addToList =  currentStaff.length === 0 ?   false : true
+
+
          const responseCode = await addStaffFunc(newStaffEmail, addToList,addNotification)
 
         //https://stackoverflow.com/a/63821006/669577
@@ -52,7 +60,8 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
         setLoading(false)
     }
 
-   // console.log(loading)
+
+   if ( currentStaff === undefined ) return <Spinner/> 
    
     return (
         <AddCard 
