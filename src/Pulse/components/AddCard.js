@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -15,11 +14,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list,txtValue,handleOnChange, onSubmit, buttonState}) {
+export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list, onSubmit, validateInput}) {
 
  //console.log(loading)
 
   const classes = useStyles();
+
+  const [txtValue, settxtValue] = useState('')
+  const [button, disableButton] = useState(true)
+
+  function handleOnChange(newValue) {
+    settxtValue(newValue)
+    const valid = validateInput(newValue)
+    if (valid){
+      disableButton(false)
+    }
+    else {
+      disableButton(true)
+    }
+  }
+
+  //prevents adding a null when async in action
+  async function handleOnSubmit() {
+    disableButton(true)
+    const resCode = await onSubmit(txtValue)
+    if (resCode === 200) settxtValue("")
+    disableButton(false)
+  }
 
   return (
     <Card className={classes.root}>
@@ -37,8 +58,8 @@ export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg,
 
          <DoneButton 
          label={"Add"}
-        execFunc={() => onSubmit(txtValue)}
-        loading={buttonState}
+        execFunc={() => handleOnSubmit(txtValue)}
+        loading={button}
     
          />
 
