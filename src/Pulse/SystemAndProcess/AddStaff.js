@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import AddCard from 'Pulse/components/AddCard'
 import useNotification from "Pulse/hooks/useNotification";
 import Spinner from 'Pulse/components/CircularIndeterminate'
+import trim from 'lodash/trim'
+
+
+
+
+
+
+
 
 //import handleUIListAdd from 'Pulse/Functional/UIListAdd'
 //https://medium.com/better-programming/understanding-the-useeffect-dependency-array-2913da504c44
@@ -9,7 +17,7 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
 
    // console.log(getStaffListFunc)
 
-    const [loading, setLoading] = useState(false)
+    const [button, disableButton] = useState(true)
 
     //https://github.com/facebook/react/issues/7204
     //If state is undefined it will default to an empty object and this would log undefined, but if state is null it doesn't use default params and this would throw an error.
@@ -41,7 +49,7 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
 
     async function handleStaffAdd(newStaffEmail) {
 
-        setLoading(true)
+         disableButton(true)
         console.log(newStaffEmail)
      
     
@@ -61,29 +69,53 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
             settxtValue('')
           
         }
-        setLoading(false)
+        disableButton(false)
        
 
     }
 
 
+    //this only deals will disbaling button
+    //will have to pass onSubmit also to child component
+   function handleOnChange ( newTextValue ) {
+       
+   // console.log(newTextValue)
+       settxtValue(newTextValue)
+
+       const trimmed = trim(newTextValue)
+      // console.log(trimmed)
+
+      //  let re = /^\S+@\S+$/
+       if( trimmed === '' || !/^\S+@\S+$/.test(trimmed)) {
+        disableButton(true)
+       }
+
+       else {
+        disableButton(false)
+       }
+
+   }
+
    if ( currentStaff === undefined ) return <Spinner/> 
 
-   console.log(txtValue)
+  // console.log(button)
    
+// const Form = 
     return (
         <AddCard 
         titleText={'Alottment Staff'} 
-        placeholderTextForInput={"Add Staff here."} 
+        placeholderTextForInput={"Add Staff Email here."} 
         listEmptyMsg={"No Staff Added"} 
         list={currentStaff}
         txtValue={txtValue}
-        settxtValue={settxtValue}
-        handleAdd={handleStaffAdd}
-        loading={loading}
+        settxtValue={settxtValue}   
+        handleOnChange={handleOnChange}
+        onSubmit={handleStaffAdd}
+        buttonState ={button}
         />
       
      
     );
 }
+
 

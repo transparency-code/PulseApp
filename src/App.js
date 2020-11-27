@@ -18,6 +18,7 @@ import addStaffFunc from 'Pulse/SystemAndProcess/addStaffFunc'
 import getStaffList from 'Pulse/SystemAndProcess/getStaffList'
 
 
+
 function App() {
 
   return (
@@ -37,8 +38,10 @@ function App() {
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
 
           <ProjectDetailStaff path="/projectdetail" getProjectDetailsFunc={getProjectDetails } getProjStatusFunc={getProjStatus} saveStageInDynamoFunc={saveStageinDynamo} isAdmin={true}/>
-          <SystemAndProcess path="/admin" addStaffFunc={addStaffFunc} getStaffListFunc={getStaffList}/>
+
      
+         <SystemAndProcess path="/admin" addStaffFunc={addStaffFunc} getStaffListFunc={getStaffList}/> 
+    
         </Router>
         </ErrorBoundary>
 

@@ -8,13 +8,14 @@ import CardActions from '@material-ui/core/CardActions';
 import DoneButton from 'Pulse/components/DoneButton'
 import ListDisplay from 'Pulse/components/ListDisplay'
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
   },
 }));
 
-export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list,txtValue,settxtValue,handleAdd, loading}) {
+export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list,txtValue,handleOnChange, onSubmit, buttonState}) {
 
  //console.log(loading)
 
@@ -30,12 +31,14 @@ export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg,
       />
       <ListDisplay emptyMsg={listEmptyMsg} listArray={list} /> 
 
-         <input className="form-control mt-4" type="text" placeholder={placeholderTextForInput} value={txtValue} onChange={(event) => settxtValue(event.target.value)} ></input>
+
+
+         <input className="form-control mt-4" type="text" placeholder={placeholderTextForInput} value={txtValue} onChange={(event) => handleOnChange(event.target.value)} ></input>
 
          <DoneButton 
          label={"Add"}
-        execFunc={() => handleAdd(txtValue)}
-        loading={loading}
+        execFunc={() => onSubmit(txtValue)}
+        loading={buttonState}
     
          />
 
