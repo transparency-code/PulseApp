@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import getDateTimeDisplayString from 'Pulse/utilfunctions/getDateTimeDisplayString'
 import CommentIcon from '@material-ui/icons/Comment';
 import MessageIcon from '@material-ui/icons/Message';
 import TableCell from '@material-ui/core/TableCell';
 import { makeStyles } from '@material-ui/core/styles';
+import getDateTimeDisplayStringFromID from 'Pulse/utilfunctions/getDateTImeDisplayStringFromID';
 
 //TableCell
 //The component renders a <th> element when the parent context is a header or otherwise a <td> element.
@@ -36,7 +36,7 @@ export default function ChatItem({ timestamp, chatEmail, chatString, userEmail="
     const classes = useStyles();
 
 
-    const dateTimeString = getDateTimeDisplayString(timestamp)
+    const dateTimeString = getDateTimeDisplayStringFromID(timestamp)
 
     //https://getbootstrap.com/docs/4.0/utilities/colors/
     //align to right if seeingmyOwnChat

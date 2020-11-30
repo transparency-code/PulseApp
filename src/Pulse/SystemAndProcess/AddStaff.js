@@ -5,12 +5,6 @@ import Spinner from 'Pulse/components/CircularIndeterminate'
 import trim from 'lodash/trim'
 
 
-
-
-
-
-
-
 //import handleUIListAdd from 'Pulse/Functional/UIListAdd'
 //https://medium.com/better-programming/understanding-the-useeffect-dependency-array-2913da504c44
 export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListFunc }) {

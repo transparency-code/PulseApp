@@ -3,7 +3,7 @@ import { getRequestsByRequestState } from '../getRequests'
 import ErrorBoundary from 'Pulse/components/ErrorBoundary'
 import { sortBy } from 'lodash'
 import Grid from '@material-ui/core/Grid';
-import getDateStringFromID from 'Pulse/utilfunctions/getDateDisplayStringFromID'
+import getDateStringFromID from 'Pulse/utilfunctions/getDateTImeDisplayStringFromID'
 import MUITable from 'Pulse/Table/MUITable'
 import { navigate } from "@reach/router"
 

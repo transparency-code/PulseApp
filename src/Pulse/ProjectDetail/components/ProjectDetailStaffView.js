@@ -1,5 +1,5 @@
 import React from "react";
-import getDateStringFromID from 'Pulse/utilfunctions/getDateDisplayStringFromID'
+import getDateStringFromID from 'Pulse/utilfunctions/getDateTImeDisplayStringFromID'
 import DisplayFiles from 'Pulse/components/DisplayFiles'
 import DisplayText from 'Pulse/components/DisplayText'
 

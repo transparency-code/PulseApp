@@ -5,7 +5,7 @@ import processStates from 'Pulse/Data/ProcessStates'
 import Grid from '@material-ui/core/Grid';
 import MUITable from 'Pulse/Table/MUITable'
 import { sortBy } from 'lodash'
-import getDateStringFromID from 'Pulse/utilfunctions/getDateDisplayStringFromID'
+import getDateStringFromID from 'Pulse/utilfunctions/getDateTImeDisplayStringFromID'
 import { navigate } from "@reach/router"
 
 
