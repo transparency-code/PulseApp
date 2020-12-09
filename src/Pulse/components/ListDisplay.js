@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash'
 
 
-export default function ListDisplay({ emptyMsg, listArray = [], displaySpinner=false }) {
+export default function ListDisplay({ emptyMsg, listArray = [] }) {
 
 
     // console.log(emptyMsg)

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import AddCard from 'Pulse/components/AddCard'
 import useNotification from "Pulse/hooks/useNotification";
 import Spinner from 'Pulse/components/CircularIndeterminate'
-import trim from 'lodash/trim'
+import validateEmail from 'Pulse/utilfunctions/validateEmail'
 
 
 //import handleUIListAdd from 'Pulse/Functional/UIListAdd'
@@ -62,14 +62,14 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
     }
 
 
-    function validateInput(input) {
-      const trimmed = trim(input)
-      if( trimmed === '' || !/^\S+@\S+$/.test(trimmed)) return false
+    // function validateInput(input) {
+    //   const trimmed = trim(input)
+    //   if( trimmed === '' || !/^\S+@\S+$/.test(trimmed)) return false
 
-      //else
-      return true
+    //   //else
+    //   return true
 
-    }
+    // }
 
 
    if ( currentStaff === undefined ) return <Spinner/> 
@@ -81,7 +81,7 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
         listEmptyMsg={"No Staff Added"} 
         list={currentStaff}
         onSubmit={handleStaffAdd}
-        validateInput={validateInput}
+        validateInput={validateEmail}
         />
       
      

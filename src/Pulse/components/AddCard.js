@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import DoneButton from 'Pulse/components/DoneButton'
 import ListDisplay from 'Pulse/components/ListDisplay'
+import PropTypes from 'prop-types';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -69,3 +70,12 @@ export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg,
     </Card>
   );
 }
+
+AddCard.propTypes = {
+  titleText: PropTypes.string.isRequired,
+  placeholderTextForInput: PropTypes.string.isRequired,
+  listEmptyMsg: PropTypes.string.isRequired,
+  list: PropTypes.array.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  validateInput:PropTypes.func.isRequired
+};
