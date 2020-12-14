@@ -16,7 +16,7 @@ import docClient from 'AWS/docClient'
         [process.env.REACT_APP_DYNAMO_TESTTABLE_HASHID] : hashId,
         [process.env.REACT_APP_DYNAMO_TESTTABLE_SORTID]  : sortId,
         [process.env.REACT_APP_DYNAMO_TESTTABLE_INDEX]: index , 
-         data
+        buildinginfo : data
        }
     };
   

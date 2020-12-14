@@ -16,6 +16,7 @@ import saveStageinDynamo from 'Pulse/ProjectDetail/saveStageinDynamo'
 import SystemAndProcess from 'Pulse/SystemAndProcess/AddStaff'
 import addStaffFunc from 'Pulse/SystemAndProcess/addStaffFunc'
 import getStaffList from 'Pulse/SystemAndProcess/getStaffList'
+import deleteStaffFunc from 'Pulse/SystemAndProcess/deleteStaffFunc'
 
 
 
@@ -30,17 +31,14 @@ function App() {
       <ErrorBoundary>
         <Router>
           <Request path="/createRequest" />
-          {/* <DisplayRequestsByRequestStatus
-            path="/displayinitial"
-            status={0}
-          /> */}
+  
           <DisplayRequestByStatusDropdown  path="/displaybystatus"/>
           <DisplayRequestsByUser path="/displayuser" user={"sht@der.com"} />
 
           <ProjectDetailStaff path="/projectdetail" getProjectDetailsFunc={getProjectDetails } getProjStatusFunc={getProjStatus} saveStageInDynamoFunc={saveStageinDynamo} isAdmin={true}/>
 
      
-         <SystemAndProcess path="/admin" addStaffFunc={addStaffFunc} getStaffListFunc={getStaffList}/> 
+         <SystemAndProcess path="/admin" addStaffFunc={addStaffFunc} getStaffListFunc={getStaffList} deleteStaffFunc={deleteStaffFunc}/> 
     
         </Router>
         </ErrorBoundary>

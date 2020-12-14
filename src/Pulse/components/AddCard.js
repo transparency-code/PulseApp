@@ -5,7 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import DoneButton from 'Pulse/components/DoneButton'
-import ListDisplay from 'Pulse/components/ListDisplay'
+import ListDisplayWithCancelButton from 'Pulse/components/ListDisplayWithCancelButton'
 import PropTypes from 'prop-types';
 
 
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list, onSubmit, validateInput}) {
+export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list, onSubmit, validateInput,deleteFunc}) {
 
  //console.log(loading)
 
@@ -51,7 +51,7 @@ export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg,
         title={titleText}
 
       />
-      <ListDisplay emptyMsg={listEmptyMsg} listArray={list} /> 
+      <ListDisplayWithCancelButton emptyMsg={listEmptyMsg} listArray={list} deleteFunc={deleteFunc} /> 
 
 
 
@@ -61,7 +61,6 @@ export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg,
          label={"Add"}
         execFunc={() => handleOnSubmit(txtValue)}
         loading={button}
-    
          />
 
       </CardContent>

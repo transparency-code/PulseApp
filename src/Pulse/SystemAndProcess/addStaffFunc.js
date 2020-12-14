@@ -15,7 +15,7 @@ export default async function addStaff(newStaffEmail, addToList, notificationFun
     //dynamodb , only lists can be appended
     const listItem = [newStaffEmail] 
 
-   const attrToUpdate = "data"
+   const attrToUpdate = "staffinfo"
 
    //console.log(mapItem)
     //add to list is set to true

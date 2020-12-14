@@ -90,7 +90,7 @@ export default function CustomRequestForm(submitFunc) {
       
 {DisplayFilesWithDeleteOption(requestState.fileUploads, handleFileDelete)}
 
-<DoneButton label={"Create"} DoneFunc={() => submitFunc({ requestState, addNotification }, "sht@der.com")} />
+<DoneButton label={"Create"} execFunc={() => submitFunc({ requestState, addNotification }, "sht@der.com")} />
 {/* <button type="button" className="my-4 btn btn-secondary"  onClick={() => submitFunc({ requestState, addNotification }, "sht@der.com")}>Create</button> */}
 
     </form>

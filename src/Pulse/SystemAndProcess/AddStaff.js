@@ -7,7 +7,7 @@ import validateEmail from 'Pulse/utilfunctions/validateEmail'
 
 //import handleUIListAdd from 'Pulse/Functional/UIListAdd'
 //https://medium.com/better-programming/understanding-the-useeffect-dependency-array-2913da504c44
-export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListFunc }) {
+export default function AddStaff({ notificationFunc, getStaffListFunc , addStaffFunc, deleteStaffFunc }) {
 
    // console.log(getStaffListFunc)
 
@@ -36,13 +36,9 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
     async function handleStaffAdd(newStaffEmail) {
 
     //     disableButton(true)
-        console.log(newStaffEmail)
-     
-    
+        console.log(newStaffEmail) 
         //if currentStaffList is  empty,  this is first staff, addTOList should be false
         const addToList =  currentStaff.length === 0 ?   false : true
-
-
          const responseCode = await addStaffFunc(newStaffEmail, addToList,addNotification)
 
         //https://stackoverflow.com/a/63821006/669577
@@ -55,9 +51,23 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
           
         }
 
+        //this is for disbaling button
         return responseCode
 
-       
+    }
+
+    async function handleStaffDelete(listItem,index) {
+        const responseCode = await deleteStaffFunc(listItem,index,addNotification)
+
+        //https://stackoverflow.com/a/63821006/669577
+        if (responseCode === 200) {
+            await new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(getStaffListFunc(setCurrentStaff))
+                }, 1000)
+            })
+          
+        }
 
     }
 
@@ -82,6 +92,7 @@ export default function AddStaff({ notificationFunc, addStaffFunc, getStaffListF
         list={currentStaff}
         onSubmit={handleStaffAdd}
         validateInput={validateEmail}
+        deleteFunc={handleStaffDelete}
         />
       
      
