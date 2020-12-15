@@ -12,8 +12,8 @@ export default function ListDisplayWithCancelButton({ emptyMsg, listArray = [] ,
 
     const liTree = listArray.map((listItem,index) => {
 
-        console.log(listItem)
-        console.log(index)
+        // console.log(listItem)
+        // console.log(index)
         return (
             <li className="list-group-item" key={index}>{listItem} 
 

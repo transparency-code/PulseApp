@@ -10,7 +10,9 @@ export default async function deleteStaffFunc(listItem,index, notificationFunc) 
 
    //console.log(mapItem)
     //add to list is set to true
-    const response = await deleteListItemInDynamo(email,projectid,index)
+
+    const attr= "staffinfo"
+    const response = await deleteListItemInDynamo(email,projectid, attr, index)
 
     if (response === 200 ) {
         notificationFunc("Added Staff.")
