@@ -4,9 +4,18 @@ import { isEmpty } from 'lodash'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 
-export default function ListDisplayWithCancelButton({ emptyMsg, listArray = [] ,deleteFunc}) {
+export default function ListDisplayWithCancelButton({ emptyMsg, listArray = [] , dialogOpen, setStaffToDelete}) {
 
 
+    function onDeleteClick(name, index) {
+        setStaffToDelete({name, index})
+        dialogOpen(true)
+    }
+
+    // function onDeleteConfirm() {
+    //     dialogOpen(true)
+    //     deleteFunc(listItem,index)
+    // }
     // console.log(emptyMsg)
     // console.log(listArray)
 
@@ -15,28 +24,29 @@ export default function ListDisplayWithCancelButton({ emptyMsg, listArray = [] ,
         // console.log(listItem)
         // console.log(index)
         return (
-            <li className="list-group-item" key={index}>{listItem} 
+            <li className="list-group-item" key={index}>{listItem}
 
-            <div className="float-right">  
-            <DeleteForeverIcon onClick={ (event)=> {deleteFunc(listItem,index)}}/>
+            <div className="float-right">
+            <DeleteForeverIcon onClick={ (event)=> {onDeleteClick(listItem,index)}}/>
+            {/* <DeleteForeverIcon onClick={ (event)=> {dialogOpen(true)} } /> */}
             </div>
 
             </li>
         )
-       
+
     })
 
-   
+
 
     if (isEmpty(listArray)) {
-    
+
             return (
                 <ul className="list-group my-2">
                     <li className="list-group-item">{emptyMsg}</li>
-                   
+
                 </ul>
             )
-        
+
     }
 
     //else, if not empty

@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list, onSubmit, validateInput,deleteFunc}) {
+export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list, onSubmit, validateInput, dialogOpen, setStaffToDelete }) {
 
  //console.log(loading)
 
@@ -51,7 +51,7 @@ export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg,
         title={titleText}
 
       />
-      <ListDisplayWithCancelButton emptyMsg={listEmptyMsg} listArray={list} deleteFunc={deleteFunc} /> 
+      <ListDisplayWithCancelButton emptyMsg={listEmptyMsg} listArray={list} dialogOpen={dialogOpen} setStaffToDelete={setStaffToDelete}/> 
 
 
 

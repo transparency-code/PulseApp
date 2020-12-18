@@ -3,6 +3,7 @@ import AddCard from 'Pulse/components/AddCard'
 import useNotification from "Pulse/hooks/useNotification";
 import Spinner from 'Pulse/components/CircularIndeterminate'
 import validateEmail from 'Pulse/utilfunctions/validateEmail'
+import AlertDialogSlide from 'Pulse/components/AlertDialogSlide'
 
 
 //import handleUIListAdd from 'Pulse/Functional/UIListAdd'
@@ -11,12 +12,22 @@ export default function AddStaff({ notificationFunc, getStaffListFunc , addStaff
 
    // console.log(getStaffListFunc)
 
-
+    const deleteStaffDefault = {name:'',index:undefined}
 
     //https://github.com/facebook/react/issues/7204
     //If state is undefined it will default to an empty object and this would log undefined, but if state is null it doesn't use default params and this would throw an error.
+    //storing staff list
     const [currentStaff, setCurrentStaff] = useState(undefined)
 
+
+    //sotring the name and index of staff for alert dialof
+    const [staffToDelete, setStaffToDelete] = useState(deleteStaffDefault)
+
+    //state of dialog box. open or closed
+    const [dialog, dialogOpen] = React.useState(false);
+
+
+   
 
     const { addNotification } = useNotification();
 
@@ -56,8 +67,8 @@ export default function AddStaff({ notificationFunc, getStaffListFunc , addStaff
 
     }
 
-    async function handleStaffDelete(listItem,index) {
-        const responseCode = await deleteStaffFunc(listItem,index,addNotification)
+    async function handleStaffDelete() {
+        const responseCode = await deleteStaffFunc(staffToDelete.name,staffToDelete.index,addNotification)
 
         //https://stackoverflow.com/a/63821006/669577
         if (responseCode === 200) {
@@ -81,10 +92,13 @@ export default function AddStaff({ notificationFunc, getStaffListFunc , addStaff
 
     // }
 
+  console.log(staffToDelete)
 
    if ( currentStaff === undefined ) return <Spinner/> 
 
     return (
+        <React.Fragment>
+
         <AddCard 
         titleText={'Alottment Staff'} 
         placeholderTextForInput={"Add Staff Email here."} 
@@ -92,9 +106,13 @@ export default function AddStaff({ notificationFunc, getStaffListFunc , addStaff
         list={currentStaff}
         onSubmit={handleStaffAdd}
         validateInput={validateEmail}
-        deleteFunc={handleStaffDelete}
+        dialogOpen={dialogOpen}
+        setStaffToDelete={setStaffToDelete}
         />
       
+        {staffToDelete.name !== '' && <AlertDialogSlide dialog={dialog} dialogOpen={dialogOpen}  execFunc={handleStaffDelete} dialogTitle={"Delete Staff"} dialogContent={`Are you sure you want to delete ${staffToDelete.name}`}/>}
+
+        </React.Fragment>
      
     );
 }
