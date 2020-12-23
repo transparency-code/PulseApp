@@ -41,9 +41,9 @@ export default async function updateIteminDynamo(email,projectid,attr,newAttrVal
   //console.log(addToList)
     const params = createParams(email,projectid,attr,newAttrValue,addToList)
 
-    console.log(params)
+  //  console.log(params)
     const result = await docClient.update(params).promise();
-    console.log(result)
+  //  console.log(result)
     return result.$response.httpResponse.statusCode
 }
 

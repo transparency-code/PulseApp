@@ -15,9 +15,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg, list, onSubmit, validateInput, dialogOpen, setStaffToDelete }) {
+export default function AddCard({cardTitle,inputPlaceHolderText,listEmptyMsg, listArray, onSubmit, validateInput, dialogOpen, setItemStateForDelete }) {
 
- //console.log(loading)
+ //console.log(inputPlaceHolderText)
 
   const classes = useStyles();
 
@@ -48,14 +48,14 @@ export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg,
       <CardContent>   
       <CardHeader
 
-        title={titleText}
+        title={cardTitle}
 
       />
-      <ListDisplayWithCancelButton emptyMsg={listEmptyMsg} listArray={list} dialogOpen={dialogOpen} setStaffToDelete={setStaffToDelete}/> 
+      <ListDisplayWithCancelButton emptyMsg={listEmptyMsg} listArray={listArray} dialogOpen={dialogOpen} setItemStateForDelete={setItemStateForDelete}/> 
 
 
 
-         <input className="form-control mt-4" type="text" placeholder={placeholderTextForInput} value={txtValue} onChange={(event) => handleOnChange(event.target.value)} ></input>
+         <input className="form-control mt-4" type="text" placeholder={inputPlaceHolderText} value={txtValue} onChange={(event) => handleOnChange(event.target.value)} ></input>
 
          <DoneButton 
          label={"Add"}
@@ -71,10 +71,10 @@ export default function AddCard({titleText,placeholderTextForInput,listEmptyMsg,
 }
 
 AddCard.propTypes = {
-  titleText: PropTypes.string.isRequired,
-  placeholderTextForInput: PropTypes.string.isRequired,
+  cardTitle: PropTypes.string.isRequired,
+  inputPlaceHolderText: PropTypes.string.isRequired,
   listEmptyMsg: PropTypes.string.isRequired,
-  list: PropTypes.array.isRequired,
+  listArray: PropTypes.array.isRequired,
   onSubmit: PropTypes.func.isRequired,
   validateInput:PropTypes.func.isRequired
 };

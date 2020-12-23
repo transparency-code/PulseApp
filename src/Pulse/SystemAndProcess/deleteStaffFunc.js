@@ -15,7 +15,7 @@ export default async function deleteStaffFunc(listItem,index, notificationFunc) 
     const response = await deleteListItemInDynamo(email,projectid, attr, index)
 
     if (response === 200 ) {
-        notificationFunc("Staff Delete.d")
+        notificationFunc("Staff Deleted")
         //dont display success here..wait 3 seconds for cloud
     } else {
         notificationFunc(`Error Deleting Staff.`)

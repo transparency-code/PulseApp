@@ -31,9 +31,9 @@ export default async function deleteListItemInDynamo(email,projectid,attr ,index
   //console.log(addToList)
   const params = createParams(email,projectid,attr ,index)
 
-  console.log(params)
+  //console.log(params)
   const result = await docClient.update(params).promise();
-  console.log(result)
+//  console.log(result)
   return result.$response.httpResponse.statusCode
   
 }

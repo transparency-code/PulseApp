@@ -4,11 +4,14 @@ import { isEmpty } from 'lodash'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 
-export default function ListDisplayWithCancelButton({ emptyMsg, listArray = [] , dialogOpen, setStaffToDelete}) {
+export default function ListDisplayWithCancelButton({ emptyMsg, listArray = [] , dialogOpen, setItemStateForDelete}) {
 
+ 
 
     function onDeleteClick(name, index) {
-        setStaffToDelete({name, index})
+        // console.log(name)
+        // console.log(index)
+        setItemStateForDelete({name, index})
         dialogOpen(true)
     }
 
