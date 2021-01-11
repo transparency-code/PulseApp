@@ -10,7 +10,7 @@ export default function ListAddDelete({getListFunc , addToListFunc, deleteFromLi
 
     const deleteStateDefault = {name:'',index:undefined}
 
-    const [currentList, setCurrentList] = useState([])
+    const [currentList, setCurrentList] = useState(undefined)
 
     const [itemStateForDelete, setItemStateForDelete] = useState(deleteStateDefault)
 
@@ -70,7 +70,7 @@ export default function ListAddDelete({getListFunc , addToListFunc, deleteFromLi
             })
         }
 
-        if ( setCurrentList === undefined ) return <Spinner/> 
+        if ( currentList === undefined ) return <Spinner/> 
 
 
     return (
