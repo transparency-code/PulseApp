@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import DoneButton from 'Pulse/components/DoneButton'
 import ListDisplayWithCancelButton from 'Pulse/components/ListDisplayWithCancelButton'
+import ListDisplay from 'Pulse/components/ListDisplay'
 import PropTypes from 'prop-types';
 
 
@@ -23,6 +24,12 @@ export default function AddCard({cardTitle,inputPlaceHolderText,listEmptyMsg, li
 
   const [txtValue, settxtValue] = useState('')
   const [button, disableButton] = useState(true)
+
+  console.log(listArray)
+  const deletelist = listArray.slice(1)
+  console.log(deletelist)
+  const Nodeletelist = listArray.slice(0,1)
+  console.log(Nodeletelist)
 
   function handleOnChange(newValue) {
     settxtValue(newValue)
@@ -51,7 +58,8 @@ export default function AddCard({cardTitle,inputPlaceHolderText,listEmptyMsg, li
         title={cardTitle}
 
       />
-      <ListDisplayWithCancelButton emptyMsg={listEmptyMsg} listArray={listArray} dialogOpen={dialogOpen} setItemStateForDelete={setItemStateForDelete}/> 
+      <ListDisplay listArray={Nodeletelist} />
+      <ListDisplayWithCancelButton emptyMsg={listEmptyMsg} listArray={deletelist} dialogOpen={dialogOpen} setItemStateForDelete={setItemStateForDelete}/> 
 
 
 

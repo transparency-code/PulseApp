@@ -30,7 +30,8 @@ export default function ListDisplayWithCancelButton({ emptyMsg, listArray = [] ,
             <li className="list-group-item" key={index}>{listItem}
 
             <div className="float-right">
-            <DeleteForeverIcon onClick={ (event)=> {onDeleteClick(listItem,index)}}/>
+                {/* Pass index plus 1 to delete, as first index is initial request that is not passed in here and should not be deleted */}
+            <DeleteForeverIcon onClick={ (event)=> {onDeleteClick(listItem,index+1)}}/>
             {/* <DeleteForeverIcon onClick={ (event)=> {dialogOpen(true)} } /> */}
             </div>
 

@@ -14,7 +14,7 @@ function AddStaff(props) {
          deleteFromListFunc={deleteProcessFunction}
          cardTitle={'Request Status'}
          inputPlaceHolderText={"Add Process"}
-         listemptyMsg={"No Request Statuses"}
+         listemptyMsg={"No Process other than Initial Request"}
          //validateFunc={validateEmail}
          deleteDialogTitle={"Delete Process"}
        />
