@@ -4,7 +4,7 @@ import Spinner from 'Pulse/components/CircularIndeterminate'
 import AddCard from 'Pulse/components/AddCard'
 import AlertDialogSlide from 'Pulse/components/AlertDialogSlide'
 
-export default function ListAddDelete({getListFunc , addToListFunc, deleteFromListFunc, cardTitle,inputPlaceHolderText, listemptyMsg,validateFunc, deleteDialogtitle}) {
+export default function ListAddDelete({getListFunc , addToListFunc, deleteFromListFunc, cardTitle,inputPlaceHolderText, listemptyMsg,validateFunc , deleteDialogtitle}) {
 
    // console.log(inputPlaceHolderText)
 
@@ -94,3 +94,7 @@ export default function ListAddDelete({getListFunc , addToListFunc, deleteFromLi
     );
 }
 
+
+ListAddDelete.defaultProps = {
+    validateFunc : () => { return true }
+}

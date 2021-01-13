@@ -13,7 +13,7 @@ function AddStaff(props) {
          addToListFunc={addStaffFunction}
          deleteFromListFunc={deleteStaffFunction}
          cardTitle={'Alottment Staff'}
-         inputPlaceHolderText={"Add Staff Email here."}
+         inputPlaceHolderText={"Add Staff Email"}
          listemptyMsg={"No Staff Added"}
          validateFunc={validateEmail}
          deleteDialogTitle={"Delete Staff"}

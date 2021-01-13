@@ -101,7 +101,7 @@ export default function AddStaff({ getStaffListFunc , addStaffFunc, deleteStaffF
 
         <AddCard 
         titleText={'Alottment Staff'} 
-        placeholderTextForInput={"Add Staff Email here."} 
+        placeholderTextForInput={"Add Staff Email."} 
         listEmptyMsg={"No Staff Added"} 
         list={currentStaff}
         onSubmit={handleStaffAdd}
