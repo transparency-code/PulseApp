@@ -38,6 +38,6 @@ export default function ListDisplay({ emptyMsg, listArray = [] }) {
 }
 
 ListDisplay.propTypes = {
-    emptyMsg: PropTypes.string.isRequired,
+   // emptyMsg: PropTypes.string.isRequired,
     listArray: PropTypes.array.isRequired
 };

@@ -11,7 +11,7 @@ export default async function getStaffList (setFunc) {
 
     //console.log("New Staff List")
 
-   console.log(staffList)
+  // console.log(staffList)
 
     //the staffinfo field of this row has stafflist
     const data = get(staffList,'staffinfo',[])

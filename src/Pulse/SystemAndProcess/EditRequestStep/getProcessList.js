@@ -11,7 +11,7 @@ export default async function getProcessList (setFunc) {
 
     //console.log("New Staff List")
 
-   console.log(processList)
+  // console.log(processList)
 
     //the staffinfo field of this row has stafflist
     const data = get(processList,'processinfo',[])

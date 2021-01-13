@@ -25,11 +25,11 @@ export default function AddCard({cardTitle,inputPlaceHolderText,listEmptyMsg, li
   const [txtValue, settxtValue] = useState('')
   const [button, disableButton] = useState(true)
 
-  console.log(listArray)
+  // console.log(listArray)
   const deletelist = listArray.slice(1)
-  console.log(deletelist)
+  // console.log(deletelist)
   const Nodeletelist = listArray.slice(0,1)
-  console.log(Nodeletelist)
+  // console.log(Nodeletelist)
 
   function handleOnChange(newValue) {
     settxtValue(newValue)
