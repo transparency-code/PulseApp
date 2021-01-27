@@ -16,17 +16,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //this requires a CurrentSlection and handleChangeProp
-export default function Select({selectId, selectLabel, selectList, currentSelection, onSelectionChange}) {
+export default function Select({selectId, selectLabel, selectList =[], currentSelection, onSelectionChange}) {
 
     // console.log(selectId)
     // console.log(selectLabel)
     // console.log(selectOptions)
 
 
+  //  console.log(selectList)
+  //  console.log(currentSelection)
+
     const classes = useStyles();
 
   const handleChange = event => {
-    onSelectionChange(event.target.value);
+    onSelectionChange(parseInt(event.target.value));
   };
 
 //   console.log(selection)

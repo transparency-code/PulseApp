@@ -1,7 +1,7 @@
 import getAttributesFromDynamoSpecific from 'AWS/getAttributesFromDynamoSpecific'
 import { get } from 'lodash';
 
-export default async function getProcessList (setFunc) {
+export default async function getProcessList () {
    
     const email = "transparencygroup.nz"
 
@@ -11,12 +11,13 @@ export default async function getProcessList (setFunc) {
 
     //console.log("New Staff List")
 
-  // console.log(processList)
+   //console.log(processList)
 
     //the staffinfo field of this row has stafflist
     const data = get(processList,'processinfo',[])
 
-    setFunc(data)
+   // console.log(data)
+    return data
     
 }
 

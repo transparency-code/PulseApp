@@ -15,6 +15,7 @@ import {CreateParamsForUserEmailQuery, CreateParamsForRequestTypeQuery, queryFro
 //receives a function that set states
 export async function getRequestsByRequestState(aStateMutater, requestState) {
  //   console.log(typeof(aStateMutater))
+ //console.log(requestState)
     AWS.config.credentials.get(async function () {
 
         // console.log(requestState)
