@@ -6,7 +6,7 @@ import deleteProcessFunction from './deleteProcessFunc'
 
 
 
-function AddStaff(props) {
+export default  function EditRequestStep(props) {
     return (
        <ListAddDelete 
          getListFunc={getProcessListFunction}
@@ -15,10 +15,10 @@ function AddStaff(props) {
          cardTitle={'Request Status'}
          inputPlaceHolderText={"Add Process"}
          listemptyMsg={"No Process other than Initial Request"}
+         firstItemAlwaysOn={true}
          //validateFunc={validateEmail}
          deleteDialogTitle={"Delete Process"}
        />
     );
 }
 
-export default AddStaff;

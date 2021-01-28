@@ -4,7 +4,7 @@ import Spinner from 'Pulse/components/CircularIndeterminate'
 import AddCard from 'Pulse/components/AddCard'
 import AlertDialogSlide from 'Pulse/components/AlertDialogSlide'
 
-export default function ListAddDelete({getListFunc , addToListFunc, deleteFromListFunc, cardTitle,inputPlaceHolderText, listemptyMsg,validateFunc , deleteDialogtitle}) {
+export default function ListAddDelete({getListFunc , addToListFunc, deleteFromListFunc, cardTitle,inputPlaceHolderText, listemptyMsg,validateFunc , firstItemAlwaysOn, deleteDialogtitle}) {
 
    // console.log(inputPlaceHolderText)
 
@@ -25,7 +25,8 @@ export default function ListAddDelete({getListFunc , addToListFunc, deleteFromLi
        
         async function fetchData() {
            
-            await getListFunc(setCurrentList)
+            //const response = await getListFunc()
+            setCurrentList(await getListFunc())
             
         }
         fetchData();
@@ -64,14 +65,16 @@ export default function ListAddDelete({getListFunc , addToListFunc, deleteFromLi
 
         async function refreshList() {
             await new Promise((resolve) => {
-                setTimeout(() => {
-                    resolve(getListFunc(setCurrentList))
+                setTimeout(async () => {
+                    resolve( setCurrentList(await getListFunc()))
                 }, 1000)
             })
         }
 
         if ( currentList === undefined ) return <Spinner/> 
 
+
+     //   console.log(currentList)
 
     return (
         <React.Fragment>
@@ -81,6 +84,7 @@ export default function ListAddDelete({getListFunc , addToListFunc, deleteFromLi
         inputPlaceHolderText={inputPlaceHolderText} 
         listEmptyMsg={listemptyMsg} 
         listArray={currentList}
+        firstItemAlwaysOn={firstItemAlwaysOn}
         onSubmit={handleItemAdd}
         validateInput={validateFunc}
         dialogOpen={dialogOpen}

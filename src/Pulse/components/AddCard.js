@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddCard({cardTitle,inputPlaceHolderText,listEmptyMsg, listArray, onSubmit, validateInput, dialogOpen, setItemStateForDelete }) {
+export default function AddCard({cardTitle,inputPlaceHolderText,listEmptyMsg, listArray, firstItemAlwaysOn, onSubmit, validateInput, dialogOpen, setItemStateForDelete }) {
 
  //console.log(inputPlaceHolderText)
 
@@ -25,11 +25,21 @@ export default function AddCard({cardTitle,inputPlaceHolderText,listEmptyMsg, li
   const [txtValue, settxtValue] = useState('')
   const [button, disableButton] = useState(true)
 
-  // console.log(listArray)
-  const deletelist = listArray.slice(1)
+  let deleteList
+  let noDeleteList
+
+  if (firstItemAlwaysOn) {
+    // console.log(listArray)
+    deleteList = listArray.slice(1)
   // console.log(deletelist)
-  const Nodeletelist = listArray.slice(0,1)
+  noDeleteList = listArray.slice(0,1)
   // console.log(Nodeletelist)
+
+  } else {
+    deleteList = listArray
+    noDeleteList = false
+  }
+  
 
   function handleOnChange(newValue) {
     settxtValue(newValue)
@@ -58,8 +68,8 @@ export default function AddCard({cardTitle,inputPlaceHolderText,listEmptyMsg, li
         title={cardTitle}
 
       />
-      <ListDisplay listArray={Nodeletelist} />
-      <ListDisplayWithCancelButton emptyMsg={listEmptyMsg} listArray={deletelist} dialogOpen={dialogOpen} setItemStateForDelete={setItemStateForDelete}/> 
+      { noDeleteList && <ListDisplay listArray={noDeleteList} />}
+      <ListDisplayWithCancelButton emptyMsg={listEmptyMsg} listArray={deleteList} dialogOpen={dialogOpen} setItemStateForDelete={setItemStateForDelete}/> 
 
 
 

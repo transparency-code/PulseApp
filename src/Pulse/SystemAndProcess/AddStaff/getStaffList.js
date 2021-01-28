@@ -16,7 +16,7 @@ export default async function getStaffList (setFunc) {
     //the staffinfo field of this row has stafflist
     const data = get(staffList,'staffinfo',[])
 
-    setFunc(data)
+    return data
     
 }
 
