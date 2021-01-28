@@ -19,12 +19,12 @@ describe('AddCard', () => {
     const onSubmit = jest.fn();
     const validateInput = jest.fn(true);
        render(<AddCard
-         titleText={titleText}  
+         cardTitle={titleText} 
+         inputPlaceHolderText={placeholderTextForInput}
          listEmptyMsg={listEmptyMsg}
-         list={list} 
-         placeholderTextForInput={placeholderTextForInput}
+         listArray={list} 
          listEmptyMsg={listEmptyMsg}
-         list={list}
+         firstItemAlwaysOn={false}
          onSubmit={onSubmit}
          validateInput={validateInput}
          />) 
@@ -46,10 +46,10 @@ describe('AddCard', () => {
     const onSubmit = jest.fn();
 
        render(<AddCard
-         titleText={titleText}  
+        cardTitle={titleText}  
          listEmptyMsg={listEmptyMsg}
-         list={list} 
-         placeholderTextForInput={placeholderTextForInput}
+         listArray={list} 
+         inputPlaceHolderText={placeholderTextForInput}
          listEmptyMsg={listEmptyMsg}
          list={list}
          onSubmit={onSubmit}
@@ -74,12 +74,11 @@ describe('AddCard', () => {
     const onSubmit = jest.fn();
 
        render(<AddCard
-         titleText={titleText}  
+        cardTitle={titleText}  
          listEmptyMsg={listEmptyMsg}
-         list={list} 
-         placeholderTextForInput={placeholderTextForInput}
+         listArray={list} 
+         inputPlaceHolderText={placeholderTextForInput}
          listEmptyMsg={listEmptyMsg}
-         list={list}
          onSubmit={onSubmit}
          validateInput={validateEmail}
          />) 
