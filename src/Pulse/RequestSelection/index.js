@@ -1,7 +1,7 @@
 //https://material-ui.com/components/selects/
 import React from "react";
 import Box from '@material-ui/core/Box';
-import NativeSelect from "Pulse/components/NativeSelect";
+import NativeSelect from "Pulse/components/NativeSelectParent";
 import GetSelectedRequest from './GetSelectedRequest'
 import {requestFieldProps, requestTypeList} from './constants.js'
 

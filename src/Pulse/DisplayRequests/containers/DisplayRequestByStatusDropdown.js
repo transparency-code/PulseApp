@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Box from '@material-ui/core/Box';
-import NativeSelect from 'Pulse/components/NativeSelect'
+import NativeSelect from 'Pulse/components/NativeSelectParent'
 import DisplayRequestsByRequestStatus from 'Pulse/DisplayRequests/containers/DisplayRequestsByRequestStatus'
 import {requestFieldProps} from '../constants.js'
 import getProcessList from 'Pulse/SystemAndProcess/EditRequestStep/getProcessList'

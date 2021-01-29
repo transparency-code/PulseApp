@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //this requires a CurrentSlection and handleChangeProp
-export default function Select({selectId, selectLabel, selectList =[], currentSelection, onSelectionChange}) {
+export default function NativeSelectParent({selectId, selectLabel, selectList =[], currentSelection, onSelectionChange}) {
 
     // console.log(selectId)
     // console.log(selectLabel)
