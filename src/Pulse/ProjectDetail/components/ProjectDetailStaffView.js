@@ -15,7 +15,7 @@ export default function ProjectDetailStaffView({
 
   // console.log(email)
   // console.log(projectid)
-  //console.log(checkedItems)
+ // console.log(checkedItems)
   // console.log(txtItems)
 
   //a filter function whose output that will be used as a parameter to map. cant use assignmnets inside map

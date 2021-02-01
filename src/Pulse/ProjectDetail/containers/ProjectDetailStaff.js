@@ -8,8 +8,9 @@ import getTxtItems from "Pulse/ProjectDetail/getTxtItems";
 //import getCheckedItems from "Pulse/ProjectDetail/getTxtItems";
 import StaffViewList from "Pulse/ProjectDetail/components/ProjectDetailStaffView";
 import Stepper from "Pulse/components/Stepper";
+import getProcessList from 'Pulse/SystemAndProcess/EditRequestStep/getProcessList'
 import steps from "Pulse/Data/ProcessStates";
-import processStates from "Pulse/Data/ProcessStates";
+
 import useNotification from "Pulse/hooks/useNotification";
 import LinearProgressBar from 'Pulse/components/LinearProgressBar'
 import { get, isEmpty, has } from 'lodash';
@@ -53,6 +54,8 @@ export default function ProjectDetailStaff({
 
   const [projDetail, setProjDetail] = useState({});
 
+  const [processStates, setProcessStates] = useState([]);
+
   //needs to update in stage progess, so seperate statevariable
   //db should not have zero
   const [reqStatus, setReqStatus] = useState(0);
@@ -66,6 +69,12 @@ export default function ProjectDetailStaff({
   useEffect(() => {
     async function fetchData() {
       await getProjectDetailsFunc(email, projectid, setProjDetail);
+
+      const response = await getProcessList()
+
+      setProcessStates(response)
+
+      //retrive processs steps
     }
 
     //reducing re-render
@@ -93,9 +102,10 @@ export default function ProjectDetailStaff({
     // console.log(activeStep)
     //these are async fuctions passed in
 
-    const responseCode  = await saveStageInDynamoFunc(updateKey, activeStep, addNotification)
+    const savedToStepLabel = processStates[activeStep - 1]
+    const responseCode  = await saveStageInDynamoFunc(updateKey, activeStep, savedToStepLabel,addNotification)
 
-    //console.log(responseCode)
+   // console.log(responseCode)
     if (responseCode === 200) {
       await new Promise((resolve) => {
         setTimeout(() => {
@@ -144,7 +154,7 @@ export default function ProjectDetailStaff({
           files={projDetail.files}
         />
           <Stepper
-          steps={steps}
+          steps={processStates}
           storedStep={reqStatus}
           saveStageFunc={saveStage}
         //  updateKey={{ email, projectid }}

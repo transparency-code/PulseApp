@@ -1,8 +1,8 @@
 
 import updateIteminDynamo from 'AWS/updateIteminDynamo'
-import steps from "Pulse/Data/ProcessStates";
 
-export default async function saveStageinDynamo(key, activeStep, NotifyFunc) {
+
+export default async function saveStageinDynamo(key, activeStep, savedToStepLabel ,NotifyFunc) {
 
     const {email, projectid} = key
 
@@ -13,7 +13,7 @@ export default async function saveStageinDynamo(key, activeStep, NotifyFunc) {
 
 
     if (response === 200) {
-      NotifyFunc(`Set to ${steps[activeStep-1]}`);
+      NotifyFunc(`Set to ${savedToStepLabel}`);
       
 
      
