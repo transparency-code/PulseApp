@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from "react-dom";
 import App from './App'
@@ -22,10 +23,13 @@ import NotificationBar from 'Pulse/components/NotificationBar'
 // )
 
 ReactDOM.render(
+  <div>
+
   <NotificationContextProvider>
   <App/>
   <NotificationBar/>
-  </NotificationContextProvider>,
+  </NotificationContextProvider>
+  </div>,
   document.getElementById("root")
 );
 

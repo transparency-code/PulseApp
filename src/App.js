@@ -14,15 +14,21 @@ import getProjectDetails from 'Pulse/ProjectDetail/getProjectDetails'
 import getProjStatus from 'Pulse/ProjectDetail/getProjStatus'
 import saveStageinDynamo from 'Pulse/ProjectDetail/saveStageinDynamo'
 import SystemAndProcess from 'Pulse/SystemAndProcess'
+import Amplify from 'aws-amplify';
+import awsconfig from './aws-exports';
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 
 
 
+Amplify.configure(awsconfig);
 
 function App() {
 
   return (
 
     <NotificationContextProvider>
+
+<AmplifySignOut />
 
     <Layout>
 
@@ -50,4 +56,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
