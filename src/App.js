@@ -14,6 +14,7 @@ import getProjectDetails from 'Pulse/ProjectDetail/getProjectDetails'
 import getProjStatus from 'Pulse/ProjectDetail/getProjStatus'
 import saveStageinDynamo from 'Pulse/ProjectDetail/saveStageinDynamo'
 import SystemAndProcess from 'Pulse/SystemAndProcess'
+import LeftDrawer from 'Pulse/components/LeftDrawer'
 import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
@@ -30,10 +31,11 @@ function App() {
 
 <AmplifySignOut />
 
-    <Layout>
+    {/* <Layout> */}
 
       <ErrorBoundary>
-        <Router>
+      <LeftDrawer/>
+        <Router>  
           <Request path="/createRequest" />
   
           <DisplayRequestByStatusDropdown  path="/displaybystatus"/>
@@ -49,7 +51,7 @@ function App() {
         </Router>
         </ErrorBoundary>
 
-        </Layout>
+        {/* </Layout> */}
 
         <NotificationBar/>
         </NotificationContextProvider>
